@@ -31,6 +31,8 @@ public class AllUtilities {
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
 	}
+	
+	
 
 	// maximize browser
 	public void ConfigMaximizeBrowser() {
@@ -244,5 +246,6 @@ public class AllUtilities {
                 + " " + date.getYear();
 	}
 	
+
 	
 }

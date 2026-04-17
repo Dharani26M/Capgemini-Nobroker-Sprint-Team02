@@ -11,7 +11,13 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 import com.nobroker.sprint.utils.AllUtilities;
+
 
 public class DashboardPage {
 	public WebDriver driver;
@@ -19,7 +25,7 @@ public class DashboardPage {
 
 	public DashboardPage(WebDriver driver) {
 		this.driver = driver;
-		this.utility = new AllUtilities();
+		utility = new AllUtilities();
 		this.utility.initializeDriver(driver); // Pass the active driver to utility
 	} 
 
@@ -162,25 +168,49 @@ public class DashboardPage {
 	}
 	
 	//entering the locality
-	public void writeLocality(String loc,WebDriver driver) throws InterruptedException {
-		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		getLocality().click();
-		getLocality().clear();
-		getLocality().sendKeys(loc);
-			
-		//wait
-		Thread.sleep(2000);
-			
-		//select 1st sugg
-		Actions act = new Actions(driver);
-		getLocality().sendKeys(Keys.DOWN);
-		getLocality().sendKeys(Keys.ENTER);
-	}
+
 	
 	//search button
 	public void clickSearch() {
 		getSearchBtn().click();
 	}
+	//locating buy module
+		@FindBy(xpath="//div[text()='Buy']")
+		private WebElement buy;
+		
+		//entering locality
+		@FindBy(id="listPageSearchLocality")
+		private WebElement locality;
+		public void clickBuyModule() {
+			getBuyHouse().click();
+		}
+		
+		//entering the locality
+		public void writeLocality(String loc,WebDriver driver) throws InterruptedException {
+			
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			getLocality().click();
+			getLocality().clear();
+			getLocality().sendKeys(loc);
+				
+			//wait
+			Thread.sleep(2000);
+				
+			//select 1st sugg
+			Actions act = new Actions(driver);
+			getLocality().sendKeys(Keys.DOWN);
+			getLocality().sendKeys(Keys.ENTER);
+		}
+		
+
+		
+		public WebElement getBuyHouse() {
+			return buy;
+		}
+		
+		public WebElement getLocality() {
+			return locality;
+		}
+	
 	
 }
