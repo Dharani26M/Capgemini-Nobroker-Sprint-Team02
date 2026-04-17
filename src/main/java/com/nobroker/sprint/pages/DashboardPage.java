@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
 import com.nobroker.sprint.utils.AllUtilities;
+
 
 public class DashboardPage {
 	public WebDriver driver;
@@ -13,7 +15,7 @@ public class DashboardPage {
 
 	public DashboardPage(WebDriver driver) {
 		this.driver = driver;
-		this.utility = new AllUtilities();
+		utility = new AllUtilities();
 		this.utility.initializeDriver(driver); // Pass the active driver to utility
 	} 
 
