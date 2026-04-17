@@ -1,0 +1,75 @@
+package com.nobroker.sprint.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Shortlist {
+	WebDriver driver;
+	public Shortlist(WebDriver driver) {
+		 this.driver = driver;
+		PageFactory.initElements(driver,this);
+	}
+	
+	@FindBy(id="profile-icon")
+	private WebElement icon;
+	
+	@FindBy(xpath="//span[.='My Dashboard']")
+	private WebElement DashBoard;
+	
+	@FindBy(xpath="//a[.='Shortlist']")
+	private WebElement ShortList;
+	
+	@FindBy(xpath="//a[.='Your Shortlists']")
+	private WebElement YourShortlist;
+	
+	@FindBy(id="saleShortlistTab")
+	private WebElement saleshortlisttab;
+	public WebElement getIcon() {
+		return icon;
+	}
+
+	public void setIcon() {
+		getIcon().click();;
+	}
+
+	public WebElement getDashBoard() {
+		return DashBoard;
+	}
+
+	public void setDashBoard() {
+		getDashBoard().click();
+	}
+
+	public WebElement getShortList() {
+		return ShortList;
+	}
+
+	public void setShortList() {
+		getShortList().click();
+	}
+
+	public WebElement getYourShortlist() {
+		return YourShortlist;
+	}
+
+	public void setYourShortlist() {
+		getYourShortlist().click();
+	}
+
+	public WebElement getSaleshortlisttab() {
+		return saleshortlisttab;
+	}
+
+	public void setSaleshortlisttab() {
+		getSaleshortlisttab().click();
+	}
+	
+	
+	
+	
+	
+	
+
+}
