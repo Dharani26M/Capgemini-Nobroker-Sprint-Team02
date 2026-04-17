@@ -1,6 +1,5 @@
 package com.nobroker.sprint.pages;
 
-
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -21,7 +20,7 @@ public class DashboardPage {
 		this.driver = driver;
 		this.utility = new AllUtilities();
 		this.utility.initializeDriver(driver); // Pass the active driver to utility
-	} 
+	}
 
 	// Locating the City Drop down
 	@FindBy(xpath = "//div[contains(@class,'nb-select__control')]")
@@ -55,18 +54,34 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@id='profile-menu-dropdown']//a[contains(.,'Profile')]")
 	private WebElement ProfileFeature;
 
-	
-	
+	// locating menu
+	@FindBy(xpath = "//div[.='Menu']")
+	private WebElement MenuField;
+
+	// locating post your property
+	@FindBy(xpath = "//div[@id='main-menu']//a[.='Post Your Property']")
+	private WebElement PostProperty;
+
+	// locating rent receipts
+	@FindBy(xpath = "//div[@id='main-menu']//a[.='Rent Receipts']")
+	private WebElement RentReceipts;
+
+	// locating refer and earn field
+	@FindBy(xpath = "//div[@id='main-menu']//a[.='Refer & Earn']")
+	private WebElement ReferEarn;
+
+	// locating paintings and cleaning
+	@FindBy(xpath = "//div[@id='main-menu']//a[.='Painting & Cleaning']")
+	private WebElement PaintingsCleaning;
+
 	// Locating Packers And Movers Banner
-	@FindBy (xpath="//span[text()='Packers And Movers']")
+	@FindBy(xpath = "//span[text()='Packers And Movers']")
 	private WebElement PackersAndMovers;
-	
-	
-	
+
 	public WebElement getPackersAndMovers() {
 		return PackersAndMovers;
 	}
-	
+
 	// getters For WebElements
 	public WebElement getCityDropdown() {
 		return cityDropdown;
@@ -74,6 +89,26 @@ public class DashboardPage {
 
 	public WebElement getSearchBtn() {
 		return SearchBtn;
+	}
+
+	public WebElement getMenuField() {
+		return MenuField;
+	}
+
+	public WebElement getPostProperty() {
+		return PostProperty;
+	}
+
+	public WebElement getRentReceipts() {
+		return RentReceipts;
+	}
+
+	public WebElement getReferEarn() {
+		return ReferEarn;
+	}
+
+	public WebElement getPaintingsCleaning() {
+		return PaintingsCleaning;
 	}
 
 	public WebElement getLogin() {
@@ -99,8 +134,6 @@ public class DashboardPage {
 	public WebElement getProfileFeature() {
 		return ProfileFeature;
 	}
-	
-	
 
 	// after OTP, click continue
 	public void clickContinueAfterOTP(WebDriver driver) {
@@ -125,7 +158,8 @@ public class DashboardPage {
 	}
 
 	public void clickNewIcon(WebDriver driver) {
-		// using an Explicit Wait to click new icon because webpage needs to refresh the page
+		// using an Explicit Wait to click new icon because webpage needs to refresh the
+		// page
 		utility.WaitForToBeClickableOfElement(30, getNewIcon());
 	}
 
@@ -134,54 +168,76 @@ public class DashboardPage {
 		utility.WaitForToBeClickableOfElement(20, getProfileImg());
 		utility.WaitForToBeClickableOfElement(20, getProfileFeature());
 	}
-	
-	
+
+	public void ClickPostYourProperty() {
+		getMenuField().click();
+		getPostProperty().click();
+	}
+
+	public void ClickRentReceipts() {
+		utility.WaitForInvisibilityOfElement(6, By.className("login-signup__backdrop"));
+	    utility.WaitForToBeClickableOfElement(20, getMenuField());
+	    getMenuField().click();
+	    utility.WaitForToBeClickableOfElement(20, getRentReceipts());
+	    getRentReceipts().click();
+	}
+
+	public void ClickReferAndEarn() {
+		getMenuField().click();
+		getReferEarn().click();
+	}
+
+	public void ClickPaintingsAndCleaning() {
+		getMenuField().click();
+		getPaintingsCleaning().click();
+	}
+
 	// Click The PackersAndMovers to Navigate to the Section
-	
+
 	public void clickPackersAndMovers() {
 		getPackersAndMovers().click();
 	}
-	
-	//locating buy module
-		@FindBy(xpath="//div[text()='Buy']")
-		private WebElement buy;
-		
-		//entering locality
-		@FindBy(id="listPageSearchLocality")
-		private WebElement locality;
-		public void clickBuyModule() {
-			getBuyHouse().click();
-		}
-		
-		//entering the locality
-		public void writeLocality(String loc,WebDriver driver) throws InterruptedException {
-			
-			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			getLocality().click();
-			getLocality().clear();
-			getLocality().sendKeys(loc);
-				
-			//wait
-			Thread.sleep(2000);
-				
-			//select 1st sugg
-			Actions act = new Actions(driver);
-			getLocality().sendKeys(Keys.DOWN);
-			getLocality().sendKeys(Keys.ENTER);
-		}
-		
-		//search button
-		public void clickSearch() {
-			getSearchBtn().click();
-		}
-		
-		public WebElement getBuyHouse() {
-			return buy;
-		}
-		
-		public WebElement getLocality() {
-			return locality;
-		}
-	
-	
+
+	// locating buy module
+	@FindBy(xpath = "//div[text()='Buy']")
+	private WebElement buy;
+
+	// entering locality
+	@FindBy(id = "listPageSearchLocality")
+	private WebElement locality;
+
+	public void clickBuyModule() {
+		getBuyHouse().click();
+	}
+
+	// entering the locality
+	public void writeLocality(String loc, WebDriver driver) throws InterruptedException {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		getLocality().click();
+		getLocality().clear();
+		getLocality().sendKeys(loc);
+
+		// wait
+		Thread.sleep(2000);
+
+		// select 1st sugg
+		Actions act = new Actions(driver);
+		getLocality().sendKeys(Keys.DOWN);
+		getLocality().sendKeys(Keys.ENTER);
+	}
+
+	// search button
+	public void clickSearch() {
+		getSearchBtn().click();
+	}
+
+	public WebElement getBuyHouse() {
+		return buy;
+	}
+
+	public WebElement getLocality() {
+		return locality;
+	}
+
 }
