@@ -9,6 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
 
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -58,7 +61,13 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@id='profile-menu-dropdown']//a[contains(.,'Profile')]")
 	private WebElement ProfileFeature;
 
+	//locating buy module
+	@FindBy(xpath="//div[text()='Buy']")
+	private WebElement buy;
 	
+	//entering locality
+	@FindBy(id="listPageSearchLocality")
+	private WebElement locality;
 	
 	// Locating Packers And Movers Banner
 	@FindBy (xpath="//span[text()='Packers And Movers']")
@@ -103,6 +112,14 @@ public class DashboardPage {
 		return ProfileFeature;
 	}
 	
+	public WebElement getBuyHouse() {
+		return buy;
+	}
+	
+	public WebElement getLocality() {
+		return locality;
+	}
+	
 	
 
 	// after OTP, click continue
@@ -145,6 +162,18 @@ public class DashboardPage {
 		getPackersAndMovers().click();
 	}
 	
+	//click on buy property
+	public void clickBuyModule() {
+		getBuyHouse().click();
+	}
+	
+	//entering the locality
+
+	
+	//search button
+	public void clickSearch() {
+		getSearchBtn().click();
+	}
 	//locating buy module
 		@FindBy(xpath="//div[text()='Buy']")
 		private WebElement buy;
@@ -173,10 +202,7 @@ public class DashboardPage {
 			getLocality().sendKeys(Keys.ENTER);
 		}
 		
-		//search button
-		public void clickSearch() {
-			getSearchBtn().click();
-		}
+
 		
 		public WebElement getBuyHouse() {
 			return buy;

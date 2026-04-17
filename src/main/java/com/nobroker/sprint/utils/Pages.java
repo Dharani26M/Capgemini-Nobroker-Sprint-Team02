@@ -3,6 +3,11 @@ package com.nobroker.sprint.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+
+import com.nobroker.sprint.pages.Buy;
+import com.nobroker.sprint.pages.MapPage;
+import com.nobroker.sprint.pages.DashboardPage;
+
 import com.nobroker.sprint.pages.*;
 
 public class Pages {
@@ -20,7 +25,8 @@ public class Pages {
 	public static ProfilePage profilepage;
 	public static ReferAndEarnPage referpage;
 	public static RentReceiptPage rentpage;
-	
+	public static Buy buy;
+	public static MapPage mapPage;
 	
 	public static void LoadAllPages(WebDriver driver) {
 		dashpage=new DashboardPage(driver);
@@ -30,6 +36,12 @@ public class Pages {
 		inventorypage = PageFactory.initElements(driver, AddInventoryPage.class);
 		
 		summary = PageFactory.initElements(driver, OrderSummary.class);
+    
+    		buy = new Buy(driver);
+		buy = PageFactory.initElements(driver, Buy.class);
+		
+		mapPage = new MapPage();
+		mapPage = PageFactory.initElements(driver, MapPage.class);
 
 		
 		
@@ -44,7 +56,7 @@ public class Pages {
 		referpage=PageFactory.initElements(driver, ReferAndEarnPage.class);
 		rentpage=PageFactory.initElements(driver, RentReceiptPage.class);
 
-		
+
 	}
 
 }
