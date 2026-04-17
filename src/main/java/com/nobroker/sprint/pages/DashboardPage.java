@@ -1,10 +1,16 @@
 package com.nobroker.sprint.pages;
 
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.nobroker.sprint.utils.AllUtilities;
 
 public class DashboardPage {
@@ -49,7 +55,13 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@id='profile-menu-dropdown']//a[contains(.,'Profile')]")
 	private WebElement ProfileFeature;
 
+	//locating buy module
+	@FindBy(xpath="//div[text()='Buy']")
+	private WebElement buy;
 	
+	//entering locality
+	@FindBy(id="listPageSearchLocality")
+	private WebElement locality;
 	
 	// Locating Packers And Movers Banner
 	@FindBy (xpath="//span[text()='Packers And Movers']")
@@ -94,6 +106,14 @@ public class DashboardPage {
 		return ProfileFeature;
 	}
 	
+	public WebElement getBuyHouse() {
+		return buy;
+	}
+	
+	public WebElement getLocality() {
+		return locality;
+	}
+	
 	
 
 	// after OTP, click continue
@@ -136,5 +156,31 @@ public class DashboardPage {
 		getPackersAndMovers().click();
 	}
 	
+	//click on buy property
+	public void clickBuyModule() {
+		getBuyHouse().click();
+	}
+	
+	//entering the locality
+	public void writeLocality(String loc,WebDriver driver) throws InterruptedException {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		getLocality().click();
+		getLocality().clear();
+		getLocality().sendKeys(loc);
+			
+		//wait
+		Thread.sleep(2000);
+			
+		//select 1st sugg
+		Actions act = new Actions(driver);
+		getLocality().sendKeys(Keys.DOWN);
+		getLocality().sendKeys(Keys.ENTER);
+	}
+	
+	//search button
+	public void clickSearch() {
+		getSearchBtn().click();
+	}
 	
 }
