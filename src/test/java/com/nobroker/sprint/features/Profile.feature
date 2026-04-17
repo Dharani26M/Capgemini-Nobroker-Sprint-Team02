@@ -46,7 +46,7 @@ Feature: Profile and Feature Validation
     When the user navigates to the Refer and Earn section
     And the user enters owner details for referral:
       | City    | Phone      | Name      | PropType | Description        |
-      | Chennai | 9123456789 | Raj Kumar | House    | Interested in Rent |
+      | Chennai | 9123456789 | Raj Kumar | Rent    | Interested in Rent |
     Then the referral details should be submitted
 
   # Scenario 6: Home Services Module

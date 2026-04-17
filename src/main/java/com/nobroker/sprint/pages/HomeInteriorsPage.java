@@ -1,8 +1,14 @@
 package com.nobroker.sprint.pages;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nobroker.sprint.utils.AllUtilities;
 
@@ -35,8 +41,9 @@ public class HomeInteriorsPage {
 			
 		// click on share btn
 		public void ClickOnScheduleVisit(WebDriver driver) {
-			getScheduleVisitField().click();
-			utility.WaitForToBeClickableOfElement(30, getShareBtn());
+			WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
+			WebElement scheduleBtn = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[text()='Schedule Visit']")));
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", scheduleBtn);
 		}
 
 }

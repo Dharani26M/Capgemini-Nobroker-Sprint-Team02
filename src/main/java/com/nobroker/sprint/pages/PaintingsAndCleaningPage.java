@@ -48,7 +48,9 @@ public class PaintingsAndCleaningPage {
 		
 		public void SelectingHomeServices(WebDriver driver) {
 			utility.WaitForToBeClickableOfElement(30,getInteriorRenovationField());
+			getInteriorRenovationField().click();
 			utility.WaitForToBeClickableOfElement(30,getHomeInteriors());
+			getHomeInteriors().click();
 		}
 
 }

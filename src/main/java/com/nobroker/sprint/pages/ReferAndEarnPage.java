@@ -3,6 +3,7 @@ package com.nobroker.sprint.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,7 +22,7 @@ public class ReferAndEarnPage {
 		this.utility.initializeDriver(driver); // Pass the active driver to utility
 	}
 
-	@FindBy(xpath = "//button[@type='button' and contains(.,'Enter Owner Details')]")
+	@FindBy(xpath = "//button[contains(.,'Enter Owner Details')]")
 	private WebElement OwnerDetails;
 	
 	@FindBy(xpath = "//div[text()='Refer & Earn']")
@@ -80,21 +81,24 @@ public class ReferAndEarnPage {
 		return TellUsField;
 	}
 
-	public void ClickEnterOwnerDetails() {
-		getOwnerDetails().click();
-	}
 	
 	public WebElement getSendBtn() {
 		return SendBtn;
 	}
+	public void ClickOwnerDetails() {
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebElement enterDetailsBtn = wait.until(ExpectedConditions.elementToBeClickable(getOwnerDetails()));
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click();", enterDetailsBtn);
+	}
 
 	public void EnterDetails(WebDriver driver,String cityName, String phoneno,String name,String typename,String description) {
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.visibilityOf(getReferAndEarnWindow()));
-	    getCityDropdownContainer().click();	    
+		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".nb-select__placeholder"))).click();
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class, 'nb-select__option') and text()='" + cityName + "']"))).click();
 	    getPhoneNo().sendKeys(phoneno);
 	    getOwnerName().sendKeys(name);
+	    utility.WaitForToBeClickableOfElement(20, getPropertyDropdown());
 	    getPropertyDropdown().click();
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class, 'nb-select__option') and text()='" + typename + "']"))).click();
 	    getTellUsField().sendKeys(description);

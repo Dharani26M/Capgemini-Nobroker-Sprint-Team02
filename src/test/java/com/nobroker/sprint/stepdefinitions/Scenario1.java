@@ -115,6 +115,7 @@ public class Scenario1 extends AllUtilities {
 	}
 	@When("the user schedules a visit for Home Interiors")
 	public void the_user_schedules_a_visit_for_home_interiors() {
+		SwitchWindowUsingUrl("interiors");
 		Pages.homeinteriorpage.ClickOnScheduleVisit(base.driver);
 	}
 	@Then("the share button should be visible on the interiors page")
@@ -128,13 +129,12 @@ public class Scenario1 extends AllUtilities {
 	@When("the user navigates to the Refer and Earn section")
 	public void the_user_navigates_to_the_refer_and_earn_section() {
 	    Pages.profilepage.ClickReferAndEarn();
-	    Pages.referpage.ClickEnterOwnerDetails();
+	    Pages.referpage.ClickOwnerDetails();
 	}
 	@When("the user enters owner details for referral:")
 	public void the_user_enters_owner_details_for_referral(DataTable dataTable) {
 	    List<Map<String,String>> data=dataTable.asMaps(String.class ,String.class);
 	    Map<String, String> row = data.get(0);
-		Pages.referpage.ClickEnterOwnerDetails();
 		Pages.referpage.EnterDetails(base.driver, 
 			row.get("City"), 
 			row.get("Phone"), 
