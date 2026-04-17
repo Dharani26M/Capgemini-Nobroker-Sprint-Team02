@@ -16,7 +16,14 @@ public class PackersAndMoversPage {
 	
 	// Locating WithinCity WebElement
 	
-	AllUtilities Utilities = new AllUtilities();
+	public WebDriver driver;
+	public AllUtilities Utilities;
+	public PackersAndMoversPage(WebDriver driver) {
+		Utilities = new AllUtilities();
+		this.driver = driver;
+		this.Utilities.initializeDriver(driver);
+		
+	}
 	
 	@FindBy(xpath="//div[text()='Within City']")
 	private WebElement  WithinCity;
@@ -36,18 +43,18 @@ public class PackersAndMoversPage {
 	
 	// Locating ClearShiftFrom WebElement
 	
-	@FindBy(xpath="//input[@placeholder='Shifting From']/..//span")
+	@FindBy(xpath="//input[placeholder='Shifting From']/..//span")
 	private WebElement ClearShiftingFrom;
 	
 	// Locating ShiftTo WebElement
 	
-	@FindBy(css = "[@placeholder='Shifting To]")
+	@FindBy(css = "[placeholder='Shifting To']")
 	private WebElement ShiftingTo;
 	
 	
 	// Locating ClearShiftTo WebElement
 	
-	@FindBy(xpath="//input[@placeholder='Shifting To']/..//span")
+	@FindBy(xpath="//input[placeholder='Shifting To']/..//span")
 	private WebElement ClearShiftingTo;
 	
 	
@@ -107,6 +114,8 @@ public class PackersAndMoversPage {
 		@FindBy(id = "getRealPriceButtonMobile")
 		private WebElement CheckPrices;
 		
+	@FindBy(css="[class='hidden md:contents']")
+	private WebElement PageTitle;
 		
 	public WebElement getBetweenCities() {
 		return BetweenCities;
@@ -182,12 +191,16 @@ public class PackersAndMoversPage {
 	public WebElement getShiftingDropDowm() {
 		return ShiftingDropDowm;
 	}
+	
+	public WebElement getPageTitle() {
+		return PageTitle;
+	}
 
 	
-	public void MoversWithinCity(String City, String ShiftingFrom,String ShiftingTo,WebDriver driver) {
+	public void MoversWithinCity(String City, String ShiftingFrom,String ShiftingTo) {
 		
 		getWithinCity().click();
-		SelectCity(driver, City);
+		SelectCity(City);
 		getShiftingFrom().sendKeys(ShiftingFrom);
 		Utilities.WaitForToBeClickableOfElement(40, getShiftingDropDowm());
 		getShiftingDropDowm().click();
@@ -200,7 +213,7 @@ public class PackersAndMoversPage {
 	
 
 
-public void RelocateBetweenCity(String SourceCity,String DestinationCity,String Date,WebDriver driver) {
+public void RelocateBetweenCity(String SourceCity,String DestinationCity,String Date) {
 		
 		
 		getSearchSourceCity().sendKeys(SourceCity,Keys.ARROW_DOWN.ENTER);
@@ -232,14 +245,13 @@ public void RelocateBetweenCity(String SourceCity,String DestinationCity,String 
 	    
 	    }
 
-public void SelectCity(WebDriver driver, String City) {
+public void SelectCity( String City) {
 	
 	getSelectCity().click();
 	driver.findElement(By.xpath("//div[@class='relative rounded-12 ']//div[text()='"+City+"']")).click();
 }
-
 		
-	}
+}
 	
 	
 	

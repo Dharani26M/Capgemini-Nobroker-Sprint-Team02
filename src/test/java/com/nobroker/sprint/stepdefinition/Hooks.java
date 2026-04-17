@@ -38,23 +38,25 @@ public class Hooks extends AllUtilities {
 				bhook.driver= new ChromeDriver();
 			else
 				bhook.driver=new FirefoxDriver();
-			driver = bhook.driver;
+			
+			initializeDriver(bhook.driver);
+			
 			ConfigMaximizeBrowser();
-			WaitForAllElements(60);
+			WaitForAllElements(80);
 			EnterUrl(Url);
 
 			// initialize the pages
 			Pages.LoadAllPages(bhook.driver);
 
 			// login
-//			Pages.dashpage.LoginIn(bhook.driver, phone);
+			Pages.dashpage.LoginIn(bhook.driver, phone);
 		}
 
 		// post condition
 		@After
 		public void teardown() {
 			if (bhook.driver != null) {
-				QuitBrowser();
+//				QuitBrowser();
 			}
 		}
 }

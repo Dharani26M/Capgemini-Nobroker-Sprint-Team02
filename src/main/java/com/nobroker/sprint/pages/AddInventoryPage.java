@@ -1,12 +1,25 @@
 package com.nobroker.sprint.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.nobroker.sprint.utils.AllUtilities;
+
 public class AddInventoryPage {
+	
+	public WebDriver driver;
+	
+	public AddInventoryPage(WebDriver driver) {
+		
+		this.driver = driver;
+	
+	}
+	
 @FindBy(css="[placeholder='Search for any item']")
 private WebElement SearchItem;
 
@@ -310,14 +323,14 @@ public WebElement getCloseRelocation() {
 	return CloseRelocation;
 }
 
-public WebElement getIncrementButton(String itemName,WebDriver driver) {
+public WebElement getIncrementButton(String itemName) {
     return driver.findElement(By.xpath(
         "//div[normalize-space()='" + itemName + "']/..//following-sibling::div//div[@id='increament']"
     ));
 }
 
 
-public WebElement AddIcon(String itemName, WebDriver driver) {
+public WebElement AddIcon(String itemName) {
 	return driver.findElement(By.xpath("//div[text()='"+itemName+"']/..//following-sibling::div"));
 			}
 //Decrement The Added item Count
@@ -345,6 +358,18 @@ public void RelocateFromAndToLocation(String fromlocation,String Tolocation) {
 	getRelocateFromLocation().sendKeys(fromlocation,Keys.ARROW_DOWN.ENTER);
 	getClearToRelocation().click();
 	getRelocateToLocation().sendKeys(Tolocation,Keys.ARROW_DOWN.ENTER);
+}
+
+
+public void openIfClosed(String name) {
+
+    List<WebElement> elements = driver.findElements(By.xpath(
+        "//div[normalize-space()='" + name + "']/..//img[contains(@src,'open-accordian')]"
+    ));
+
+    if (!elements.isEmpty() && elements.get(0).isDisplayed()) {
+        elements.get(0).click();
+    }
 }
 
 

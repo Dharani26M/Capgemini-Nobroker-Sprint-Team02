@@ -58,6 +58,14 @@ private WebElement Done;
 private WebElement TotalamountToPay;
 
 
+@FindBy(xpath="(//button[@id and @type='button'])[3]")
+private WebElement ConfirmBooking;
+
+
+public WebElement getConfirmBooking() {
+	return ConfirmBooking;
+}
+
 public WebElement getEditLocation() {
 	return EditLocation;
 }

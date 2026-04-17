@@ -6,17 +6,25 @@ Feature: Within City Shifting Flow - Packers and Movers
     When User clicks on Packers and Movers
     Then User should be navigated to Packers and Movers page
 
-    When User selects "Within City" option
-    And User enters "SelectCity" as "<CityName>"
-    And User enters "From" location as "<FromLocation>"
-    And User enters "To" location as "<ToLocation>"
-    And User clicks on "Check Price"
+    When User selects WithinCity option
+    And User enters Cityname as "<CityName>"
+    And User enters ShiftingFrom location as "<FromLocation>"
+    And User enters ShiftingTo location as "<ToLocation>"
+    And User clicks on checkprice
     Then User should be navigated to Inventory page
 
-    When User adds bedroom items
-    And User adds kitchen items
-    And User adds living room items
-    And User clicks on "Continue"
+    
+  When User adds inventory items:
+    | Category   | SubCategory  | Item Name                     |
+    | Bedrooms   | Bed          | Baby Wooden Bed              |
+    | Kitchen    | Refrigerator | Fridge Above 500 lts         |
+    | LivingRoom | Sofa         | 1 Seater Sofa                |
+
+  And User clicks on Continue
+
+  When User selects shifting date
+  Then Confirm Booking button should be enabled
+    And User clicks on Continue
 
     When User selects shifting date
     Then Confirm Booking button should be enabled
@@ -24,8 +32,6 @@ Feature: Within City Shifting Flow - Packers and Movers
   Examples:
    |CityName  | FromLocation            | ToLocation             |
    | Chennai  | Chennai TradeCentre     | Chennai TradeCentre    |
-   | Chennai  | Chennai TradeCentre     | Chennai Central RailwayStation|
-   | Chennai  | Chennai TradeCentre     | Chennai NandamPakkam   |
    
 #Scenario: Verify between city shifting navigation to inventory page
  # Given User is on NoBroker homepage

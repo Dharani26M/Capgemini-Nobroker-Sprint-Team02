@@ -10,16 +10,16 @@ public class Pages {
 	
 	public static PackersAndMoversPage moverspage;
 	public static AddInventoryPage inventorypage;
+	public static OrderSummary summary;
 	
 	
 	public static void LoadAllPages(WebDriver driver) {
 		dashpage=PageFactory.initElements(driver, DashboardPage.class);
-		
+		moverspage=new PackersAndMoversPage(driver);
 		moverspage = PageFactory.initElements(driver,PackersAndMoversPage.class);
-		
 		inventorypage = PageFactory.initElements(driver, AddInventoryPage.class);
 		
-		
+		summary = PageFactory.initElements(driver, OrderSummary.class);
 		
 	}
 
