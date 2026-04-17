@@ -14,6 +14,7 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
@@ -123,6 +124,11 @@ public class AllUtilities {
 	public void WaitForVisibiltyOfElement(long seconds, WebElement ele) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		wait.until(ExpectedConditions.visibilityOf(ele));
+	}
+	
+	public void WaitForInvisibilityOfElement(int seconds, By locator) {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
 	}
 
 	// Explicit wait
