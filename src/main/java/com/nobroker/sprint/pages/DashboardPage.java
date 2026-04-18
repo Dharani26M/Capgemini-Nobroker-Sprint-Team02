@@ -3,11 +3,13 @@ package com.nobroker.sprint.pages;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nobroker.sprint.utils.AllUtilities;
@@ -176,11 +178,11 @@ public class DashboardPage {
 	}
 
 	public void ClickRentReceipts() {
-		utility.WaitForInvisibilityOfElement(6, By.className("login-signup__backdrop"));
-	    utility.WaitForToBeClickableOfElement(20, getMenuField());
-	    getMenuField().click();
-	    utility.WaitForToBeClickableOfElement(20, getRentReceipts());
-	    getRentReceipts().click();
+//		utility.WaitForInvisibilityOfElement(6, By.className("login-signup__backdrop"));
+		utility.WaitForToBeClickableOfElement(20, getMenuField());
+		getMenuField().click();
+		utility.WaitForToBeClickableOfElement(20, getRentReceipts());
+		getRentReceipts().click();
 	}
 
 	public void ClickReferAndEarn() {
@@ -232,7 +234,16 @@ public class DashboardPage {
 	public void clickSearch() {
 		getSearchBtn().click();
 	}
-
+	public boolean isUserLoggedIn() {
+	    try {
+	        // Use a 5-10 second wait instead of immediate check
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        return wait.until(ExpectedConditions.visibilityOf(getProfileImg())).isDisplayed();
+	    } catch (Exception e) {
+	        System.out.println("⚠️ Profile image not found - user not logged in.");
+	        return false;
+	    }
+	}
 	public WebElement getBuyHouse() {
 		return buy;
 	}
@@ -240,5 +251,6 @@ public class DashboardPage {
 	public WebElement getLocality() {
 		return locality;
 	}
+
 
 }

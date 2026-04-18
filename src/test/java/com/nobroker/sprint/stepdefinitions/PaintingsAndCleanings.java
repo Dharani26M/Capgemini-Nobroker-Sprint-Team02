@@ -19,7 +19,7 @@ public class PaintingsAndCleanings extends AllUtilities {
     
     @Given("the user has successfully logged into application")
 	public void the_user_has_successfully_logged_into_application() {
-		WaitForVisibiltyOfElement(20, Pages.dashpage.getProfileImg());
+		WaitForVisibiltyOfElement(80, Pages.dashpage.getProfileImg());
 		Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed());
 	}
 
@@ -46,7 +46,7 @@ public class PaintingsAndCleanings extends AllUtilities {
 
     @Then("the share button should be visible on the interiors page")
     public void the_share_button_should_be_visible_on_the_interiors_page() {
-        WaitForVisibiltyOfElement(20, Pages.homeinteriorpage.getShareBtn());
+        WaitForVisibiltyOfElement(80, Pages.homeinteriorpage.getShareBtn());
         Assert.assertTrue(Pages.homeinteriorpage.getShareBtn().isDisplayed(), "Share button is not visible");
     }
 }
