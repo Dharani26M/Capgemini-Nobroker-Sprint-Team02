@@ -1,59 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-18T19:09:03 IST" name="Default suite" finished-at="2026-04-18T19:09:35 IST" duration-ms="32608">
+  <suite started-at="2026-04-18T19:21:51 IST" name="Default suite" finished-at="2026-04-18T19:22:05 IST" duration-ms="14189">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-04-18T19:09:03 IST" name="Default test" finished-at="2026-04-18T19:09:35 IST" duration-ms="32608">
+    <test started-at="2026-04-18T19:21:51 IST" name="Default test" finished-at="2026-04-18T19:22:05 IST" duration-ms="14189">
       <class name="com.nobroker.sprint.runner.RunnerIO">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-18T19:09:03 IST" name="setUpClass" finished-at="2026-04-18T19:09:03 IST" duration-ms="162" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-18T19:21:51 IST" name="setUpClass" finished-at="2026-04-18T19:21:51 IST" duration-ms="175" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@4b515eab]]>
+                <![CDATA[org.testng.TestRunner@737db7f8]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-18T19:09:03 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-18T19:09:17 IST" duration-ms="13644" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-18T19:21:51 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-18T19:22:05 IST" duration-ms="13977" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Generate and download a Rent Receipt"]]>
+                <![CDATA["Profile Name Persistence and Refresh Validation"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Rent Receipts Validation"]]>
+                <![CDATA["Profile and Feature Validation"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-18T19:09:17 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-18T19:09:35 IST" duration-ms="18767" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Generate and download a Rent Receipt"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Rent Receipts Validation"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-18T19:09:35 IST" name="tearDownClass" finished-at="2026-04-18T19:09:35 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-18T19:22:05 IST" name="tearDownClass" finished-at="2026-04-18T19:22:05 IST" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
