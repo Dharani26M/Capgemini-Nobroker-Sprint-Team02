@@ -28,23 +28,27 @@ public class Pages {
 	public static Buy buy;
 	public static MapPage mapPage;
 	
+	//
+	// New Pages added from your Step Definitions
+    public static AvoidBrokers avoidBrokers;
+    public static CareersPage careersPage;
+    public static HomeRepair homeRepair;
+    public static HomeCleaningPage homeCleaningPage;
+    public static Painiting_AC paintingAC;
+    public static RentalPage rentalPage;
+    public static LoginPage loginPage;
+	
 	public static void LoadAllPages(WebDriver driver) {
 		dashpage=new DashboardPage(driver);
 		dashpage=PageFactory.initElements(driver, DashboardPage.class);
 		moverspage=new PackersAndMoversPage(driver);
 		moverspage = PageFactory.initElements(driver,PackersAndMoversPage.class);
 		inventorypage = PageFactory.initElements(driver, AddInventoryPage.class);
-		
 		summary = PageFactory.initElements(driver, OrderSummary.class);
-    
-    		buy = new Buy(driver);
+    	buy = new Buy(driver);
 		buy = PageFactory.initElements(driver, Buy.class);
-		
 		mapPage = new MapPage();
 		mapPage = PageFactory.initElements(driver, MapPage.class);
-
-		
-		
 		homeinteriorpage=new HomeInteriorsPage(driver);
 		homeinteriorpage=PageFactory.initElements(driver, HomeInteriorsPage.class);
 		iconpage=PageFactory.initElements(driver, NewIconPage.class);
@@ -55,6 +59,15 @@ public class Pages {
 		referpage=new ReferAndEarnPage(driver);
 		referpage=PageFactory.initElements(driver, ReferAndEarnPage.class);
 		rentpage=PageFactory.initElements(driver, RentReceiptPage.class);
+		
+		//
+		avoidBrokers = PageFactory.initElements(driver, AvoidBrokers.class);
+        careersPage = PageFactory.initElements(driver, CareersPage.class);
+        homeRepair = PageFactory.initElements(driver, HomeRepair.class);
+        homeCleaningPage = PageFactory.initElements(driver, HomeCleaningPage.class);
+        paintingAC = PageFactory.initElements(driver, Painiting_AC.class);
+        rentalPage = PageFactory.initElements(driver, RentalPage.class);
+        loginPage = PageFactory.initElements(driver, LoginPage.class);
 
 
 	}

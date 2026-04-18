@@ -7,10 +7,10 @@ When  user clicks on buy button
 And user selects the city "Chennai"
 And user enters the locality "velachery"
 And user clicks on search 
-And user skips the popup 
+And user skip the popup 
 And user applies filter
 And user clicks on View All projects
-And user selects the property from list 
+And user select the property from list 
 Then user clicks on contact builder 
 
 
@@ -21,8 +21,8 @@ And user enters the locality "<locality>"
 And user clicks on search
 And user skips the popup
 And user clicks on map 
-And user clicks on metro 
-Then user should see the lines 
+And user click on metro 
+Then user should see the line 
 
 Examples:
 |city    |locality |

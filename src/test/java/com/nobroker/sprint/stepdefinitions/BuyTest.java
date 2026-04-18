@@ -1,4 +1,4 @@
-package com.nobroker.sprint.stepDefinition;
+package com.nobroker.sprint.stepdefinitions;
 
 import org.testng.Assert;
 
@@ -40,8 +40,8 @@ public class BuyTest extends AllUtilities{
 	public void user_clicks_on_search() {
 	    Pages.dashpage.clickSearch();
 	}
-	@When("user skips the popup")
-	public void user_skips_the_popup() {
+	@When("user skip the popup")
+	public void user_skip_the_popup() {
 	    Pages.buy.clickSkip(driver);
 	}
 	@When("user applies filter")
@@ -52,8 +52,8 @@ public class BuyTest extends AllUtilities{
 	public void user_clicks_on_view_all_projects() {
 	    Pages.buy.clickViewAll(driver);
 	}
-	@When("user selects the property from list")
-	public void user_selects_the_property_from_list() {
+	@When("user select the property from list")
+	public void user_select_the_property_from_list() {
 	    Pages.buy.setProperty(driver);
 	}
 	@Then("user clicks on contact builder")
@@ -66,12 +66,12 @@ public class BuyTest extends AllUtilities{
 	public void user_clicks_on_map() {
 	    Pages.mapPage.clickMap();
 	}
-	@When("user clicks on metro")
-	public void user_clicks_on_metro() {
+	@When("user click on metro")
+	public void user_click_on_metro() {
 	    Pages.mapPage.clickMetro();
 	}
-	@Then("user should see the lines")
-	public void user_should_see_the_lines() {
+	@Then("user should see the line")
+	public void user_should_see_the_line() {
 	    Pages.mapPage.checkLines();
 	}
 

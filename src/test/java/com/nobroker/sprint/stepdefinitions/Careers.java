@@ -1,4 +1,4 @@
-package com.nobroker.Stepdefinition;
+package com.nobroker.sprint.stepdefinitions;
 
 import java.time.Duration;
 import java.util.Set;
