@@ -28,11 +28,13 @@ public class Hooks extends AllUtilities {
 	// setup precondition
 	@Before
 	public void setup(Scenario scenario) throws IOException {
+		//Report generation
 		AllUtilities.createTest(scenario.getName());
-
-		String Url = getPropertyKeyValue("Url");
-		String phone = getPropertyKeyValue("PhoneNo");
-		String Browser = getPropertyKeyValue("browser");
+		
+		// getting value for common property file
+		String Url = ru.getPropertyKeyValue("Url");
+		String phone =ru. getPropertyKeyValue("PhoneNo");
+		String Browser =ru. getPropertyKeyValue("browser");
 
 		// lanuch the browser
 
@@ -42,13 +44,16 @@ public class Hooks extends AllUtilities {
 			bhook.driver = new ChromeDriver();
 		else
 			bhook.driver = new FirefoxDriver();
+		
+		// initialize the driver
 		initializeDriver(bhook.driver);
 		ConfigMaximizeBrowser();
 		WaitForAllElements(60);
 		EnterUrl(Url);
+		
 		// initialize the pages
 		// login
-		// 🍪 Cookie handling implementation
+		// Cookie handling implementation
 		Pages.LoadAllPages(bhook.driver);
 	    HandleCookies cookiesUtil = new HandleCookies();
 	    String cookieFile = "nobroker.data";

@@ -6,7 +6,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-		features = {"src/test/java/com/nobroker/sprint/features/Profile.feature" },
+		features = {"src/test/java/com/nobroker/sprint/features/RentReceipts.feature" },
 		dryRun = false,
 		glue = "com.nobroker.sprint.stepdefinitions")
 public class RunnerIO extends AbstractTestNGCucumberTests {

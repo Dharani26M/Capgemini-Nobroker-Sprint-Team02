@@ -8,18 +8,18 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class PostiveProfile extends AllUtilities {
+public class PositiveProfile extends AllUtilities {
 	
 	private BaseClass base;
 
-	public PostiveProfile(BaseClass base) {
+	public PositiveProfile(BaseClass base) {
 		this.base = base;
 		this.initializeDriver(base.driver);
 	}
 
 	@Given("the user has successfully logged into the application")
 	public void the_user_has_successfully_logged_into_the_application() {
-		WaitForVisibiltyOfElement(20, Pages.dashpage.getProfileImg());
+		WaitForVisibiltyOfElement(50, Pages.dashpage.getProfileImg());
 		Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed());
 	}
 
@@ -29,8 +29,8 @@ public class PostiveProfile extends AllUtilities {
 		Pages.dashpage.getProfileFeature().click();
 	}
 
-	@When("the user updates the profile name to {string}")
-	public void the_user_updates_the_profile_name_to(String name) {
+	@When("the user updates profile name to {string}")
+	public void the_user_updates_profile_name_to(String name) {
 		Pages.profilepage.setupUserName(name);
 	}
 

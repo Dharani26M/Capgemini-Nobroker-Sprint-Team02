@@ -37,7 +37,9 @@ public class AllUtilities {
 	public WebDriver driver;
 	WebDriverWait wait;
 	Actions action;
-	public HandleCookies hs=new HandleCookies();
+	public HandleCookies hs = new HandleCookies();
+	public ReaderUtilities ru = new ReaderUtilities();
+
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -187,14 +189,6 @@ public class AllUtilities {
 		}
 	}
 
-	public String getPropertyKeyValue(String key) throws IOException {
-		FileInputStream fs = new FileInputStream("./src/test/resources/Readers/Common.properties");
-		Properties prop = new Properties();
-		prop.load(fs);
-		String value = prop.getProperty(key);
-		return value;
-	}
-
 	// Generate random number
 	public int getRandomNumber(int range) {
 		Random randomNumber = new Random();
@@ -305,7 +299,7 @@ public class AllUtilities {
 
 	// SCREENSHOT
 	public static String takeScreenshot(WebDriver driver, String name) {
-//			String timestamp = new SimpleDateFormat("yy-MM-dd_HH-mm-ss").format(new Date());
+//					String timestamp = new SimpleDateFormat("yy-MM-dd_HH-mm-ss").format(new Date());
 		String path = "Screenshot/" + name + "_" + ".png";
 		try {
 			File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);

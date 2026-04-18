@@ -5,8 +5,9 @@ Feature: Negative Profile and Feature Validation
 # Scenario 2: Negative Profile Update
 
   @Profile @Negative
-  Scenario: Update user profile name with invalid format
+  Scenario: Update user profile name with invalid format 
     And the user navigates to the Profile page
-    When the user updates the profile name to "123456!@#"
+    When the user updates the profile name
     Then an error message should be displayed indicating an invalid name format
-    And the profile changes should not be saved "123456!@#"
+    And the profile changes should not be saved 
+    
