@@ -46,7 +46,6 @@ public class ProfilePage {
 		utility.WaitForVisibiltyOfElement(20, getUserName());
 	    getUserName().click();
 	    getUserName().sendKeys(Keys.CONTROL + "a");
-	    getUserName().sendKeys(Keys.BACK_SPACE);
 	    getUserName().sendKeys(newUser);
 	    getSaveBtn().click();
 	}

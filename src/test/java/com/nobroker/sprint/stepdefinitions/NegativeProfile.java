@@ -1,7 +1,11 @@
 package com.nobroker.sprint.stepdefinitions;
 
+import java.io.IOException;
+
+import org.apache.poi.EncryptedDocumentException;
 import org.testng.Assert;
 import com.nobroker.sprint.utils.BaseClass;
+import com.nobroker.sprint.utils.ExcelUtilities;
 import com.nobroker.sprint.utils.Pages;
 import com.nobroker.sprint.utils.AllUtilities;
 
@@ -9,10 +13,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class NeagtiveProfile extends AllUtilities {
+public class NegativeProfile extends AllUtilities {
     private BaseClass base;
 
-    public NeagtiveProfile(BaseClass base) {
+    public NegativeProfile(BaseClass base) throws EncryptedDocumentException, IOException {
         this.base = base;
         this.initializeDriver(base.driver);
     }
@@ -28,9 +32,11 @@ public class NeagtiveProfile extends AllUtilities {
 		Pages.dashpage.getProfileFeature().click();
 	}
 
-	@When("the user updates profile name to {string}")
-	public void the_user_updates_profile_name_to(String name) {
-		Pages.profilepage.setupUserName(name);
+	@When("the user updates the profile name")
+	public void the_user_updates_the_profile_name() {
+	    
+	    String dataFromExcel = ExcelUtilities.getExcelData("Sheet1", 1, 1);
+	    Pages.profilepage.setupUserName(dataFromExcel);
 	}
 
     @Then("an error message should be displayed indicating an invalid name format")
@@ -39,12 +45,14 @@ public class NeagtiveProfile extends AllUtilities {
         Assert.assertTrue(Pages.profilepage.getErrorMsg().isDisplayed(), "Invalid message is not showing");
     }
 
-    @Then("the profile changes should not be saved {string}")
-    public void the_profile_changes_should_not_be_saved(String passingname) {
+    @Then("the profile changes should not be saved")
+    public void the_profile_changes_should_not_be_saved() {
+        String invalidNameFromExcel = ExcelUtilities.getExcelData("Sheet1", 1, 1);
+
         driver.navigate().refresh();
         Pages.dashpage.getProfileImg().click();
         Pages.dashpage.getProfileFeature().click();
         String actualName = Pages.profilepage.getUserName().getAttribute("value");
-        Assert.assertNotEquals(actualName, passingname, "BUG: The application saved an invalid name format");
+        Assert.assertNotEquals(actualName, invalidNameFromExcel, "BUG: The application saved an invalid name format");
     }
 }

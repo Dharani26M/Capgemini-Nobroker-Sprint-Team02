@@ -1,4 +1,8 @@
 Feature: Rent Receipts Validation
+
+Background:
+    Given user has successfully logged in the app
+
 # Scenario 4: Rent Receipt Module (Scenario Outline + PDF Validation)
 
   @RentReceipt

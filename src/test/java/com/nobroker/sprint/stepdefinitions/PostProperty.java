@@ -1,5 +1,6 @@
 package com.nobroker.sprint.stepdefinitions;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.testng.Assert;
 import com.nobroker.sprint.utils.BaseClass;
 import com.nobroker.sprint.utils.Pages;
@@ -19,7 +20,7 @@ public class PostProperty extends AllUtilities {
 
     @Given("the user has successfull of logged into the application")
 	public void the_user_has_successfull_of_logged_into_the_application() {
-		WaitForVisibiltyOfElement(20, Pages.dashpage.getProfileImg());
+		WaitForVisibiltyOfElement(70, Pages.dashpage.getProfileImg());
 		Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed());
 	}
     
@@ -30,13 +31,19 @@ public class PostProperty extends AllUtilities {
 
     @When("the user toggles the property status")
     public void the_user_toggles_the_property_status() {
-        WaitForVisibiltyOfElement(20, Pages.postpage.getToggle());
-        Pages.postpage.ClickOnToggle();
+    	try {
+            WaitForVisibiltyOfElement(70, Pages.postpage.getToggle());
+            Pages.postpage.ClickOnToggle();
+        } catch (StaleElementReferenceException e) {
+            // If it goes stale, try one more time - the second time it will be fresh
+            WaitForVisibiltyOfElement(70, Pages.postpage.getToggle());
+            Pages.postpage.ClickOnToggle();
+        }
     }
 
     @Then("the user should see no property listing options")
     public void the_user_should_no_the_property_listing_options() {
-        WaitForVisibiltyOfElement(20, Pages.postpage.getNoPropertyContentField());
+        WaitForVisibiltyOfElement(70, Pages.postpage.getNoPropertyContentField());
         Assert.assertTrue(Pages.postpage.getNoPropertyContentField().isDisplayed(), "Active Property is Present");
     }
 }

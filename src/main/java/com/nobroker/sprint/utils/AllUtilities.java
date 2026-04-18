@@ -1,6 +1,7 @@
 
 package com.nobroker.sprint.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -17,18 +18,28 @@ import java.util.Set;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class AllUtilities {
 
 	public WebDriver driver;
 	WebDriverWait wait;
 	Actions action;
+	public HandleCookies hs = new HandleCookies();
+	public ReaderUtilities ru = new ReaderUtilities();
+
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -125,10 +136,10 @@ public class AllUtilities {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
-	
+
 	public void WaitForInvisibilityOfElement(int seconds, By locator) {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-	    wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
 	}
 
 	// Explicit wait
@@ -180,14 +191,6 @@ public class AllUtilities {
 		}
 	}
 
-	public String getPropertyKeyValue(String key) throws IOException {
-		FileInputStream fs = new FileInputStream("./src/test/resources/Readers/Common.properties");
-		Properties prop = new Properties();
-		prop.load(fs);
-		String value = prop.getProperty(key);
-		return value;
-	}
-
 	// Generate random number
 	public int getRandomNumber(int range) {
 		Random randomNumber = new Random();
@@ -236,22 +239,79 @@ public class AllUtilities {
 		}
 		a.perform();
 	}
-	
-	public String getDay(String Date) {
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	    LocalDate date = LocalDate.parse(Date, formatter);
-	    return String.valueOf(date.getDayOfMonth());
-	    
-	}
-	
-	public String getMonthYear(String Date) {
-		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		    LocalDate date = LocalDate.parse(Date, formatter);
-		return date.getMonth().name().substring(0,1) + 
-                date.getMonth().name().substring(1).toLowerCase() 
-                + " " + date.getYear();
-	}
-	
 
-	
+	public String getDay(String Date) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate date = LocalDate.parse(Date, formatter);
+		return String.valueOf(date.getDayOfMonth());
+
+	}
+
+	public String getMonthYear(String Date) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate date = LocalDate.parse(Date, formatter);
+		return date.getMonth().name().substring(0, 1) + date.getMonth().name().substring(1).toLowerCase() + " "
+				+ date.getYear();
+	}
+
+
+	// EXTENT REPORT
+
+	public static ExtentReports extent;
+	public static ExtentTest test;
+
+	public static ExtentReports getReport() {
+		if (extent == null) {
+			ExtentSparkReporter reporter = new ExtentSparkReporter("Reports/extent.html");
+			extent = new ExtentReports();
+			extent.attachReporter(reporter);
+		}
+		return extent;
+	}
+
+	public static void createTest(String name) {
+		test = getReport().createTest(name);
+	}
+
+	public static void pass(String msg) {
+		test.pass(msg);
+	}
+
+	public static void fail(String msg) {
+		test.fail(msg);
+	}
+
+	public static void captureFailure(WebDriver driver, String testName) {
+		try {
+			// 1. Sanitize the name
+			String name = testName.replaceAll(" ", "_");
+			// 2. Get the relative path from your takeScreenshot method
+			String relativePath = takeScreenshot(driver, name);
+			// 3. Convert to Absolute Path (This is the fix)
+			File f = new File(relativePath);
+			String absolutePath = f.getAbsolutePath();
+			// 4. Log the failure and attach the ABSOLUTE path
+			test.fail("Test Failed: " + name);
+			test.addScreenCaptureFromPath(absolutePath);
+			System.out.println("Screenshot attached to report from: " + absolutePath);
+		} catch (Exception e) {
+			System.err.println("Failed to capture screenshot: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+	// SCREENSHOT
+	public static String takeScreenshot(WebDriver driver, String name) {
+//					String timestamp = new SimpleDateFormat("yy-MM-dd_HH-mm-ss").format(new Date());
+		String path = "Screenshot/" + name + "_" + ".png";
+		try {
+			File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			FileHandler.copy(src, new File(path));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return path;
+	}
+
+
 }
