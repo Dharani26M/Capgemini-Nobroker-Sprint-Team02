@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Apr 17 19:02:01 IST 2026</td>
+<td>Started on:</td><td>Fri Apr 17 20:13:19 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>134 seconds (134541 ms)</td>
+<tr><td>Total time:</td><td>77 seconds (77886 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,22 +76,16 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.nobroker.sprint.runner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.nobroker.sprint.runner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Update user profile name with invalid format", "Negative Profile and Feature Validation"</td>
-<td><div><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //div[@id=&apos;profile-icon&apos;]//img&apos; (tried for 20 second(s) with 500 milliseconds interval)
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-	at com.nobroker.sprint.utils.AllUtilities.WaitForVisibiltyOfElement(AllUtilities.java:124)
-	at com.nobroker.sprint.stepdefinitions.NeagtiveProfile.the_user_has_logged_into_the_application(NeagtiveProfile.java:21)
-	at ✽.the user has logged into the application(file:///C:/Users/itsdh/Capgemini_Selenium_Training/nobroker-sprint-team02-automation/src/test/java/com/nobroker/sprint/features/NegativeProfile.feature:4)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@id=&apos;profile-icon&apos;]//img&quot;}
+<td title='com.nobroker.sprint.runner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.nobroker.sprint.runner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "End-to-End validation of Rewards and VIP Membership flow", "NoBroker Rewards and Membership Navigation"</td>
+<td><div><pre>org.openqa.selenium.NoSuchSessionException: invalid session id: session deleted as the browser has closed the connection
+from disconnected: unable to send message to renderer
   (Session info: MicrosoftEdge=147.0.3912.60)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.4&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [499e2f6b80b806e59df64e504e7c5f70, findElement {value=//div[@id=&apos;profile-icon&apos;]//img, using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.60, fedcm:accounts: true, goog:processID: 10932, ms:edgeOptions: {debuggerAddress: localhost:54556}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\itsdh\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54556/devtoo..., se:cdpVersion: 147.0.3912.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 499e2f6b80b806e59df64e504e7c5f70
+Command: [67ce7f9a148340cc3a7f96fcb75fecb0, findElement {value=//div[@id=&apos;profile-icon&apos;]//img, using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.60, fedcm:accounts: true, goog:processID: 6592, ms:edgeOptions: {debuggerAddress: localhost:60424}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\itsdh\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60424/devtoo..., se:cdpVersion: 147.0.3912.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 67ce7f9a148340cc3a7f96fcb75fecb0
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -113,23 +107,19 @@ Session ID: 499e2f6b80b806e59df64e504e7c5f70
 	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:294)
 	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:291)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-	... 3 more
-</pre></div><a href='#' onClick='toggleBox("stack-trace509806761", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace509806761'><pre>org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of Proxy element for: DefaultElementLocator &apos;By.xpath: //div[@id=&apos;profile-icon&apos;]//img&apos; (tried for 20 second(s) with 500 milliseconds interval)
-	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
 	at com.nobroker.sprint.utils.AllUtilities.WaitForVisibiltyOfElement(AllUtilities.java:124)
-	at com.nobroker.sprint.stepdefinitions.NeagtiveProfile.the_user_has_logged_into_the_application(NeagtiveProfile.java:21)
-	at ✽.the user has logged into the application(file:///C:/Users/itsdh/Capgemini_Selenium_Training/nobroker-sprint-team02-automation/src/test/java/com/nobroker/sprint/features/NegativeProfile.feature:4)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//div[@id=&apos;profile-icon&apos;]//img&quot;}
+	at com.nobroker.sprint.stepdefinitions.PostiveProfile.the_user_has_successfully_logged_into_the_application(PostiveProfile.java:22)
+	at ✽.the user has successfully logged into the application(file:///C:/Users/itsdh/Capgemini_Selenium_Training/nobroker-sprint-team02-automation/src/test/java/com/nobroker/sprint/features/NewIcon.feature:4)
+</pre></div><a href='#' onClick='toggleBox("stack-trace973692608", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace973692608'><pre>org.openqa.selenium.NoSuchSessionException: invalid session id: session deleted as the browser has closed the connection
+from disconnected: unable to send message to renderer
   (Session info: MicrosoftEdge=147.0.3912.60)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.4&apos;
 Driver info: org.openqa.selenium.edge.EdgeDriver
-Command: [499e2f6b80b806e59df64e504e7c5f70, findElement {value=//div[@id=&apos;profile-icon&apos;]//img, using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.60, fedcm:accounts: true, goog:processID: 10932, ms:edgeOptions: {debuggerAddress: localhost:54556}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\itsdh\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:54556/devtoo..., se:cdpVersion: 147.0.3912.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 499e2f6b80b806e59df64e504e7c5f70
+Command: [67ce7f9a148340cc3a7f96fcb75fecb0, findElement {value=//div[@id=&apos;profile-icon&apos;]//img, using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.60, fedcm:accounts: true, goog:processID: 6592, ms:edgeOptions: {debuggerAddress: localhost:60424}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\itsdh\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:60424/devtoo..., se:cdpVersion: 147.0.3912.60, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 67ce7f9a148340cc3a7f96fcb75fecb0
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -151,9 +141,11 @@ Session ID: 499e2f6b80b806e59df64e504e7c5f70
 	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:294)
 	at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:291)
 	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-	... 3 more
+	at com.nobroker.sprint.utils.AllUtilities.WaitForVisibiltyOfElement(AllUtilities.java:124)
+	at com.nobroker.sprint.stepdefinitions.PostiveProfile.the_user_has_successfully_logged_into_the_application(PostiveProfile.java:22)
+	at ✽.the user has successfully logged into the application(file:///C:/Users/itsdh/Capgemini_Selenium_Training/nobroker-sprint-team02-automation/src/test/java/com/nobroker/sprint/features/NewIcon.feature:4)
 </pre></div></td>
-<td>134</td>
+<td>77</td>
 <td>com.nobroker.sprint.runner.RunnerIO@1ff4931d</td></tr>
 </table><p>
 </body>

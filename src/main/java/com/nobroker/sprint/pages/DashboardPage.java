@@ -161,6 +161,7 @@ public class DashboardPage {
 		// using an Explicit Wait to click new icon because webpage needs to refresh the
 		// page
 		utility.WaitForToBeClickableOfElement(30, getNewIcon());
+		getNewIcon().click();
 	}
 
 	public void GotoProfile(WebDriver driver) {
