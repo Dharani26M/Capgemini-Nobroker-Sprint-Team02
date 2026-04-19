@@ -22,27 +22,27 @@ public class NegativeProfile extends AllUtilities {
     }
     @Given("the user has logged into the application")
 	public void the_user_has_logged_into_the_application() {
-		WaitForVisibiltyOfElement(20, Pages.dashpage.getProfileImg());
-		Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed());
+		WaitForVisibiltyOfElement(20, Pages.get().dashpage.getProfileImg());
+		Assert.assertTrue(Pages.get().dashpage.getProfileImg().isDisplayed());
 	}
 
 	@Given("the user navigates has the Profile page")
 	public void the_user_navigates_has_the_profile_page() {
-		Pages.dashpage.getProfileImg().click();
-		Pages.dashpage.getProfileFeature().click();
+		Pages.get().dashpage.getProfileImg().click();
+		Pages.get().dashpage.getProfileFeature().click();
 	}
 
 	@When("the user updates the profile name")
 	public void the_user_updates_the_profile_name() {
 	    
 	    String dataFromExcel = ExcelUtilities.getExcelData("Sheet1", 1, 1);
-	    Pages.profilepage.setupUserName(dataFromExcel);
+	    Pages.get().profilepage.setupUserName(dataFromExcel);
 	}
 
     @Then("an error message should be displayed indicating an invalid name format")
     public void an_error_message_should_be_displayed_indicating_an_invalid_name_format() {
-        WaitForVisibiltyOfElement(20, Pages.profilepage.getErrorMsg());
-        Assert.assertTrue(Pages.profilepage.getErrorMsg().isDisplayed(), "Invalid message is not showing");
+        WaitForVisibiltyOfElement(20, Pages.get().profilepage.getErrorMsg());
+        Assert.assertTrue(Pages.get().profilepage.getErrorMsg().isDisplayed(), "Invalid message is not showing");
     }
 
     @Then("the profile changes should not be saved")
@@ -50,9 +50,9 @@ public class NegativeProfile extends AllUtilities {
         String invalidNameFromExcel = ExcelUtilities.getExcelData("Sheet1", 1, 1);
 
         driver.navigate().refresh();
-        Pages.dashpage.getProfileImg().click();
-        Pages.dashpage.getProfileFeature().click();
-        String actualName = Pages.profilepage.getUserName().getAttribute("value");
+        Pages.get().dashpage.getProfileImg().click();
+        Pages.get().dashpage.getProfileFeature().click();
+        String actualName = Pages.get().profilepage.getUserName().getAttribute("value");
         Assert.assertNotEquals(actualName, invalidNameFromExcel, "BUG: The application saved an invalid name format");
     }
 }

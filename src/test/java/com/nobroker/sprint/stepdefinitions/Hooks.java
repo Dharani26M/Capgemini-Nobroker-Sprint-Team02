@@ -2,6 +2,7 @@ package com.nobroker.sprint.stepdefinitions;
 
 import java.io.IOException;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -37,16 +38,17 @@ public class Hooks extends AllUtilities {
 		String Browser =ru. getPropertyKeyValue("browser");
 
 		// lanuch the browser
-
+		WebDriver driver;
 		if (Browser.equalsIgnoreCase("Edge"))
-			bhook.driver = new EdgeDriver();
+			driver = new EdgeDriver();
 		else if (Browser.equalsIgnoreCase("chrome"))
-			bhook.driver = new ChromeDriver();
+			driver = new ChromeDriver();
 		else
-			bhook.driver = new FirefoxDriver();
+			driver = new FirefoxDriver();
 		
+		bhook.setDriver(driver);
 		// initialize the driver
-		initializeDriver(bhook.driver);
+		initializeDriver(driver);
 		ConfigMaximizeBrowser();
 		WaitForAllElements(60);
 		EnterUrl(Url);
@@ -65,10 +67,10 @@ public class Hooks extends AllUtilities {
 	    System.out.println("🔍 Checking session status...");
 
 	    // 3. Verify with Profile Image
-	    if (!Pages.dashpage.isUserLoggedIn()) {
+	    if (!Pages.get().dashpage.isUserLoggedIn()) {
 	        System.out.println("👉 Session not found. Redirecting to Login...");
 	        
-	        Pages.dashpage.LoginIn(bhook.driver, phone);
+	        Pages.get().dashpage.LoginIn(bhook.driver, phone);
 	        
 	        System.out.println("⏳ Please enter OTP manually. Waiting 30s...");
 	        try {
@@ -78,7 +80,7 @@ public class Hooks extends AllUtilities {
 	        }
 
 	        // 4. VERIFY LOGIN SUCCESS before saving
-	        if (Pages.dashpage.isUserLoggedIn()) {
+	        if (Pages.get().dashpage.isUserLoggedIn()) {
 	            cookiesUtil.saveCookies(bhook.driver, cookieFile);
 	            System.out.println("✅ Login verified! Cookies captured for future use.");
 	        } else {
@@ -105,6 +107,8 @@ public class Hooks extends AllUtilities {
         if (bhook.driver != null) {
             bhook.driver.quit();
         }
+        BaseClass.removeDriver();
+        Pages.remove();
         //  Save report
         AllUtilities.getReport().flush();
 		

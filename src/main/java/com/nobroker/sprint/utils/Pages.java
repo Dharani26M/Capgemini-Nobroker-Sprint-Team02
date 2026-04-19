@@ -6,28 +6,68 @@ import org.openqa.selenium.support.PageFactory;
 import com.nobroker.sprint.pages.*;
 
 public class Pages {
-	public static DashboardPage dashpage;
-	public static HomeInteriorsPage homeinteriorpage;
-	public static NewIconPage iconpage;
-	public static PaintingsAndCleaningPage paintpage;
-	public static PostYourPropertyPage postpage;
-	public static ProfilePage profilepage;
-	public static ReferAndEarnPage referpage;
-	public static RentReceiptPage rentpage;
+
+	private static final ThreadLocal<Pages> threadPages = new ThreadLocal<>();
+
+	public DashboardPage dashpage;
+	public HomeInteriorsPage homeinteriorpage;
+	public NewIconPage iconpage;
+	public PaintingsAndCleaningPage paintpage;
+	public PostYourPropertyPage postpage;
+	public ProfilePage profilepage;
+	public ReferAndEarnPage referpage;
+	public RentReceiptPage rentpage;
+
 	public static void LoadAllPages(WebDriver driver) {
-		dashpage=new DashboardPage(driver);
-		dashpage=PageFactory.initElements(driver, DashboardPage.class);
-		homeinteriorpage=new HomeInteriorsPage(driver);
-		homeinteriorpage=PageFactory.initElements(driver, HomeInteriorsPage.class);
-		iconpage=PageFactory.initElements(driver, NewIconPage.class);
-		paintpage=new PaintingsAndCleaningPage(driver);
-		paintpage=PageFactory.initElements(driver, PaintingsAndCleaningPage.class);
-		postpage=PageFactory.initElements(driver, PostYourPropertyPage.class);
-		profilepage=PageFactory.initElements(driver, ProfilePage.class);
-		referpage=new ReferAndEarnPage(driver);
-		referpage=PageFactory.initElements(driver, ReferAndEarnPage.class);
-		rentpage=PageFactory.initElements(driver, RentReceiptPage.class);
-		
+		Pages p = new Pages();
+		p.dashpage = PageFactory.initElements(driver, DashboardPage.class);
+		p.homeinteriorpage = PageFactory.initElements(driver, HomeInteriorsPage.class);
+		p.iconpage = PageFactory.initElements(driver, NewIconPage.class);
+		p.paintpage = PageFactory.initElements(driver, PaintingsAndCleaningPage.class);
+		p.postpage = PageFactory.initElements(driver, PostYourPropertyPage.class);
+		p.profilepage = PageFactory.initElements(driver, ProfilePage.class);
+		p.referpage = PageFactory.initElements(driver, ReferAndEarnPage.class);
+		p.rentpage = PageFactory.initElements(driver, RentReceiptPage.class);
+		threadPages.set(p);
 	}
 
+	public static Pages get() {
+		return threadPages.get();
+	}
+
+	public static void remove() {
+		threadPages.remove();
+	}
+
+	public static DashboardPage getDashpage() {
+		return get().dashpage;
+	}
+
+	public static HomeInteriorsPage getHomeinteriorpage() {
+		return get().homeinteriorpage;
+	}
+
+	public static NewIconPage getIconpage() {
+		return get().iconpage;
+	}
+
+	public static PaintingsAndCleaningPage getPaintpage() {
+		return get().paintpage;
+	}
+
+	public static PostYourPropertyPage getPostpage() {
+		return get().postpage;
+	}
+
+	public static ProfilePage getProfilepage() {
+		return get().profilepage;
+	}
+
+	public static ReferAndEarnPage getReferpage() {
+		return get().referpage;
+	}
+
+	public static RentReceiptPage getRentpage() {
+		return get().rentpage;
+	}
 }
