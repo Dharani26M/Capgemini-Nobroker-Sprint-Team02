@@ -33,6 +33,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class AllUtilities {
+	private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
 	public WebDriver driver;
 	WebDriverWait wait;
@@ -42,6 +43,7 @@ public class AllUtilities {
 
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
+		tlDriver.set(driver);  
 	}
 	
 	
@@ -257,10 +259,10 @@ public class AllUtilities {
 
 	// EXTENT REPORT
 
-	public static ExtentReports extent;
-	public static ExtentTest test;
+	private static ExtentReports extent;
+	private static final ThreadLocal<ExtentTest> testThreadLocal = new ThreadLocal<>();
 
-	public static ExtentReports getReport() {
+	public static synchronized ExtentReports getReport() {
 		if (extent == null) {
 			ExtentSparkReporter reporter = new ExtentSparkReporter("Reports/extent.html");
 			extent = new ExtentReports();
@@ -269,30 +271,32 @@ public class AllUtilities {
 		return extent;
 	}
 
-	public static void createTest(String name) {
-		test = getReport().createTest(name);
+	public static synchronized void createTest(String name) {
+		ExtentTest test = getReport().createTest(name);
+		testThreadLocal.set(test);
 	}
 
 	public static void pass(String msg) {
-		test.pass(msg);
+		testThreadLocal.get().pass(msg);
 	}
 
 	public static void fail(String msg) {
-		test.fail(msg);
+		testThreadLocal.get().fail(msg);
 	}
 
 	public static void captureFailure(WebDriver driver, String testName) {
 		try {
-			// 1. Sanitize the name
+			WebDriver d = (driver != null) ? driver : tlDriver.get();
+			if (d == null) {
+				testThreadLocal.get().fail("Test Failed: " + testName + " (driver was null, no screenshot)");
+				return;
+			}
 			String name = testName.replaceAll(" ", "_");
-			// 2. Get the relative path from your takeScreenshot method
 			String relativePath = takeScreenshot(driver, name);
-			// 3. Convert to Absolute Path (This is the fix)
 			File f = new File(relativePath);
 			String absolutePath = f.getAbsolutePath();
-			// 4. Log the failure and attach the ABSOLUTE path
-			test.fail("Test Failed: " + name);
-			test.addScreenCaptureFromPath(absolutePath);
+			testThreadLocal.get().fail("Test Failed: " + name);
+			testThreadLocal.get().addScreenCaptureFromPath(absolutePath);
 			System.out.println("Screenshot attached to report from: " + absolutePath);
 		} catch (Exception e) {
 			System.err.println("Failed to capture screenshot: " + e.getMessage());
@@ -312,6 +316,4 @@ public class AllUtilities {
 		}
 		return path;
 	}
-
-
 }

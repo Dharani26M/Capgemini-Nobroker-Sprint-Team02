@@ -18,13 +18,13 @@ public class NewIcon extends AllUtilities {
 
     @When("the user clicks on the {string} icon in the header")
     public void the_user_clicks_on_the_icon_in_the_header(String iconName) {
-        Pages.dashpage.clickNewIcon(base.driver);
+        Pages.get().dashpage.clickNewIcon(base.driver);
     }
 
     @Then("the user should be redirected to the NoBroker Rewards page")
     public void the_user_should_be_redirected_to_the_no_broker_rewards_page() {
         SwitchWindowUsingUrl("rewards");
-        WaitForVisibiltyOfElement(20, Pages.iconpage.getbuybtn());
+        WaitForVisibiltyOfElement(20, Pages.get().iconpage.getbuybtn());
     }
 
     @Then("the page title should contain {string}")
@@ -36,8 +36,8 @@ public class NewIcon extends AllUtilities {
 
     @When("the user clicks on the Buy VIP button")
     public void the_user_clicks_on_the_buy_vip_button() {
-        WaitForToBeClickableOfElement(20, Pages.iconpage.getbuybtn());
-        Pages.iconpage.clickBuyBtn();
+        WaitForToBeClickableOfElement(20, Pages.get().iconpage.getbuybtn());
+        Pages.get().iconpage.clickBuyBtn();
     }
 
     @Then("the user should navigate to the NoBroker VIP Memberships page")

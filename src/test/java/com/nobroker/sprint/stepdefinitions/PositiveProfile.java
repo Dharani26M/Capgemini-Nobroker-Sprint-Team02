@@ -19,19 +19,19 @@ public class PositiveProfile extends AllUtilities {
 
 	@Given("the user has successfully logged into the application")
 	public void the_user_has_successfully_logged_into_the_application() {
-		WaitForVisibiltyOfElement(50, Pages.dashpage.getProfileImg());
-		Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed());
+		WaitForVisibiltyOfElement(50, Pages.get().dashpage.getProfileImg());
+		Assert.assertTrue(Pages.get().dashpage.getProfileImg().isDisplayed());
 	}
 
 	@Given("the user navigates to the Profile page")
 	public void the_user_navigates_to_the_profile_page() {
-		Pages.dashpage.getProfileImg().click();
-		Pages.dashpage.getProfileFeature().click();
+		Pages.get().dashpage.getProfileImg().click();
+		Pages.get().dashpage.getProfileFeature().click();
 	}
 
 	@When("the user updates profile name to {string}")
 	public void the_user_updates_profile_name_to(String name) {
-		Pages.profilepage.setupUserName(name);
+		Pages.get().profilepage.setupUserName(name);
 	}
 
 	@When("the user refreshes the current page")
@@ -41,6 +41,6 @@ public class PositiveProfile extends AllUtilities {
 
 	@Then("the profile name should be displayed as {string}")
 	public void the_profile_name_should_be_displayed_as(String expectedname) {
-		Assert.assertEquals(Pages.profilepage.getUserName().getAttribute("value"), expectedname, "profile mismatch");
+		Assert.assertEquals(Pages.get().profilepage.getUserName().getAttribute("value"), expectedname, "profile mismatch");
 	}
 }
