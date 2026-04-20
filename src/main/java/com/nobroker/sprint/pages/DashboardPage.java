@@ -1,6 +1,7 @@
 package com.nobroker.sprint.pages;
 
 import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -46,6 +47,7 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@id='profile-menu-dropdown']//a[contains(.,'Profile')]")
 	private WebElement ProfileFeature;
 
+
 	@FindBy(xpath = "//div[.='Menu']")
 	private WebElement MenuField;
 
@@ -61,7 +63,13 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@id='main-menu']//a[.='Painting & Cleaning']")
 	private WebElement PaintingsCleaning;
 
-	@FindBy(xpath = "//span[text()='Packers And Movers']")
+
+
+
+
+	// Locating Packers And Movers Banner
+	@FindBy (xpath="//span[text()='Packers And Movers']")
+
 	private WebElement PackersAndMovers;
 
 	// Getters
@@ -121,6 +129,7 @@ public class DashboardPage {
 		return ProfileFeature;
 	}
 
+
 	public WebElement getBuyHouse() {
 		return buy;
 	}
@@ -144,6 +153,7 @@ public class DashboardPage {
 		getLogin().click();
 		getMobileNumber().sendKeys(MobileNo);
 		clickContinueAfterOTP(driver);
+		
 	}
 
 	public void GotoProfile(WebDriver driver) {
@@ -169,6 +179,7 @@ public class DashboardPage {
 	public void clickPackersAndMovers() {
 		getPackersAndMovers().click();
 	}
+
 
 	public void clickBuyModule() {
 		getBuyHouse().click();

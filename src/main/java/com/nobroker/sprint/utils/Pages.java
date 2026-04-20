@@ -25,10 +25,11 @@ public class Pages {
     public static Painiting_AC paintingAC;
     public static RentalPage rentalPage;
     public static LoginPage loginPage;
-	// upto this
-	
-
-
+	public static VechicleAddInventoryPage vechicleinventory;
+	public static PaymentPage payment;
+    public static NobrokerAskQuestion askquestion;
+    public static NobrokerForumPage forumpage;
+ // upto this
 	
 	private static final ThreadLocal<Pages> threadPages = new ThreadLocal<>();
 
@@ -57,6 +58,7 @@ public class Pages {
 		
 		moverspage=new PackersAndMoversPage(driver);
 		moverspage = PageFactory.initElements(driver,PackersAndMoversPage.class);
+		inventorypage = new AddInventoryPage(driver);
 		inventorypage = PageFactory.initElements(driver, AddInventoryPage.class);
 		summary = PageFactory.initElements(driver, OrderSummary.class);
     	buy = new Buy(driver);
@@ -73,6 +75,16 @@ public class Pages {
         
         
         // upto this delete
+		vechicleinventory = new VechicleAddInventoryPage(driver);
+		vechicleinventory = PageFactory.initElements(driver, VechicleAddInventoryPage.class);
+		summary = PageFactory.initElements(driver, OrderSummary.class);
+		payment  = PageFactory.initElements(driver, PaymentPage.class);
+		askquestion = PageFactory.initElements(driver, NobrokerAskQuestion.class);
+        forumpage = PageFactory.initElements(driver, NobrokerForumPage.class);
+		
+		
+
+		
 	}
 
 	public static Pages get() {

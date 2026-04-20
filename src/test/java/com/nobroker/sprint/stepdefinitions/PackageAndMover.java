@@ -3,6 +3,8 @@ package com.nobroker.sprint.stepdefinitions;
 import java.util.List;
 import java.util.Map;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import com.nobroker.sprint.pages.AddInventoryPage;
@@ -17,47 +19,61 @@ import io.cucumber.java.en.When;
 
 public class PackageAndMover extends AllUtilities {
 
-	private BaseClass base;
+	
 
 	public PackageAndMover(BaseClass base) {
-		this.base = base;
+	
 		this.initializeDriver(base.driver);
 	}
 	
 	@When("User clicks on Packers and Movers")
 	public void user_clicks_on_packers_and_movers() {
+		
 		Pages.dashpage.clickPackersAndMovers();
 	}
 	@Then("User should be navigated to Packers and Movers page")
 	public void user_should_be_navigated_to_packers_and_movers_page() {
-//	
+	
 		SwitchWindowUsingUrl("packers");
-		Assert.assertTrue(Pages.moverspage.getPageTitle().getText().contains("Packers and Movers"));
+	    waitForElementOrTimeout(By.xpath("//span[contains(text(),'Complete booking')]"), 40);
 	}
 	@When("User selects WithinCity option")
 	public void user_selects_within_city_option() {
 		  Pages.moverspage.getWithinCity().click();
+		  System.out.println("Executing");
 	}
 	@When("User enters Cityname as {string}")
 	public void user_enters_cityname_as(String cityname) {
+		WaitForToBeClickableOfElement(40, Pages.moverspage.getSelectCity());
 		Pages.moverspage.SelectCity(cityname);	
 	}
 	@When("User enters ShiftingFrom location as {string}")
 	public void user_enters_shifting_from_location_as(String FromLocation) {
+		
+		WaitForToBeClickableOfElement(40, Pages.moverspage.getShiftingFrom());
+		
 		Pages.moverspage.getShiftingFrom().sendKeys(FromLocation);
-		WaitForToBeClickableOfElement(40, Pages.moverspage.getShiftingDropDowm());
+		
+		waitForRefreshedVisibility(Pages.moverspage.getShiftingFrom(), 40);
+		
 		Pages.moverspage.getShiftingDropDowm().click();
+		
 	}
 	@When("User enters ShiftingTo location as {string}")
 	public void user_enters_shifting_to_location_as(String ToLocation) {
 
 		Pages.moverspage.getShiftingTo().sendKeys(ToLocation);
-		WaitForToBeClickableOfElement(40, Pages.moverspage.getShiftingDropDowm());
+		waitForRefreshedVisibility(Pages.moverspage.getShiftingTo(), 40);
+		WaitForToBeClickableOfElement(40, Pages.moverspage.getShiftingTo());
+		pauseOnAction(20);
 		Pages.moverspage.getShiftingDropDowm().click();
 	}
 	@When("User clicks on checkprice")
 	public void user_clicks_on_checkprice() {
+		WaitForToBeClickableOfElement(40, Pages.moverspage.getCheckPrices());
+
 		 Pages.moverspage.getCheckPrices().click();
+
 	}
 	@Then("User should be navigated to Inventory page")
 	public void user_should_be_navigated_to_inventory_page() {
@@ -69,7 +85,7 @@ public class PackageAndMover extends AllUtilities {
 		
 		  List<Map<String, String>> items = dataTable.asMaps(String.class, String.class);
 
-		   
+
 
 		    for (Map<String, String> row : items) {
 
@@ -78,6 +94,8 @@ public class PackageAndMover extends AllUtilities {
 		        String itemName = row.get("Item Name");
 
 		        // Click Category
+		        
+		        
 		        
 		        Pages.inventorypage.openIfClosed(category);
 		        
@@ -101,17 +119,18 @@ public class PackageAndMover extends AllUtilities {
 	public void user_clicks_on_continue() {
 	   Pages.inventorypage.getContinue().click();
 	}
-	@When("User selects shifting date as {string} period as {string} slot as {string}")
-	public void user_selects_shifting_date(String date, String period, String timeSlot) {
+	@When("User selects shifting date as {string}")
+	public void User_selects_shifting_date_as(String date) {
 
-	    Pages.inventorypage.ConfirmTimeAndDate(date, period, timeSlot, driver);
+	    Pages.inventorypage.ConfirmDate(date);
 	}
-	@Then("Confirm Booking button should be enabled")
-	public void confirm_booking_button_should_be_enabled() {
-		
+	@Then("User click Confirm Booking")
+	public void User_click_confirm_booking() {
 		
 		SwitchWindowUsingUrl("summary");
-		Assert.assertTrue(Pages.summary.getConfirmBooking().isEnabled());
+		Pages.summary.getConfirmBooking().click();
+		SwitchWindowUsingUrl("checkout");
+		Assert.assertTrue(Pages.payment.getTitle().getText().contains("Payments"));
 		
 	}
 }

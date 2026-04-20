@@ -1,22 +1,32 @@
 package com.nobroker.sprint.pages;
 
+import java.time.Duration;
 import java.util.List;
+
+import javax.swing.text.Utilities;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nobroker.sprint.utils.AllUtilities;
 
 public class AddInventoryPage {
 	
 	public WebDriver driver;
+	public WebDriverWait wait;
+	public AllUtilities Utilities;
 	
 	public AddInventoryPage(WebDriver driver) {
 		
+		Utilities = new AllUtilities();
 		this.driver = driver;
+		this.Utilities.initializeDriver(driver);
+		wait = new WebDriverWait(driver,Duration.ofSeconds(40));
 	
 	}
 	
@@ -180,18 +190,64 @@ private WebElement RelocateToLocation;
 private WebElement UpdateLocation;
 
 
-public WebElement getEdit() {
-	return Edit;
-}
-
 
 // Locate WebElement To close relocation
-@FindBy(css="[src=\"https://assets.nobroker.in/hs-new/public/Home-Services/closeIcon.svg\"]")
+@FindBy(css="[src='https://assets.nobroker.in/hs-new/public/Home-Services/closeIcon.svg']")
 private WebElement CloseRelocation;
 
 // getPageTitle
 @FindBy(xpath="//header//div[@class=\"font-bold text-22 undefined\"]")
 private WebElement PageTitle;
+
+
+@FindBy(id="alertMessageBox")
+private WebElement Alert;
+
+@FindBy(xpath="//div[text()='Confirm']")
+private WebElement Confirm;
+
+@FindBy(css="[class='font-bold text-14 text-pnm-lightest-grey  leading-none']")
+private WebElement Addeditem;
+
+@FindBy(xpath="//button[.='Close']")
+private WebElement close;
+
+@FindBy(xpath="//div[@class='p-0 overflow-auto h-80']//div[@id='decreament']")
+private WebElement decreamentadditems;
+
+public WebElement getDecreamentadditems() {
+	return decreamentadditems;
+}
+
+
+
+public WebElement getClose() {
+	return close;
+}
+
+
+
+public WebElement getAddeditems() {
+	return Addeditem;
+}
+
+
+
+public WebDriver getDriver() {
+	return driver;
+}
+
+public WebElement getConfirm() {
+	return Confirm;
+}
+
+public WebElement getAlert() {
+	return Alert;
+}
+
+public WebElement getEdit() {
+	return Edit;
+}
 
 public WebElement getPageTitle() {
 	return PageTitle;
@@ -341,6 +397,23 @@ public WebElement getDecrementButton(String itemName, WebDriver driver) {
 }
 
 
+public void ConfirmDate(String date) {
+	wait.until(ExpectedConditions.presenceOfElementLocated(
+	        By.xpath("//div[contains(normalize-space(),'Pickup Date')]")
+	    ));
+	    
+	    // Then find and click the date
+	    wait.until(ExpectedConditions.elementToBeClickable(
+	        By.xpath("//div[contains(normalize-space(),'Pickup Date')]" +
+	                 "/..//div[normalize-space()='" + date + "'" +
+	                 " and not(contains(@class,'disabled'))]")
+	    )).click();
+	    
+	    getConfirm().click();
+	    
+	    
+	
+}
 public void ConfirmTimeAndDate(String date , String periods , String TimeSlot , WebDriver driver) {
 	driver.findElement(By.xpath(
 	        "//div[contains(normalize-space(),'Pickup Date')]/..//div[normalize-space()='" + date + "' and not(contains(@class,'disabled'))]"
@@ -367,9 +440,33 @@ public void openIfClosed(String name) {
         "//div[normalize-space()='" + name + "']/..//img[contains(@src,'open-accordian')]"
     ));
 
-    if (!elements.isEmpty() && elements.get(0).isDisplayed()) {
-        elements.get(0).click();
+    if (!elements.isEmpty()) {
+
+        WebElement element = elements.get(0);
+        System.out.println(element);
+        if (element.isDisplayed()) {
+            Utilities.scrollToElement(element);
+            element.click();
+        }
     }
+}
+
+public void removeitems() {
+	 String countText = getAddeditems().getText().trim();
+     int count = Integer.parseInt(countText);
+	if(count>0) {
+		getAddeditems().click();
+		Utilities.scrollToElement(driver.findElement(By.id("decreament")));
+		Utilities.WaitForToBeClickableOfElement(7, driver.findElement(By.id("decreament")));
+		
+		while(count>0) {
+			driver.findElement(By.id("decreament")).click();
+			count--;
+		}
+		getClose().click();
+		
+	}
+	
 }
 
 

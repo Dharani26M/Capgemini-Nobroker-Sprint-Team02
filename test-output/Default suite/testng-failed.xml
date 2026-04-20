@@ -7,7 +7,11 @@
         <methods>
           <include name="setUpClass"/>
           <include name="tearDownClass"/>
+<<<<<<< HEAD
           <include name="runScenario" invocation-numbers="0 3 5"/>
+=======
+          <include name="runScenario" invocation-numbers="0"/>
+>>>>>>> 2f3bb03 (Packers And Movers Module Updated with feature and step definition)
         </methods>
       </class> <!-- com.nobroker.sprint.runner.RunnerIO -->
     </classes>
