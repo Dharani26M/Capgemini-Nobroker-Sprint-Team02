@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <<<<<<< HEAD
+<<<<<<< HEAD
 <testng-results ignored="0" total="8" passed="5" failed="3" skipped="0">
+=======
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+>>>>>>> 1314867 (updated code for refer and earn)
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-19T13:15:40 IST" name="Default suite" finished-at="2026-04-19T13:20:02 IST" duration-ms="261950">
+  <suite started-at="2026-04-20T08:46:27 IST" name="Default suite" finished-at="2026-04-20T08:47:38 IST" duration-ms="71514">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2026-04-19T13:15:40 IST" name="Default test" finished-at="2026-04-19T13:20:02 IST" duration-ms="261950">
+    <test started-at="2026-04-20T08:46:27 IST" name="Default test" finished-at="2026-04-20T08:47:38 IST" duration-ms="71514">
       <class name="com.nobroker.sprint.runner.RunnerIO">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-19T13:15:40 IST" name="setUpClass" finished-at="2026-04-19T13:15:40 IST" duration-ms="262" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:46:27 IST" name="setUpClass" finished-at="2026-04-20T08:46:27 IST" duration-ms="192" status="PASS">
           <params>
             <param index="0">
               <value>
+<<<<<<< HEAD
                 <![CDATA[org.testng.TestRunner@2e6a5539]]>
 =======
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
@@ -34,6 +39,9 @@
               <value>
                 <![CDATA[org.testng.TestRunner@343e225a]]>
 >>>>>>> 2f3bb03 (Packers And Movers Module Updated with feature and step definition)
+=======
+                <![CDATA[org.testng.TestRunner@21fd5faa]]>
+>>>>>>> 1314867 (updated code for refer and earn)
               </value>
             </param>
           </params>
@@ -41,26 +49,82 @@
           </reporter-output>
         </test-method> <!-- setUpClass -->
 <<<<<<< HEAD
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-19T13:15:40 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-19T13:17:04 IST" duration-ms="83945" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:46:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T08:47:25 IST" duration-ms="58760" status="PASS">
+>>>>>>> 1314867 (updated code for refer and earn)
           <params>
             <param index="0">
               <value>
-                <![CDATA["Navigate to Painting and Cleaning Home Interiors"]]>
+                <![CDATA["Update user profile name with invalid format"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Paintings and Cleaning Validation"]]>
+                <![CDATA["Negative Profile and Feature Validation"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-19T13:15:40 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-19T13:17:05 IST" duration-ms="84958" status="PASS">
 =======
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@158a8276]" started-at="2026-04-20T13:06:48 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T13:10:20 IST" duration-ms="211746" status="PASS">
 >>>>>>> 2f3bb03 (Packers And Movers Module Updated with feature and step definition)
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:46:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T08:47:25 IST" duration-ms="58254" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Navigate to Post Your Property section"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Post property Validation"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:46:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T08:47:25 IST" duration-ms="58210" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Generate and download a Rent Receipt"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Rent Receipts Validation"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:46:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T08:47:25 IST" duration-ms="58228" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Generate and download a Rent Receipt"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Rent Receipts Validation"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:46:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T08:47:25 IST" duration-ms="58209" status="PASS">
+>>>>>>> 1314867 (updated code for refer and earn)
           <params>
             <param index="0">
               <value>
@@ -77,23 +141,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-19T13:15:40 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-19T13:17:16 IST" duration-ms="96045" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA["Generate and download a Rent Receipt"]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA["Rent Receipts Validation"]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-19T13:15:40 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-19T13:17:13 IST" duration-ms="92771" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:46:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T08:47:25 IST" duration-ms="58271" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -109,23 +157,23 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-19T13:15:40 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-19T13:17:11 IST" duration-ms="91327" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:46:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T08:47:26 IST" duration-ms="58809" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Generate and download a Rent Receipt"]]>
+                <![CDATA["Navigate to Painting and Cleaning Home Interiors"]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA["Rent Receipts Validation"]]>
+                <![CDATA["Paintings and Cleaning Validation"]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-19T13:15:40 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-19T13:17:52 IST" duration-ms="131497" status="FAIL">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:46:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T08:47:38 IST" duration-ms="71271" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -138,33 +186,10 @@
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: By.xpath: //div[contains(@class, 'nb-select__option') and text()='Chennai'] (tried for 30 second(s) with 500 milliseconds interval)
-Build info: version: '4.38.0', revision: '6b412e825c*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.4'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.56, chrome: {chromedriverVersion: 147.0.7727.57 (b4f28b5637d0..., userDataDir: C:\Users\itsdh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55789}, goog:processID: 37480, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55789/devtoo..., se:cdpVersion: 147.0.7727.56, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: eb8702466e5b5051b1b6834ff980ae09]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //div[contains(@class, 'nb-select__option') and text()='Chennai'] (tried for 30 second(s) with 500 milliseconds interval)
-Build info: version: '4.38.0', revision: '6b412e825c*'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.4'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.56, chrome: {chromedriverVersion: 147.0.7727.57 (b4f28b5637d0..., userDataDir: C:\Users\itsdh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55789}, goog:processID: 37480, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55789/devtoo..., se:cdpVersion: 147.0.7727.56, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: eb8702466e5b5051b1b6834ff980ae09
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-at com.nobroker.sprint.pages.ReferAndEarnPage.EnterDetails(ReferAndEarnPage.java:98)
-at com.nobroker.sprint.stepdefinitions.ReferAndEarn.the_user_enters_owner_details_for_referral(ReferAndEarn.java:39)
-at ✽.the user enters owner details for referral:(file:///C:/Users/itsdh/Capgemini_Selenium_Training/nobroker-sprint-team02-automation/src/test/java/com/nobroker/sprint/features/ReferAndEarn.feature:10)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-19T13:15:40 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-19T13:19:01 IST" duration-ms="201085" status="FAIL">
           <params>
             <param index="0">
@@ -295,6 +320,9 @@ at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
         </test-method> <!-- runScenario -->
         <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@158a8276]" started-at="2026-04-20T13:10:20 IST" name="tearDownClass" finished-at="2026-04-20T13:10:20 IST" duration-ms="28" status="PASS">
 >>>>>>> 2f3bb03 (Packers And Movers Module Updated with feature and step definition)
+=======
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T08:47:38 IST" name="tearDownClass" finished-at="2026-04-20T08:47:38 IST" duration-ms="4" status="PASS">
+>>>>>>> 1314867 (updated code for refer and earn)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
