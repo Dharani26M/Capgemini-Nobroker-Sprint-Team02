@@ -25,23 +25,29 @@ public class HomeRepair {
     @FindBy(xpath = "//div[contains(text(),'Home Repairs')]")
     private WebElement homeRepair;
 
-    @FindBy(xpath = "//p[contains(text(),'Switch')]")
+    @FindBy(xpath = "//div[contains(@class,'cursor-pointer')]//p[text()='Switch & socket']")
     private WebElement switchSocket;
 
     @FindBy(xpath = "//div[contains(@class,'busy-holder')]")
     private WebElement overlay;
     
-    @FindBy(xpath="//div[.='Switch Board']/../../..//button[.='Add']")
+    @FindBy(xpath="//div[@id='SWITCH_BOARD']//button[text()='Add']")
     private WebElement AddProduct;
 
-    @FindBy(xpath="//div[.='Switchboard Installation']/../../..//div[.='Add']")
+    @FindBy(xpath="//div[.='Switchboard Installation']/following::div[.='Add']")
     private WebElement AddSpecificProduct;
     
-    @FindBy(xpath="//div[.='Enter mobile number to continue']")
-    private WebElement loginpopup;
-
+    @FindBy(xpath="//div[contains(text(),'Order Summary')]")
+    private WebElement Verify;
 	
 
+    
+    @FindBy(id = "add-ons-proceed")
+    private WebElement Proceed;
+    
+    public WebElement getProceed() {
+		return Proceed;
+	}
 	
 
 	public WebElement getPaintIcon() {
@@ -74,10 +80,10 @@ public class HomeRepair {
 	}
 
 
-
-	public WebElement getLoginpopup() {
-		return loginpopup;
+	public WebElement getVerify() {
+		return Verify;
 	}
+	
 
 	
 }

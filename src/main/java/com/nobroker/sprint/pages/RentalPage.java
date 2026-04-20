@@ -42,8 +42,8 @@ public class RentalPage {
     @FindBy(xpath = "//div[contains(text(),'Stamp')]")
     private WebElement stampPaperAmt;
 
-    @FindBy(id = "rentwithMaintenance_yes")
-    private WebElement radioBtnYes;
+    @FindBy(id="rentwithMaintenance_no")
+    private WebElement radioBtnNo;
 
     @FindBy(xpath = "//div[.='Owner']")
     private WebElement owner;
@@ -74,10 +74,29 @@ public class RentalPage {
 
     @FindBy(xpath = "//div[text()='Chennai']")
     private WebElement chennaiOption;
+    
+    
+    
+    @FindBy(xpath="//div[.='Caution']/child::div")
+    private WebElement Caution;
+    
+ // Date input (to open calendar)
+    @FindBy(id = "date-input")
+    private WebElement dateInput;
+
+    // Getter
+    public WebElement getDateInput() {
+        return dateInput;
+    }
 
     // ================= GETTERS =================
 
-    public WebElement getRentalAgreementIcon() {
+    public WebElement getCaution() {
+		return Caution;
+	}
+
+
+	public WebElement getRentalAgreementIcon() {
         return rentalAgreementIcon;
     }
 
@@ -109,9 +128,7 @@ public class RentalPage {
         return stampPaperAmt;
     }
 
-    public WebElement getRadioBtnYes() {
-        return radioBtnYes;
-    }
+    
 
     public WebElement getOwner() {
         return owner;
@@ -152,4 +169,10 @@ public class RentalPage {
     public WebElement getChennaiOption() {
         return chennaiOption;
     }
+
+
+	public WebElement getRadioBtnNo() {
+		// TODO Auto-generated method stub
+		return radioBtnNo ;
+	}
 }

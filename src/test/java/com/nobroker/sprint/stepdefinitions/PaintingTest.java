@@ -3,6 +3,7 @@ package com.nobroker.sprint.stepdefinitions;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -67,21 +68,45 @@ public class PaintingTest extends AllUtilities{
     @When("Add AC service")
     public void add_ac_service() {
 
-        WaitForToBeClickableOfElement(20, Pages.paintingAc.getAdd());
-        Pages.paintingAc.getAdd().click();
 
-        WaitForToBeClickableOfElement(20, Pages.paintingAc.getAddSpecific());
-        Pages.paintingAc.getAddSpecific().click();
-
-        WaitForToBeClickableOfElement(20, Pages.paintingAc.getProceed());
-        Pages.paintingAc.getProceed().click();
     	
-    }
+    	
+    	
+    
+
+    	    // First Add (Foam Blast)
+    	    WaitForToBeClickableOfElement(20, Pages.paintingAc.getAdd());
+    	    Pages.paintingAc.getAdd().click();
+
+    	    WebElement addSpecific = Pages.paintingAc.getAddSpecific();
+
+    	    // scroll inside modal
+    	    ((JavascriptExecutor) driver)
+    	        .executeScript("arguments[0].scrollIntoView(true);", addSpecific);
+
+    	    // wait
+    	    WaitForVisibiltyOfElement(20, addSpecific);
+    	    WaitForToBeClickableOfElement(20, addSpecific);
+
+    	    // click
+    	    addSpecific.click();
+
+    	    // proceed
+    	    WaitForToBeClickableOfElement(20, Pages.paintingAc.getProceed());
+    	    Pages.paintingAc.getProceed().click();
+    	}
+    	
+    
 
     @Then("payment page should be displayed verified")
     public void login_popup_should_be_displayed_for_ac_repair() {
-        Assert.assertEquals(Pages.paintingAc.getVerify(), "Order Summary");
 
+        WaitForVisibiltyOfElement(20, Pages.paintingAc.getVerify());
+
+        String actualText = Pages.paintingAc.getVerify().getText();
+        Assert.assertTrue(
+        	    Pages.paintingAc.getVerify().getText().contains("Order Summary")
+        	);
         System.out.println("Order Summary is displayed");
     }
 }

@@ -38,7 +38,8 @@ public class Painiting_AC {
     @FindBy(xpath="//div[contains(text(),'Foam Blast AC Service')]/ancestor::div//button[.='Add']")
     private WebElement Add;
     
-    @FindBy(xpath = "//div[contains(text(),'Split AC Service')]/following::button[1]")
+//    @FindBy(xpath = "//div[contains(text(),'Split AC Service')]/following::button[1]")
+    @FindBy(xpath="//div[text()='Split AC Service']/ancestor::div[contains(@class,'flex')]//div[text()='Add']")
     private WebElement AddSpecific;
     
     @FindBy(id = "add-ons-proceed")
