@@ -16,5 +16,4 @@ public class RunnerIO extends AbstractTestNGCucumberTests {
     public Object[][] scenarios() {
         return super.scenarios();
     }
-
 }

@@ -2,8 +2,6 @@
 package com.nobroker.sprint.utils;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -11,7 +9,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 
