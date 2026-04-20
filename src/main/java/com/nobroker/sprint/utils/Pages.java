@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 import com.nobroker.sprint.pages.Buy;
 import com.nobroker.sprint.pages.MapPage;
 import com.nobroker.sprint.pages.DashboardPage;
+import com.nobroker.sprint.pages.HomeLoanPage;
+import com.nobroker.sprint.pages.HomeRenovationPage;
 
 import com.nobroker.sprint.pages.*;
 
@@ -29,7 +31,8 @@ public class Pages {
 	public static PaymentPage payment;
     public static NobrokerAskQuestion askquestion;
     public static NobrokerForumPage forumpage;
- // upto this
+	public static HomeLoanPage loanPage;
+	public static HomeRenovationPage renovationPage;
 	
 	private static final ThreadLocal<Pages> threadPages = new ThreadLocal<>();
 
@@ -85,6 +88,12 @@ public class Pages {
 		
 
 		
+		
+		loanPage = new HomeLoanPage(driver);
+		loanPage = PageFactory.initElements(driver, HomeLoanPage.class);
+		
+		renovationPage = new HomeRenovationPage(driver);
+		renovationPage = PageFactory.initElements(driver, HomeRenovationPage.class);
 	}
 
 	public static Pages get() {
