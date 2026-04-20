@@ -4,7 +4,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = {
-		"src/test/java/com/nobroker/sprint/features/PackageAndMover.feature" }, dryRun = false, glue = "com.nobroker.sprint.stepdefinition")
+		"src/test/java/com/nobroker/sprint/features/VechicleShifting.feature" }, dryRun = false, glue = "com.nobroker.sprint.stepdefinitions")
 public class RunnerIO extends AbstractTestNGCucumberTests {
-
 }
+
+

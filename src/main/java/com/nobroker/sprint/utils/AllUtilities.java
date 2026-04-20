@@ -1,6 +1,7 @@
 
 package com.nobroker.sprint.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -14,24 +15,39 @@ import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
 
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class AllUtilities {
 
 	public WebDriver driver;
-	WebDriverWait wait;
+	public WebDriverWait wait;
 	Actions action;
+	HandleCookies hs = new HandleCookies();
+	
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
+		wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+		action = new Actions(driver);
 	}
-	
+	JavascriptExecutor js = (JavascriptExecutor) driver;
 	
 
 	// maximize browser
@@ -246,6 +262,144 @@ public class AllUtilities {
                 + " " + date.getYear();
 	}
 	
+	public void WaitForInvisibilityOfElement(int seconds, By locator) {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+	    wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+	}
+	
+	public WebElement waitForRefreshedVisibility(By locator, int timeout) {
 
+
+	    return wait.until(ExpectedConditions.refreshed(
+	            ExpectedConditions.visibilityOfElementLocated(locator)
+	    ));
+	}
+	
+	public WebElement waitForRefreshedVisibility(WebElement element, int timeout) {
+	  
+	    return wait.until(ExpectedConditions.refreshed(
+	        ExpectedConditions.visibilityOf(element)
+	    ));
+	}
+	
+
+
+	
+	public  WebElement WaitForToBeClickableOfElement(int timeout, By locator) {
+
+
+	    return wait.until(ExpectedConditions.elementToBeClickable(locator));
+	}
+
+	// EXTENT REPORT
+
+	public static ExtentReports extent;
+	public static ExtentTest test;
+
+	public static ExtentReports getReport() {
+		if (extent == null) {
+			ExtentSparkReporter reporter = new ExtentSparkReporter("Reports/extent.html");
+			extent = new ExtentReports();
+			extent.attachReporter(reporter);
+		}
+		return extent;
+	}
+
+	public static void createTest(String name) {
+		test = getReport().createTest(name);
+	}
+
+	public static void pass(String msg) {
+		test.pass(msg);
+	}
+
+	public static void fail(String msg) {
+		test.fail(msg);
+	}
+
+	public static void captureFailure(WebDriver driver, String testName) {
+		try {
+			// 1. Sanitize the name
+			String name = testName.replaceAll(" ", "_");
+			// 2. Get the relative path from your takeScreenshot method
+			String relativePath = takeScreenshot(driver, name);
+			// 3. Convert to Absolute Path (This is the fix)
+			File f = new File(relativePath);
+			String absolutePath = f.getAbsolutePath();
+			// 4. Log the failure and attach the ABSOLUTE path
+			test.fail("Test Failed: " + name);
+			test.addScreenCaptureFromPath(absolutePath);
+			System.out.println("Screenshot attached to report from: " + absolutePath);
+		} catch (Exception e) {
+			System.err.println("Failed to capture screenshot: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+
+	// SCREENSHOT
+	public static String takeScreenshot(WebDriver driver, String name) {
+//					
+		String path = "Screenshot/" + name + "_" + ".png";
+		try {
+			File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			FileHandler.copy(src, new File(path));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return path;
+	}
+	public void waitForElementOrTimeout(By locator, int timeout) {
+	    try {
+	    
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	    } catch (Exception e) {
+	        // Element didn't appear within timeout — continue execution anyway
+	        System.out.println("Element not found within " + timeout + "s, continuing: " + locator);
+	    }
+	}
+	
+	public void waitForElementOrTimeout(WebElement element, int timeout) {
+	    try {
+	  
+	        wait.until(driver -> {
+	            try {
+	                return element.isDisplayed() ? element : null;
+	            } catch (Exception e) {
+	                return null;
+	            }
+	        });
+	    } catch (Exception e) {
+	        System.out.println("Element not found within " + timeout + "s, continuing...");
+	    }
+	}
+	
+	public void clearField(WebElement element) {
+	            element.sendKeys(Keys.CONTROL + "a");
+	            element.sendKeys(Keys.DELETE);
+	 
+	}
+	
+	public void scrollToElement(WebElement element) {
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+		    js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+		    pauseOnAction(300);
+	    
+	    
+	}
+	
+	public void scrollBypixcel(int pixels) {
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,arguments[0]);",pixels);
+    }
+	
+	public void jsClick(WebElement element) {
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeScript("arguments[0].click();", element);
+	}
+
+	public void waitForInvisibilityOfElement(WebElement element, int seconds) {
+		  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+	        wait.until(ExpectedConditions.invisibilityOf(element));
+	    
+	}
 	
 }

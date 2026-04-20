@@ -1,10 +1,14 @@
 package com.nobroker.sprint.pages;
 
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nobroker.sprint.utils.AllUtilities;
 
@@ -51,8 +55,9 @@ public class DashboardPage {
 	@FindBy(xpath = "//div[@id='profile-menu-dropdown']//a[contains(.,'Profile')]")
 	private WebElement ProfileFeature;
 
-	
-	
+
+
+
 	// Locating Packers And Movers Banner
 	@FindBy (xpath="//span[text()='Packers And Movers']")
 	private WebElement PackersAndMovers;
@@ -96,6 +101,7 @@ public class DashboardPage {
 		return ProfileFeature;
 	}
 	
+
 	
 
 	// after OTP, click continue
@@ -118,6 +124,7 @@ public class DashboardPage {
 		getLogin().click();
 		getMobileNumber().sendKeys(MobileNo);
 		clickContinueAfterOTP(driver);
+		
 	}
 
 	public void clickNewIcon(WebDriver driver) {
@@ -138,5 +145,15 @@ public class DashboardPage {
 		getPackersAndMovers().click();
 	}
 	
+	public boolean isUserLoggedIn() {
+		try {
+			// Use a 5-10 second wait instead of immediate check
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			return wait.until(ExpectedConditions.visibilityOf(getProfileImg())).isDisplayed();
+		} catch (Exception e) {
+			System.out.println("⚠️ Profile image not found - user not logged in.");
+			return false;
+		}
+	}
 	
 }

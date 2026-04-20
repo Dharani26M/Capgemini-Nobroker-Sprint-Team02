@@ -13,36 +13,26 @@ public class Pages {
 	public static AddInventoryPage inventorypage;
 	public static OrderSummary summary;
 	
-	public static HomeInteriorsPage homeinteriorpage;
-	public static NewIconPage iconpage;
-	public static PaintingsAndCleaningPage paintpage;
-	public static PostYourPropertyPage postpage;
-	public static ProfilePage profilepage;
-	public static ReferAndEarnPage referpage;
-	public static RentReceiptPage rentpage;
-	
+	public static VechicleAddInventoryPage vechicleinventory;
+	public static PaymentPage payment;
+    public static NobrokerAskQuestion askquestion;
+    public static NobrokerForumPage forumpage;
 	
 	public static void LoadAllPages(WebDriver driver) {
 		dashpage=new DashboardPage(driver);
 		dashpage=PageFactory.initElements(driver, DashboardPage.class);
 		moverspage=new PackersAndMoversPage(driver);
 		moverspage = PageFactory.initElements(driver,PackersAndMoversPage.class);
+		inventorypage = new AddInventoryPage(driver);
 		inventorypage = PageFactory.initElements(driver, AddInventoryPage.class);
-		
+		vechicleinventory = new VechicleAddInventoryPage(driver);
+		vechicleinventory = PageFactory.initElements(driver, VechicleAddInventoryPage.class);
 		summary = PageFactory.initElements(driver, OrderSummary.class);
-
+		payment  = PageFactory.initElements(driver, PaymentPage.class);
+		askquestion = PageFactory.initElements(driver, NobrokerAskQuestion.class);
+        forumpage = PageFactory.initElements(driver, NobrokerForumPage.class);
 		
 		
-		homeinteriorpage=new HomeInteriorsPage(driver);
-		homeinteriorpage=PageFactory.initElements(driver, HomeInteriorsPage.class);
-		iconpage=PageFactory.initElements(driver, NewIconPage.class);
-		paintpage=new PaintingsAndCleaningPage(driver);
-		paintpage=PageFactory.initElements(driver, PaintingsAndCleaningPage.class);
-		postpage=PageFactory.initElements(driver, PostYourPropertyPage.class);
-		profilepage=PageFactory.initElements(driver, ProfilePage.class);
-		referpage=new ReferAndEarnPage(driver);
-		referpage=PageFactory.initElements(driver, ReferAndEarnPage.class);
-		rentpage=PageFactory.initElements(driver, RentReceiptPage.class);
 
 		
 	}
