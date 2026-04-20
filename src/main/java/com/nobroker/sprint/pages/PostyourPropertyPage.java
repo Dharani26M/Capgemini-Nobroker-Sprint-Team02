@@ -1,0 +1,157 @@
+package com.nobroker.sprint.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.nobroker.sprint.utils.AllUtilities;
+
+public class PostyourPropertyPage {
+	public WebDriver driver;
+	public AllUtilities utility;
+
+	public PostyourPropertyPage(WebDriver driver) {
+		this.driver = driver;
+		utility = new AllUtilities();
+		this.utility.initializeDriver(driver);// Pass the active driver to utility
+	} 
+
+	@FindBy(xpath = "//div[@id='main-menu']")
+	private WebElement Menu;
+
+	@FindBy(xpath = "//*[normalize-space()='Post Your Property']")
+	private WebElement Propertylink;
+
+	@FindBy(xpath = "//button[.//text()[contains(.,'Post')]]")
+	private WebElement PostNowBtn;
+
+	@FindBy(xpath = "//div[contains(text(),'Select City')]")
+	private WebElement SelectCity;
+
+	@FindBy(xpath = "//button[.='Start Posting Your Ad For FREE']")
+	private WebElement Post;
+
+	@FindBy(xpath = "//div[@class=\" modal-body \"]/..//button[.='Yes']")
+	private WebElement Notification;
+
+	@FindBy(id = "apartmentType")
+	private WebElement ApartmentType;
+
+	@FindBy(id = "bhkType")
+	private WebElement BHK;
+
+	@FindBy(id = "commercialFloorSearch")
+	private WebElement Floor;
+
+	@FindBy(id = "commercialTotalSearch")
+	private WebElement TotalFloor;
+
+	@FindBy(id = "propertyAge")
+	private WebElement PropertyAge;
+
+	@FindBy(id = "propertyFacing")
+	private WebElement propertyFacing;
+
+	@FindBy(id = "propertySize")
+	private WebElement size;
+
+	@FindBy(id = "saveAndContinue")
+	private WebElement ContinueBtn;
+
+	@FindBy(xpath = "//button[.='The data is correct']")
+	private WebElement notification;
+
+	@FindBy(id = "city")
+	private WebElement city;
+
+	@FindBy(id = "propertyLocality")
+	private WebElement Locality;
+
+	@FindBy(id = "street")
+	private WebElement street;
+
+	@FindBy(xpath = "//button[.='Preview']")
+	private WebElement preview;
+
+	public WebDriver getDriver() {
+		return driver;
+	}
+
+	public WebElement getMenu() {
+		return Menu;
+	}
+
+	public WebElement getPropertylink() {
+		return Propertylink;
+	}
+
+	public WebElement getPostNowBtn() {
+		return PostNowBtn;
+	}
+
+	public WebElement getSelectCity() {
+		return SelectCity;
+	}
+
+	public WebElement getPost() {
+		return Post;
+	}
+
+	public WebElement getNotification1() {
+		return Notification;
+	}
+
+	public WebElement getApartmentType() {
+		return ApartmentType;
+	}
+
+	public WebElement getBHK() {
+		return BHK;
+	}
+
+	public WebElement getFloor() {
+		return Floor;
+	}
+
+	public WebElement getTotalFloor() {
+		return TotalFloor;
+	}
+
+	public WebElement getPropertyAge() {
+		return PropertyAge;
+	}
+
+	public WebElement getPropertyFacing() {
+		return propertyFacing;
+	}
+
+	public WebElement getSize() {
+		return size;
+	}
+
+	public WebElement getContinueBtn() {
+		return ContinueBtn;
+	}
+
+	public WebElement getNotification() {
+		return notification;
+	}
+
+	public WebElement getCity() {
+		return city;
+	}
+
+	public WebElement getLocality() {
+		return Locality;
+	}
+
+	public WebElement getStreet() {
+		return street;
+	}
+
+	public WebElement getPreview() {
+		return preview;
+	}
+
+}

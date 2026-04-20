@@ -5,23 +5,30 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nobroker.sprint.utils.AllUtilities;
+
 public class HomeCleaningPage {
 
-	WebDriver driver;
+	public WebDriver driver;
+	public AllUtilities utility;
 
 	public HomeCleaningPage(WebDriver driver) {
 		this.driver = driver;
-		PageFactory.initElements(driver, this);
-	}
+		utility = new AllUtilities();
+		this.utility.initializeDriver(driver); // Pass the active driver to utility
+	} 
 
-	@FindBy(xpath = "//div[@id='hsHomeTile']")
-	private WebElement homeTile;
+	@FindBy(xpath = "//div[@id='main-menu']")
+	private WebElement Menu;
 
-	@FindBy(xpath = "//div[.='Chennai']")
-	private WebElement Location;
+	@FindBy(xpath = "//a[contains(text(),'Painting & Cleaning')]")
+	private WebElement PaintandClean;
 
 	@FindBy(xpath = "//div[contains(text(),'Home Cleaning')]")
 	private WebElement homeCleaningOption;
+	
+	@FindBy(xpath = "//div[contains(text(),'Chennai')]")
+	private WebElement Location;
 
 	@FindBy(xpath = "//div[.='Weekly Cleaning']")
 	private WebElement weeklyCleaning;
@@ -35,28 +42,23 @@ public class HomeCleaningPage {
 	@FindBy(xpath = "//div[.='Order Summary']/..//button[.='Proceed']")
 	private WebElement proceedButton;
 
-	@FindBy(xpath = "//div[contains(text(),'Enter mobile number to continue')]")
-	private WebElement mobilePopupTitle;
+	
 
 	public WebDriver getDriver() {
 		return driver;
 	}
 
-	public WebElement getHomeTile() {
-		return homeTile;
-	}
-
-	public WebElement getLocation() {
-		return Location;
-	}
-
 	public WebElement getHomeCleaningOption() {
 		return homeCleaningOption;
+	}
+	public WebElement getLocation() {
+		return Location;
 	}
 
 	public WebElement getWeeklyCleaning() {
 		return weeklyCleaning;
 	}
+	
 
 	public WebElement getNoOfBathrooms() {
 		return NoOfBathrooms;
@@ -70,8 +72,13 @@ public class HomeCleaningPage {
 		return proceedButton;
 	}
 
-	public WebElement getMobilePopupTitle() {
-		return mobilePopupTitle;
+	public WebElement getPaintandClean() {
+		return PaintandClean;
 	}
+
+	public WebElement getMenu() {
+		return Menu;
+	}
+	
 
 }

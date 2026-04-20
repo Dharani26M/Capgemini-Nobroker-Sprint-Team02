@@ -15,6 +15,7 @@ import java.util.Random;
 import java.util.Set;
 
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -25,12 +26,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AllUtilities {
 
-	public WebDriver driver;
+	public static WebDriver driver;
 	WebDriverWait wait;
 	Actions action;
+	
+	public HandleCookies hc = new HandleCookies();
+	 
+
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
+		action = new Actions(driver);
 	}
+
+	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	// maximize browser
 	public void ConfigMaximizeBrowser() {
@@ -126,7 +134,7 @@ public class AllUtilities {
 	// Explicit wait
 	public void WaitForToBeClickableOfElement(long seconds, WebElement ele) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-		wait.until(ExpectedConditions.elementToBeClickable(ele));
+		 wait.until(ExpectedConditions.elementToBeClickable(ele));
 	}
 
 	// popups
@@ -228,22 +236,36 @@ public class AllUtilities {
 		}
 		a.perform();
 	}
-	
-	public String getDay(String Date) {
-	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	    LocalDate date = LocalDate.parse(Date, formatter);
-	    return String.valueOf(date.getDayOfMonth());
-	    
-	}
-	
-	public String getMonthYear(String Date) {
-		 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		    LocalDate date = LocalDate.parse(Date, formatter);
-		return date.getMonth().name().substring(0,1) + 
-                date.getMonth().name().substring(1).toLowerCase() 
-                + " " + date.getYear();
-	}
-	
 
-	
+	public String getDay(String Date) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate date = LocalDate.parse(Date, formatter);
+		return String.valueOf(date.getDayOfMonth());
+
+	}
+
+	public String getMonthYear(String Date) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate date = LocalDate.parse(Date, formatter);
+		return date.getMonth().name().substring(0, 1) + date.getMonth().name().substring(1).toLowerCase() + " "
+				+ date.getYear();
+	}
+
+	// Scroll
+	public void scrollToElement(WebElement element) {
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+	}
+
+	public void navigateDownDropdown(WebElement element, int count, int delay) {
+		Actions action = new Actions(driver);
+		element.click();
+		for (int i = 0; i < count; i++) {
+			action.sendKeys(Keys.ARROW_DOWN).perform();
+		}
+
+		action.sendKeys(Keys.ENTER).perform();
+	}
 }
+
+
