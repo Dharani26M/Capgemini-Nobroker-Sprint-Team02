@@ -40,7 +40,7 @@ public class Hooks extends AllUtilities {
 		String phone =ru. getPropertyKeyValue("PhoneNo");
 		String Browser =ru. getPropertyKeyValue("browser");
 
-		// lanuch the browser
+		// launch the browser
 		WebDriver driver;
 		if (Browser.equalsIgnoreCase("Edge"))
 			driver = new EdgeDriver();
