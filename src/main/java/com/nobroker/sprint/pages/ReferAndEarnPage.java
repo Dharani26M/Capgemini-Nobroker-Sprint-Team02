@@ -28,7 +28,7 @@ public class ReferAndEarnPage {
 	@FindBy(xpath = "//div[text()='Refer & Earn']")
 	private WebElement ReferAndEarnWindow;
 	
-	@FindBy(css = ".nb-select__placeholder")
+	@FindBy(xpath = "//div[contains(@class,'nb-select__indicator nb-select__dropdown-indicator')]")
 	private WebElement cityDropdownContainer;
 	
 	@FindBy(id = "formValidationOwnerPhone")
@@ -94,7 +94,8 @@ public class ReferAndEarnPage {
 
 	public void EnterDetails(WebDriver driver,String cityName, String phoneno,String name,String typename,String description) {
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(30));
-		wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".nb-select__placeholder"))).click();
+		wait.until(ExpectedConditions.visibilityOf(getReferAndEarnWindow()));
+		wait.until(ExpectedConditions.elementToBeClickable(getCityDropdownContainer())).click();
 	    wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class, 'nb-select__option') and text()='" + cityName + "']"))).click();
 	    getPhoneNo().sendKeys(phoneno);
 	    getOwnerName().sendKeys(name);
