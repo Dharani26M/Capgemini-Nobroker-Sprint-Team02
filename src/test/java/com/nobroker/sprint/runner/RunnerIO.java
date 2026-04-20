@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
 		plugin = {"pretty", "html:Reports/Menu_Profile-Report.html" },
 		glue = "com.nobroker.sprint.stepdefinitions")
 public class RunnerIO extends AbstractTestNGCucumberTests {
-//	
+//	parallel execution
 	@Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {
