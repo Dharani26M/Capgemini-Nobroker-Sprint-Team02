@@ -44,6 +44,10 @@ public class AllUtilities {
 	public HandleCookies hc = new HandleCookies();
 	public ReaderUtilities ru = new ReaderUtilities();
 
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 035fff0 (Resolved Conflicts occured During updation of Hooks with Extent Reports)
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
 		tlDriver.set(driver);
