@@ -28,40 +28,35 @@ public class PG_HostelPage {
 
 	// Filter
 
-	@FindBy(xpath = "//div[text()='Skip'] | //span[text()='Skip']")
-	private WebElement notification;
+
 	
-	@FindBy(xpath = "//label[contains(text(),'PG/Hostel')]")
-	private WebElement Gender;
-
-//	@FindBy(name = "pgTypeGirls")
-//	private WebElement Gender;
-
-	@FindBy(xpath = "//span[.='Four Room']")
-	private WebElement SharingType;
-
-	@FindBy(xpath = "//span[.='Student']")
-	private WebElement PreferedFor;
-
-	@FindBy(id = "food_breakfast")
-	private WebElement Food;
-
-	@FindBy(id = "food_dinner")
-	private WebElement Foods;
-
+	@FindBy(id = "sortingSection")
+	private WebElement Sorting;
+	
 	@FindBy(id = "shortlistProperty")
-	private WebElement ShortListBtn;
+	private WebElement Shortlist;
+	
+	@FindBy(id = "listCardContainer")
+	private WebElement click;
+	
+	
 
-	@FindBy(xpath = "//button[.='Post Your Property']/../../../../..//img[@alt='shortlist']")
-	private WebElement shortlist;
+	
+	public WebElement getclick() {
+		return click;
+	}
+	public WebElement getShortlist() {
+		return Shortlist;
+	}
+	
+	
+	
 
 	public WebElement getLocation() {
 		return location;
 	}
 
-	public WebElement getshortlist() {
-		return shortlist;
-	}
+	
 
 	public WebElement getSearchLocality() {
 		return searchLocality;
@@ -74,33 +69,9 @@ public class PG_HostelPage {
 	public WebElement getSearch() {
 		return Search;
 	}
-
-	public WebElement getNotification() {
-		return notification;
+	public WebElement getSorting() {
+		return Sorting;
 	}
-
-	public WebElement getGender() {
-		return Gender;
-	}
-
-	public WebElement getSharingType() {
-		return SharingType;
-	}
-
-	public WebElement getPreferedFor() {
-		return PreferedFor;
-	}
-
-	public WebElement getFood() {
-		return Food;
-	}
-
-	public WebElement getFoods() {
-		return Foods;
-	}
-
-	public WebElement getShortlistBtn() {
-		return ShortListBtn;
-	}
+	
 
 }

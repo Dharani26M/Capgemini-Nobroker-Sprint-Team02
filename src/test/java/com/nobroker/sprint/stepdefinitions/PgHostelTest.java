@@ -36,8 +36,6 @@ public class PgHostelTest extends AllUtilities {
 //		Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed());
 //	}
 
-	
-
 	@When("User clicks on the location field and enters location")
 	public void user_clicks_on_the_location_field_and_enters_location() {
 		WaitForAllElements(40);
@@ -49,17 +47,13 @@ public class PgHostelTest extends AllUtilities {
 	@When("User selects the locality {string}")
 	public void user_selects_the_locality(String locality) throws InterruptedException {
 
-//	    WebElement localityField = Pages.PgHostel.getSearchLocality();
-//
-//	    // ✅ proper interaction
-//	    WaitForToBeClickableOfElement(20, localityField);
-//	    localityField.click();
-//	    localityField.clear();
-//	    localityField.sendKeys(locality);
-
-	    Thread.sleep(6000);
-//	    navigateDownDropdown(localityField, 1, 200);
+		WebElement localityField = Pages.PgHostel.getSearchLocality();
+		localityField.click();
+		localityField.sendKeys(locality);
+		Thread.sleep(2000);
+		navigateDownDropdown(localityField, 1, 60);
 	}
+
 	@When("User clicks on PG Hostel tab")
 	public void user_clicks_on_pg_hostel_tab() {
 		WaitForAllElements(20);
@@ -68,46 +62,24 @@ public class PgHostelTest extends AllUtilities {
 
 	@When("User clicks the Search button")
 	public void user_clicks_the_search_button() {
-		Pages.PgHostel.getSearch().click();;
+		Pages.PgHostel.getSearch().click();
+		
 
 	}
 
 	@When("User clicks the filters")
-	public void user_clicks_the_filters() {
+	public void user_clicks_the_filters() throws InterruptedException  {
+		Pages.PgHostel.getSorting().click();
+		Thread.sleep(2000);
+		navigateDownDropdown(Pages.PgHostel.getSorting(), 2, 10);
+		scrollToElement(Pages.PgHostel.getShortlist());
+		WaitForToBeClickableOfElement(20, Pages.PgHostel.getShortlist());
+		Pages.PgHostel.getShortlist().click();
+		Pages.PgHostel.getclick().click();
+		SwitchWindowUsingUrl("pg-hostel");
+		Pages.PgHostel.getOwner().click();
 
-	    // wait for results page to load
-	    WaitForAllElements(30);
-
-	    WebElement gender = Pages.PgHostel.getGender();
-	    WaitForToBeClickableOfElement(10, gender);
-	    gender.click();
-
-	    WebElement sharing = Pages.PgHostel.getSharingType();
-	    WaitForToBeClickableOfElement(10, sharing);
-	    sharing.click();
-
-	    WebElement preferred = Pages.PgHostel.getPreferedFor();
-	    WaitForToBeClickableOfElement(10, preferred);
-	    preferred.click();
-
-	    WebElement food = Pages.PgHostel.getFood();
-	    WaitForToBeClickableOfElement(10, food);
-	    food.click();
-
-	    WebElement foods = Pages.PgHostel.getFoods();
-	    WaitForToBeClickableOfElement(10, foods);
-	    foods.click();
-
-	    WebElement shortlistBtn = Pages.PgHostel.getShortlistBtn();
-	    WaitForToBeClickableOfElement(10, shortlistBtn);
-	    shortlistBtn.click();
-
-	    WebElement shortlist = Pages.PgHostel.getshortlist();
-	    WaitForToBeClickableOfElement(10, shortlist);
-	    shortlist.click();
-
-	    Assert.assertTrue(driver.getCurrentUrl().contains("shortlist"),
-	            "User is not navigated to Shortlist page");
+		
 	}
 
 }

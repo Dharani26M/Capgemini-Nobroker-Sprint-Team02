@@ -3,6 +3,7 @@ package com.nobroker.sprint.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nobroker.sprint.pages.AcRepairPage;
 import com.nobroker.sprint.pages.CareersPage;
 import com.nobroker.sprint.pages.DashboardPage;
 import com.nobroker.sprint.pages.HomeCleaningPage;
@@ -15,6 +16,7 @@ public class Pages {
 	public static CareersPage Careers;
 	public static PG_HostelPage PgHostel;
 	public static PostyourPropertyPage PostProperty;
+	public static AcRepairPage acrepair;
 
 	public static void LoadAllPages(WebDriver driver) {
 		// TODO Auto-generated method stub
@@ -28,6 +30,8 @@ public class Pages {
 		PgHostel = PageFactory.initElements(driver, PG_HostelPage.class);
 		 PostProperty= new PostyourPropertyPage(driver);
 		 PostProperty = PageFactory.initElements(driver, PostyourPropertyPage.class);
+		 acrepair= new AcRepairPage(driver);
+		 acrepair = PageFactory.initElements(driver, AcRepairPage.class);
 
 	}
 }

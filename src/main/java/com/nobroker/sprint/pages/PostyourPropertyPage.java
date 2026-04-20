@@ -1,9 +1,12 @@
 package com.nobroker.sprint.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nobroker.sprint.utils.AllUtilities;
 
@@ -23,7 +26,7 @@ public class PostyourPropertyPage {
 	@FindBy(xpath = "//*[normalize-space()='Post Your Property']")
 	private WebElement Propertylink;
 
-	@FindBy(xpath = "//button[.//text()[contains(.,'Post')]]")
+	@FindBy(id="postNow")
 	private WebElement PostNowBtn;
 
 	@FindBy(xpath = "//div[contains(text(),'Select City')]")
@@ -152,6 +155,11 @@ public class PostyourPropertyPage {
 
 	public WebElement getPreview() {
 		return preview;
+	}
+	public void accept(WebDriver driver){
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(80));
+		wait.until(ExpectedConditions.elementToBeClickable(getNotification())).click();
+		
 	}
 
 }

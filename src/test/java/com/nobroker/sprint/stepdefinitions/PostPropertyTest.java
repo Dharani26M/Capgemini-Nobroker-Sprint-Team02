@@ -41,15 +41,16 @@ public class PostPropertyTest extends AllUtilities {
 
 	@When("User Click PostNow")
 	public void user_click_post_now() {
-		WaitForAllElements(20);
+		WaitForToBeClickableOfElement(20,Pages.PostProperty.getPostNowBtn() );
 		scrollToElement(Pages.PostProperty.getPostNowBtn());
+//		WaitForToBeClickableOfElement(20,Pages.PostProperty.getPostNowBtn() );
 		Pages.PostProperty.getPostNowBtn().click();
 
 	}
 
 	@When("User click SelectCity")
 	public void user_click_select_city() {
-		WaitForAllElements(30);
+//		WaitForAllElements(30);
 		scrollToElement(Pages.PostProperty.getSelectCity());
 		Pages.PostProperty.getSelectCity().click();
 
@@ -66,7 +67,8 @@ public class PostPropertyTest extends AllUtilities {
 
 	@When("User Enters the Property Details")
 	public void user_enters_the_property_details() {
-		WaitForAllElements(60);
+		Pages.PostProperty.accept(driver);
+
 		scrollToElement(Pages.PostProperty.getNotification());
 		Pages.PostProperty.getNotification().click();
 
