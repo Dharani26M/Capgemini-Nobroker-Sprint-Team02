@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.nobroker.sprint.utils.AllUtilities;
 import com.nobroker.sprint.utils.BaseClass;
+import com.nobroker.sprint.utils.HandleCookies;
 import com.nobroker.sprint.utils.Pages;
 
 import io.cucumber.java.After;
@@ -42,10 +43,43 @@ public class Hooks extends AllUtilities {
 		ConfigMaximizeBrowser();
 		WaitForAllElements(60);
 		EnterUrl(Url);
-
+		
 		// initialize the pages
+		// login
+		// Cookie handling implementation
 		Pages.LoadAllPages(bhook.driver);
+		   HandleCookies cookiesUtil = new HandleCookies();
+		   String cookieFile = "app.data";
 
+		   // 1. Attempt to inject existing cookies
+		   cookiesUtil.loadCookies(bhook.driver, cookieFile);
+			    
+		   // 2. Refresh is usually handled inside loadCookies, but ensure UI settles
+		   System.out.println("🔍 Checking session status...");
+
+		   // 3. Verify with Profile Image
+		   if (!Pages.dashPage.isUserLoggedIn()) {
+		       System.out.println("👉 Session not found. Redirecting to Login...");
+			        
+		       Pages.dashPage.LoginIn(bhook.driver, phone);
+			        
+		       System.out.println("⏳ Please enter OTP manually. Waiting 30s...");
+		       try {
+		           Thread.sleep(30000); 
+		       } catch (InterruptedException e) {
+		           e.printStackTrace();
+		       }
+
+		       // 4. VERIFY LOGIN SUCCESS before saving
+		       if (Pages.dashPage.isUserLoggedIn()) {
+		           cookiesUtil.saveCookies(bhook.driver, cookieFile);
+		           System.out.println("✅ Login verified! Cookies captured for future use.");
+		       } else {
+		           System.out.println("❌ Login verification failed after 30s. Cookies not saved.");
+		       }
+		   } else {
+		       System.out.println("✅ Session restored via cookies. Profile image detected.");
+		   }
 
 	}
 

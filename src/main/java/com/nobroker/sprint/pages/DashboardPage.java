@@ -1,3 +1,4 @@
+
 package com.nobroker.sprint.pages;
 
 
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nobroker.sprint.utils.AllUtilities;
@@ -181,6 +183,17 @@ public class DashboardPage {
 	//search button
 	public void clickSearch() {
 		getSearchBtn().click();
+	}
+	
+	public boolean isUserLoggedIn() {
+	    try {
+	        // Use a 5-10 second wait instead of immediate check
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        return wait.until(ExpectedConditions.visibilityOf(getProfileImg())).isDisplayed();
+	    } catch (Exception e) {
+	        System.out.println("⚠️ Profile image not found - user not logged in.");
+	        return false;
+	    }
 	}
 	
 }
