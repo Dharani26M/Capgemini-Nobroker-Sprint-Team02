@@ -41,7 +41,7 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-picocontainer</artifactId>
-			<version>7.14.0</version>
+			<version>7.28.0</version>
 			<scope>compile</scope>
 		</dependency>
 		
@@ -56,10 +56,6 @@
     <artifactId>poi-ooxml</artifactId>
     <version>5.2.3</version>
 </dependency>
-  	<dependency>
-  		<groupId>com.nobroker.automation</groupId>
-  		<artifactId>rental-agreement-automation</artifactId>
-  		<version>0.0.1-SNAPSHOT</version>
-  	</dependency>
+  	
   </dependencies>
 </project>

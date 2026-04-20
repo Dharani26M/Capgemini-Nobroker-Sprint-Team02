@@ -1,18 +1,24 @@
 package com.nobroker.sprint.pages;
 
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import com.nobroker.sprint.utils.AllUtilities;
 
 public class AvoidBrokers {
-	WebDriver driver;
+	public WebDriver driver;
+	public AllUtilities utility;
+	
 	public AvoidBrokers(WebDriver driver) {
 		this.driver=driver;
-		PageFactory.initElements(driver,this);
+		this.utility = new AllUtilities();
+		this.utility.initializeDriver(driver); 
 	}
 	
-	@FindBy(xpath="//div[.='Avoid Brokers']")
+	@FindBy(xpath="//div[contains(text(),'Avoid')]")
 	private WebElement AvoidBrokers;
 	
 	@FindBy(xpath="//div[.='Our Blog']")
@@ -38,8 +44,13 @@ public class AvoidBrokers {
 	@FindBy(xpath="//div[contains(text(),'Payments')]")
 	private WebElement payment;
 	
+	@FindBy(xpath="//p[contains(text(),'set')]")
+	private WebElement Verifying;
 	
-	
+
+	public WebElement getVerifying() {
+		return Verifying;
+	}
 
 	public WebElement getPayment() {
 		return payment;

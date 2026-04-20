@@ -25,9 +25,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AllUtilities {
 
-	public WebDriver driver;
+	public static WebDriver driver;
 	WebDriverWait wait;
 	Actions action;
+	
+	public HandleCookies hc=new HandleCookies();
+	
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -122,6 +125,11 @@ public class AllUtilities {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
 		wait.until(ExpectedConditions.visibilityOf(ele));
 	}
+	
+	public void WaitForInvisibilityOfElement(long seconds, WebElement ele) {
+	    wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
+	    wait.until(ExpectedConditions.invisibilityOf(ele));
+	}
 
 	// Explicit wait
 	public void WaitForToBeClickableOfElement(long seconds, WebElement ele) {
@@ -173,7 +181,7 @@ public class AllUtilities {
 	}
 
 	public String getPropertyKeyValue(String key) throws IOException {
-		FileInputStream fs = new FileInputStream("./src/test/resources/Readers/Common.properties");
+		FileInputStream fs = new FileInputStream("./src/main/resources/Common.properties");
 		Properties prop = new Properties();
 		prop.load(fs);
 		String value = prop.getProperty(key);
@@ -243,6 +251,8 @@ public class AllUtilities {
                 date.getMonth().name().substring(1).toLowerCase() 
                 + " " + date.getYear();
 	}
+	
+	
 	
 	
 }

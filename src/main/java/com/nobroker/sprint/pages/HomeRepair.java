@@ -1,25 +1,21 @@
 package com.nobroker.sprint.pages;
 
-import java.time.Duration;
-import java.util.List;
-
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.*;
+
+import com.nobroker.sprint.utils.AllUtilities;
 
 public class HomeRepair {
+	public WebDriver driver;
+	public AllUtilities utility;
+	
+	public HomeRepair(WebDriver driver) {
+		this.driver=driver;
+		this.utility = new AllUtilities();
+		this.utility.initializeDriver(driver); 
+	}
 
-    WebDriver driver;
-    WebDriverWait wait;
-
-    public HomeRepair(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-    }
-
-    // 🔹 Elements
     @FindBy(xpath = "//span[contains(text(),'Painting')]")
     private WebElement paintIcon;
 
@@ -32,112 +28,56 @@ public class HomeRepair {
     @FindBy(xpath = "//p[contains(text(),'Switch')]")
     private WebElement switchSocket;
 
-    // 🔹 Common reusable methods
+    @FindBy(xpath = "//div[contains(@class,'busy-holder')]")
+    private WebElement overlay;
+    
+    @FindBy(xpath="//div[.='Switch Board']/../../..//button[.='Add']")
+    private WebElement AddProduct;
 
-    private void waitForLoader() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(
-            By.xpath("//div[contains(@class,'busy-holder')]")
-        ));
+    @FindBy(xpath="//div[.='Switchboard Installation']/../../..//div[.='Add']")
+    private WebElement AddSpecificProduct;
+    
+    @FindBy(xpath="//div[.='Enter mobile number to continue']")
+    private WebElement loginpopup;
+
+	
+
+	
+
+	public WebElement getPaintIcon() {
+        return paintIcon;
     }
 
-    private void scrollAndClick(WebElement element) {
-
-        ((JavascriptExecutor) driver).executeScript(
-            "arguments[0].scrollIntoView({block:'center'});", element
-        );
-
-        try { Thread.sleep(800); } catch (Exception e) {}
-
-        try {
-            element.click();
-        } catch (Exception e) {
-            ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].click();", element);
-        }
+    public WebElement getLocation() {
+        return location;
     }
 
-    // 🔹 Actions
-
-    public void clickPainting() {
-        waitForLoader();
-        WebElement element = wait.until(
-            ExpectedConditions.elementToBeClickable(paintIcon)
-        );
-        scrollAndClick(element);
+    public WebElement getHomeRepair() {
+        return homeRepair;
     }
 
-    public void selectCity() {
-        WebElement element = wait.until(
-            ExpectedConditions.elementToBeClickable(location)
-        );
-        scrollAndClick(element);
+    public WebElement getSwitchSocket() {
+        return switchSocket;
     }
 
-    public void clickHomeRepair() {
-
-        waitForLoader();
-
-        WebElement element = wait.until(
-            ExpectedConditions.visibilityOf(homeRepair)
-        );
-
-        scrollAndClick(element);
+    public WebElement getOverlay() {
+        return overlay;
     }
 
-    public void clickSwitchSocket() {
+	public WebElement getAddProduct() {
+		return AddProduct;
 
-        WebElement element = wait.until(
-            ExpectedConditions.visibilityOf(switchSocket)
-        );
+	}
 
-        scrollAndClick(element);
+	public WebElement getAddSpecificProduct() {
+		return AddSpecificProduct;
+	}
 
-        // wait for ADD buttons to load
-        wait.until(ExpectedConditions.presenceOfElementLocated(
-            By.xpath("//button[normalize-space()='Add']")
-        ));
-    }
 
-    public void clickAdd() {
 
-        waitForLoader();
+	public WebElement getLoginpopup() {
+		return loginpopup;
+	}
 
-        List<WebElement> buttons = wait.until(
-            ExpectedConditions.presenceOfAllElementsLocatedBy(
-                By.xpath("//button[normalize-space()='Add']")
-            )
-        );
-
-        for (WebElement btn : buttons) {
-
-            if (btn.isDisplayed()) {
-
-                scrollAndClick(btn);
-                break;
-            }
-        }
-    }
-
-    // 🔹 Validation
-
-    public boolean isLoginPopupDisplayed() {
-
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
-            wait.until(ExpectedConditions.or(
-                ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//input[@type='tel']")
-                ),
-                ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//button[contains(text(),'Continue')]")
-                )
-            ));
-
-            return true;
-
-        } catch (Exception e) {
-            return false;
-        }
-    }
+	
 }

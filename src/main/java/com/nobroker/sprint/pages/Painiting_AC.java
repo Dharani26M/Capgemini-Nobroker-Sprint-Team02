@@ -19,7 +19,6 @@ public class Painiting_AC {
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-    // 🔹 Elements
 
     @FindBy(xpath = "//span[contains(text(),'Painting')]")
     private WebElement paintIcon;
@@ -32,86 +31,63 @@ public class Painiting_AC {
 
     @FindBy(xpath = "//div[contains(text(),'AC Repair')]")
     private WebElement acRepair;
+    
+    @FindBy(xpath="//div[contains(@class,'busy-holder')]")
+    private WebElement Overlay;
+    
+    @FindBy(xpath="//div[contains(text(),'Foam Blast AC Service')]/ancestor::div//button[.='Add']")
+    private WebElement Add;
+    
+    @FindBy(xpath = "//div[contains(text(),'Split AC Service')]/following::button[1]")
+    private WebElement AddSpecific;
+    
+    @FindBy(id = "add-ons-proceed")
+    private WebElement Proceed;
+    
+    
+    @FindBy(xpath="//div[contains(text(),'Order Summary')]")
+    private WebElement Verify;
+    
 
-    // 🔹 Utility
+    public WebElement getVerify() {
+		return Verify;
+	}
 
-    private void waitForLoader() {
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                By.xpath("//div[contains(@class,'busy-holder')]")
-        ));
-    }
+	public WebElement getPaintIcon() {
+		return paintIcon;
+	}
+    
+    public WebElement getLocation() {
+		return location;
+	}
 
-    private void scrollAndClick(WebElement element) {
+	public WebElement getOverlay() {
+		return Overlay;
+	}
 
-        ((JavascriptExecutor) driver).executeScript(
-                "arguments[0].scrollIntoView({block:'center'});", element
-        );
+	public WebElement getAcSection() {
+		return acSection;
+	}
 
-        try { Thread.sleep(800); } catch (Exception e) {}
+	
+	public WebElement getAcRepair() {
+		return acRepair;
+	}
 
-        try {
-            element.click();
-        } catch (Exception e) {
-            ((JavascriptExecutor) driver)
-                    .executeScript("arguments[0].click();", element);
-        }
-    }
+	public WebElement getProceed() {
+		return Proceed;
+	}
 
-    // 🔹 Actions
+	public WebElement getAdd() {
+		return Add;
+	}
 
-    public void clickPainting() {
-        waitForLoader();
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(paintIcon));
-        scrollAndClick(element);
-    }
+	public WebElement getAddSpecific() {
+		return AddSpecific;
+	}
 
-    public void selectCity() {
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(location));
-        scrollAndClick(element);
-    }
+	
+	
+	
 
-    public void clickACSection() {
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(acSection));
-        scrollAndClick(element);
-    }
-
-    public void clickACRepair() {
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(acRepair));
-        scrollAndClick(element);
-    }
-
-    public void clickAddButton() {
-
-        waitForLoader();
-
-        List<WebElement> addButtons = wait.until(
-                ExpectedConditions.presenceOfAllElementsLocatedBy(
-                        By.xpath("//button[contains(text(),'Add')]")
-                )
-        );
-
-        for (WebElement btn : addButtons) {
-            if (btn.isDisplayed()) {
-
-                scrollAndClick(btn);
-                break;
-            }
-        }
-    }
-
-    // 🔹 Validation
-
-    public boolean isLoginPopupDisplayed() {
-
-        try {
-            wait.until(ExpectedConditions.or(
-                    ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@type='tel']")),
-                    ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[contains(text(),'Continue')]"))
-            ));
-            return true;
-
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }

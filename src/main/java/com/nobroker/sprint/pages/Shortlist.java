@@ -5,11 +5,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nobroker.sprint.utils.AllUtilities;
+
 public class Shortlist {
-	WebDriver driver;
+	public WebDriver driver;
+	public AllUtilities utility;
+	
 	public Shortlist(WebDriver driver) {
-		 this.driver = driver;
-		PageFactory.initElements(driver,this);
+		this.driver=driver;
+		this.utility = new AllUtilities();
+		this.utility.initializeDriver(driver); 
 	}
 	
 	@FindBy(id="profile-icon")

@@ -1,24 +1,23 @@
 package com.nobroker.sprint.pages;
 
-import java.time.Duration;
-
-import org.openqa.selenium.*;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.*;
+
+import com.nobroker.sprint.utils.AllUtilities;
 
 public class RentalPage {
 
-    WebDriver driver;
-    WebDriverWait wait;
+    public WebDriver driver;
+    public AllUtilities utility;
 
     public RentalPage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.utility = new AllUtilities();
+        this.utility.initializeDriver(driver);
     }
 
-    // 🔹 Elements
     @FindBy(xpath = "//span[contains(text(),'Rental Agreement')]")
     private WebElement rentalAgreementIcon;
 
@@ -70,102 +69,87 @@ public class RentalPage {
     @FindBy(xpath = "//button[.='Save and Continue']")
     private WebElement continueButton;
 
-    // 🔥 CITY POPUP ELEMENT
     @FindBy(xpath = "//input[@placeholder='Type city name']")
     private WebElement cityPopupInput;
 
     @FindBy(xpath = "//div[text()='Chennai']")
     private WebElement chennaiOption;
 
-    // 🔹 Utility
-    private void click(WebElement element) {
-        wait.until(ExpectedConditions.elementToBeClickable(element));
-        try {
-            element.click();
-        } catch (Exception e) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
-        }
+    // ================= GETTERS =================
+
+    public WebElement getRentalAgreementIcon() {
+        return rentalAgreementIcon;
     }
 
-    private void type(WebElement element, String value) {
-        wait.until(ExpectedConditions.visibilityOf(element));
-        element.clear();
-        element.sendKeys(value);
+    public WebElement getProceed() {
+        return proceed;
     }
 
-    // 🔹 Actions
-
-    public void clickRentalAgreementIcon() {
-        click(rentalAgreementIcon);
+    public WebElement getUploadDraft() {
+        return uploadDraft;
     }
 
-    // 🔥 HANDLE CITY POPUP (IMPORTANT)
-    public void selectCityFromPopup(String city) {
-
-        wait.until(ExpectedConditions.visibilityOf(cityPopupInput));
-        cityPopupInput.sendKeys(city);
-
-        cityPopupInput.sendKeys(Keys.ENTER);
-
-        wait.until(ExpectedConditions.invisibilityOf(cityPopupInput));
+    public WebElement getUploadFile() {
+        return uploadFile;
     }
 
-    public void selectChennaiDirect() {
-    	  WebElement chennai = wait.until(ExpectedConditions.elementToBeClickable(
-    		        By.xpath("//img[@alt='Chennai']/parent::div")
-    		    ));
-
-    		    chennai.click();
+    public WebElement getCityDropdown() {
+        return cityDropdown;
     }
 
-    public void clickProceed() {
-        click(proceed);
+    public WebElement getCitySearch() {
+        return citySearch;
     }
 
-    public void clickUploadDraft() {
-        click(uploadDraft);
+    public WebElement getRefundableAmount() {
+        return refundableAmount;
     }
 
-    public void uploadFile(String path) {
-        uploadFile.sendKeys(path);
+    public WebElement getStampPaperAmt() {
+        return stampPaperAmt;
     }
 
-    public void selectCity(String city) {
-        click(cityDropdown);
-        type(citySearch, city);
-        citySearch.sendKeys(Keys.ARROW_DOWN);
-        citySearch.sendKeys(Keys.ENTER);
+    public WebElement getRadioBtnYes() {
+        return radioBtnYes;
     }
 
-    public void enterRefund(String amount) {
-        type(refundableAmount, amount);
+    public WebElement getOwner() {
+        return owner;
     }
 
-    public void selectStamp() {
-        click(stampPaperAmt);
+    public WebElement getLandlordName() {
+        return landlordName;
     }
 
-    public void selectMaintenanceYes() {
-        click(radioBtnYes);
+    public WebElement getLandlordEmail() {
+        return landlordEmail;
     }
 
-    public void selectOwner() {
-        click(owner);
+    public WebElement getLandlordPhone() {
+        return landlordPhone;
     }
 
-    public void enterLandlordDetails(String name, String email, String phone) {
-        type(landlordName, name);
-        type(landlordEmail, email);
-        type(landlordPhone, phone);
+    public WebElement getTenantName() {
+        return tenantName;
     }
 
-    public void enterTenantDetails(String name, String email, String phone) {
-        type(tenantName, name);
-        type(tenantEmail, email);
-        type(tenantPhone, phone);
+    public WebElement getTenantEmail() {
+        return tenantEmail;
     }
 
-    public void clickContinue() {
-        click(continueButton);
+    public WebElement getTenantPhone() {
+        return tenantPhone;
+    }
+
+    public WebElement getContinueButton() {
+        return continueButton;
+    }
+
+    public WebElement getCityPopupInput() {
+        return cityPopupInput;
+    }
+
+    public WebElement getChennaiOption() {
+        return chennaiOption;
     }
 }
