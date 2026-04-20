@@ -9,6 +9,7 @@
           <include name="tearDownClass"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           <include name="runScenario" invocation-numbers="0 3 5"/>
 =======
           <include name="runScenario" invocation-numbers="0"/>
@@ -16,6 +17,9 @@
 =======
           <include name="runScenario" invocation-numbers="5"/>
 >>>>>>> 1314867 (updated code for refer and earn)
+=======
+          <include name="runScenario" invocation-numbers="1"/>
+>>>>>>> 70249ad (Menu And Profile Module Updation With Cucumber Reports)
         </methods>
       </class> <!-- com.nobroker.sprint.runner.RunnerIO -->
     </classes>
