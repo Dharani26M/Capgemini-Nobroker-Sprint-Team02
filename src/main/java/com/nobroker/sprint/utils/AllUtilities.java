@@ -13,6 +13,7 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
@@ -31,7 +32,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 public class AllUtilities {
 	private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
-	public WebDriver driver;
+	public static WebDriver driver;
 	WebDriverWait wait;
 	Actions action;
 	public HandleCookies hs = new HandleCookies();
@@ -40,7 +41,12 @@ public class AllUtilities {
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
 		tlDriver.set(driver);  
-	}
+	
+	}	 
+
+
+
+	JavascriptExecutor js = (JavascriptExecutor) driver;
 
 	// maximize browser
 	public void ConfigMaximizeBrowser() {
@@ -141,7 +147,7 @@ public class AllUtilities {
 	// Explicit wait
 	public void WaitForToBeClickableOfElement(long seconds, WebElement ele) {
 		wait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-		wait.until(ExpectedConditions.elementToBeClickable(ele));
+		 wait.until(ExpectedConditions.elementToBeClickable(ele));
 	}
 
 	// popups
@@ -250,8 +256,6 @@ public class AllUtilities {
 				+ date.getYear();
 	}
 
-	// EXTENT REPORT
-
 	private static ExtentReports extent;
 	private static final ThreadLocal<ExtentTest> testThreadLocal = new ThreadLocal<>();
 
@@ -310,4 +314,21 @@ public class AllUtilities {
 		return path;
 	}
 
+	// Scroll
+	public void scrollToElement(WebElement element) {
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+	}
+
+	public void navigateDownDropdown(WebElement element, int count, int delay) {
+		Actions action = new Actions(driver);
+		element.click();
+		for (int i = 0; i < count; i++) {
+			action.sendKeys(Keys.ARROW_DOWN).perform();
+		}
+
+		action.sendKeys(Keys.ENTER).perform();
+	}
 }
+
+

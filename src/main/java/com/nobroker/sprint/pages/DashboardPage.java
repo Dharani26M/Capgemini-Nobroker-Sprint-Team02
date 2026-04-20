@@ -3,6 +3,7 @@ package com.nobroker.sprint.pages;
 
 import java.time.Duration;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -22,7 +23,9 @@ public class DashboardPage {
 		this.driver = driver;
 		utility = new AllUtilities();
 		this.utility.initializeDriver(driver);
-	}
+	} 
+	
+
 
 	@FindBy(xpath = "//div[contains(@class,'nb-select__control')]")
 	private WebElement cityDropdown;
@@ -240,5 +243,7 @@ public class DashboardPage {
 			return false;
 		}
 	}
+
+
 
 }

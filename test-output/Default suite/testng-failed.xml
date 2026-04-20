@@ -6,6 +6,10 @@
       <class name="com.nobroker.sprint.runner.RunnerIO">
         <methods>
           <include name="setUpClass"/>
+<<<<<<< HEAD
+=======
+          <include name="runScenario" invocation-numbers="0"/>
+>>>>>>> PGandHostel-Module
           <include name="tearDownClass"/>
 <<<<<<< HEAD
 <<<<<<< HEAD

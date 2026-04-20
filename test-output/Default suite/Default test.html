@@ -55,6 +55,7 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
+<<<<<<< HEAD
 <td>Tests passed/Failed/Skipped:</td><td>8/0/0</td>
 </tr><tr>
 <<<<<<< HEAD
@@ -66,6 +67,13 @@ function toggleAllBoxes() {
 </tr>
 <tr><td>Total time:</td><td>58 seconds (58516 ms)</td>
 >>>>>>> MenuAndProfile-Module
+=======
+<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Apr 20 15:30:31 IST 2026</td>
+</tr>
+<tr><td>Total time:</td><td>22 seconds (22472 ms)</td>
+>>>>>>> PGandHostel-Module
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -82,6 +90,7 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <td title='com.nobroker.sprint.runner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.nobroker.sprint.runner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Refer an Owner and Earn", "Refer and Earn Validation"</td>
 <td></td>
@@ -156,6 +165,67 @@ function toggleAllBoxes() {
 >>>>>>> MenuAndProfile-Module
 <td>49</td>
 <td>com.nobroker.sprint.runner.RunnerIO@279fedbd</td></tr>
+=======
+<td title='com.nobroker.sprint.runner.RunnerIO.runScenario()'><b>runScenario</b><br>Test class: com.nobroker.sprint.runner.RunnerIO<br>Test method: Runs Cucumber Scenarios<br>Parameters: "User books a Microwave Repair service in Chennai", "AC and Appliance Repair Service on NoBroker"</td>
+<td><div><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (444, 4273)
+  (Session info: MicrosoftEdge=147.0.3912.72)
+Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a418c4835fbe828d9911d02063e62760, clickElement {id=f.ED7841D4A3880FD98149A7C63E99FA14.d.737971CFA7ACE388136F8312382C2D33.e.408}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 24516, ms:edgeOptions: {debuggerAddress: localhost:55436}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\prabh\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55436/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on windows (a418c4835fbe828d9911d02063e62760)] -&gt; xpath: //div[@id=&quot;APPLIANCE_MICROWAVE_MICROWAVE_REPAIR&quot;]/..//span[.=&apos;View details&apos;]]
+Session ID: a418c4835fbe828d9911d02063e62760
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.click(Unknown Source)
+	at com.nobroker.sprint.stepdefinitions.AcRepairTest.user_clicks_on_for_microwave_repair(AcRepairTest.java:57)
+	at ✽.User clicks on &quot;View details&quot; for Microwave Repair(file:///C:/Users/prabh/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/AcRepair.feature:9)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1769128714", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1769128714'><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (444, 4273)
+  (Session info: MicrosoftEdge=147.0.3912.72)
+Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.10&apos;
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a418c4835fbe828d9911d02063e62760, clickElement {id=f.ED7841D4A3880FD98149A7C63E99FA14.d.737971CFA7ACE388136F8312382C2D33.e.408}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 147.0.3912.72, fedcm:accounts: true, goog:processID: 24516, ms:edgeOptions: {debuggerAddress: localhost:55436}, msedge: {msedgedriverVersion: 147.0.3912.72 (d4380ba2b9dc..., userDataDir: C:\Users\prabh\AppData\Loca...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55436/devtoo..., se:cdpVersion: 147.0.3912.72, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on windows (a418c4835fbe828d9911d02063e62760)] -&gt; xpath: //div[@id=&quot;APPLIANCE_MICROWAVE_MICROWAVE_REPAIR&quot;]/..//span[.=&apos;View details&apos;]]
+Session ID: a418c4835fbe828d9911d02063e62760
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:51)
+	at jdk.proxy2/jdk.proxy2.$Proxy23.click(Unknown Source)
+	at com.nobroker.sprint.stepdefinitions.AcRepairTest.user_clicks_on_for_microwave_repair(AcRepairTest.java:57)
+	at ✽.User clicks on &quot;View details&quot; for Microwave Repair(file:///C:/Users/prabh/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/AcRepair.feature:9)
+</pre></div></td>
+<td>21</td>
+<td>com.nobroker.sprint.runner.RunnerIO@24313fcc</td></tr>
+>>>>>>> PGandHostel-Module
 </table><p>
 </body>
 </html>

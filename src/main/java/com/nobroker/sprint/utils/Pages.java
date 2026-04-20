@@ -87,7 +87,16 @@ public class Pages {
 		
 		
 
-		
+		homecleaning=new HomeCleaningPage(driver);
+		homecleaning = PageFactory.initElements(driver, HomeCleaningPage.class);
+		Careers = new CareersPage(driver);
+		Careers = PageFactory.initElements(driver, CareersPage.class);
+		PgHostel=new PG_HostelPage(driver);
+		PgHostel = PageFactory.initElements(driver, PG_HostelPage.class);
+		 PostProperty= new PostyourPropertyPage(driver);
+		 PostProperty = PageFactory.initElements(driver, PostyourPropertyPage.class);
+		 acrepair= new AcRepairPage(driver);
+		 acrepair = PageFactory.initElements(driver, AcRepairPage.class);
 		
 		loanPage = new HomeLoanPage(driver);
 		loanPage = PageFactory.initElements(driver, HomeLoanPage.class);
@@ -134,5 +143,4 @@ public class Pages {
 
 	public static RentReceiptPage getRentpage() {
 		return get().rentpage;
-	}
-}
+
