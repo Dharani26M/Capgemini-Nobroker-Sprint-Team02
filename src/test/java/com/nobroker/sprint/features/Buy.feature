@@ -14,18 +14,3 @@ And user select the property from list
 Then user clicks on contact builder 
 
 
-Scenario Outline: The user wants to see the nearby metro lines
-When user clicks on buy button
-And user selects the city "<city>"
-And user enters the locality "<locality>"
-And user clicks on search
-And user skips the popup
-And user clicks on map 
-And user click on metro 
-Then user should see the line 
-
-Examples:
-|city    |locality |
-|Chennai |velachery|
-|Chennai |guindy   |
-|Bangalore|Indiranagar|
