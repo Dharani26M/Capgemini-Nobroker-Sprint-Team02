@@ -12,7 +12,7 @@ import io.cucumber.testng.CucumberOptions;
 		glue = "com.nobroker.sprint.stepdefinitions")
 
 public class RunnerIO extends AbstractTestNGCucumberTests {
-//	
+//	parallel execution
 	@Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {
