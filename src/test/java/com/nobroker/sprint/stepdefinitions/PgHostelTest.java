@@ -39,7 +39,7 @@ public class PgHostelTest extends AllUtilities {
 	@When("User clicks on the location field and enters location")
 	public void user_clicks_on_the_location_field_and_enters_location() {
 		WaitForAllElements(40);
-		Pages.PgHostel.getLocation().click();
+		Pages.get().PgHostel.getLocation().click();
 		navigateDownDropdown(Pages.PgHostel.getLocation(), 3, 10);
 
 	}

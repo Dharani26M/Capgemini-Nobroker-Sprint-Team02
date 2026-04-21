@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+<testng-results ignored="0" total="8" passed="7" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
+<<<<<<< HEAD
   <suite started-at="2026-04-20T17:49:25 IST" name="Default suite" finished-at="2026-04-20T17:51:02 IST" duration-ms="97094">
+=======
+  <suite started-at="2026-04-21T13:49:43 IST" name="Default suite" finished-at="2026-04-21T13:51:17 IST" duration-ms="94659">
+>>>>>>> MenuAndProfile-Module
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
+<<<<<<< HEAD
     <test started-at="2026-04-20T17:49:25 IST" name="Default test" finished-at="2026-04-20T17:51:02 IST" duration-ms="97094">
       <class name="com.nobroker.sprint.runner.RunnerIO">
         <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:25 IST" name="setUpClass" finished-at="2026-04-20T17:49:26 IST" duration-ms="613" status="PASS">
@@ -15,29 +20,54 @@
             <param index="0">
               <value>
                 <![CDATA[org.testng.TestRunner@7cc586a8]]>
+=======
+    <test started-at="2026-04-21T13:49:43 IST" name="Default test" finished-at="2026-04-21T13:51:17 IST" duration-ms="94659">
+      <class name="com.nobroker.sprint.runner.RunnerIO">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="setUpClass" finished-at="2026-04-21T13:49:43 IST" duration-ms="427" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@2187fff7]]>
+>>>>>>> MenuAndProfile-Module
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:40 IST" duration-ms="74647" status="PASS">
           <params>
             <param index="0">
               <value>
                 <![CDATA["Generate and download a Rent Receipt"]]>
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:29 IST" duration-ms="45655" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["End-to-End validation of Rewards and VIP Membership flow"]]>
+>>>>>>> MenuAndProfile-Module
               </value>
             </param>
             <param index="1">
               <value>
+<<<<<<< HEAD
                 <![CDATA["Rent Receipts Validation"]]>
+=======
+                <![CDATA["NoBroker Rewards and Membership Navigation"]]>
+>>>>>>> MenuAndProfile-Module
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:40 IST" duration-ms="74653" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:29 IST" duration-ms="45655" status="PASS">
+>>>>>>> MenuAndProfile-Module
           <params>
             <param index="0">
               <value>
@@ -53,6 +83,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:51:02 IST" duration-ms="96398" status="PASS">
           <params>
             <param index="0">
@@ -86,6 +117,9 @@
           </reporter-output>
         </test-method> <!-- runScenario -->
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:41 IST" duration-ms="74676" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:42 IST" duration-ms="58516" status="PASS">
+>>>>>>> MenuAndProfile-Module
           <params>
             <param index="0">
               <value>
@@ -101,7 +135,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:40 IST" duration-ms="74648" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:35 IST" duration-ms="52125" status="PASS">
+>>>>>>> MenuAndProfile-Module
           <params>
             <param index="0">
               <value>
@@ -117,7 +155,43 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:41 IST" duration-ms="74670" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:29 IST" duration-ms="45653" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Navigate to Painting and Cleaning Home Interiors"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Paintings and Cleaning Validation"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:35 IST" duration-ms="52072" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Generate and download a Rent Receipt"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Rent Receipts Validation"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:29 IST" duration-ms="45658" status="PASS">
+>>>>>>> MenuAndProfile-Module
           <params>
             <param index="0">
               <value>
@@ -133,7 +207,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:40 IST" duration-ms="74647" status="PASS">
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:51:17 IST" duration-ms="94189" status="FAIL">
+>>>>>>> MenuAndProfile-Module
           <params>
             <param index="0">
               <value>
@@ -146,10 +224,61 @@
               </value>
             </param>
           </params>
+<<<<<<< HEAD
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
         <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:51:02 IST" name="tearDownClass" finished-at="2026-04-20T17:51:02 IST" duration-ms="23" status="PASS">
+=======
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//button[text()=' Go Premium']"}
+  (Session info: chrome=147.0.7727.102)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: '4.38.0', revision: '6b412e825c*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.4'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9b45b16024593c894e14ed902ca094cb, findElement {value=//button[text()=' Go Premium'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.102, chrome: {chromedriverVersion: 147.0.7727.57 (b4f28b5637d0..., userDataDir: C:\Users\itsdh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64971}, goog:processID: 25052, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64971/devtoo..., se:cdpVersion: 147.0.7727.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9b45b16024593c894e14ed902ca094cb]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//button[text()=' Go Premium']"}
+  (Session info: chrome=147.0.7727.102)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+Build info: version: '4.38.0', revision: '6b412e825c*'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.4'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [9b45b16024593c894e14ed902ca094cb, findElement {value=//button[text()=' Go Premium'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.102, chrome: {chromedriverVersion: 147.0.7727.57 (b4f28b5637d0..., userDataDir: C:\Users\itsdh\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:64971}, goog:processID: 25052, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:64971/devtoo..., se:cdpVersion: 147.0.7727.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 9b45b16024593c894e14ed902ca094cb
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:380)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at jdk.proxy2/jdk.proxy2.$Proxy26.isDisplayed(Unknown Source)
+at com.nobroker.sprint.stepdefinitions.PostProperty.the_user_should_see_the_property_listing_options(PostProperty.java:51)
+at ✽.the user should see property listing options(file:///C:/Users/itsdh/Capgemini_Selenium_Training/nobroker-sprint-team02-automation/src/test/java/com/nobroker/sprint/features/PostProperty.feature:11)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:51:17 IST" name="tearDownClass" finished-at="2026-04-21T13:51:17 IST" duration-ms="11" status="PASS">
+>>>>>>> MenuAndProfile-Module
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

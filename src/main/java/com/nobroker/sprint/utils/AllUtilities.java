@@ -9,10 +9,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.Properties;
 import java.util.Random;
-import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -34,304 +32,334 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class AllUtilities {
 
-    private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
-    private static final ThreadLocal<ExtentTest> testThreadLocal = new ThreadLocal<>();
-    private static ExtentReports extent;
+	private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
 
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public Actions action;
-    public HandleCookies hc = new HandleCookies();
-    public ReaderUtilities ru = new ReaderUtilities();
+	
+	private static ExtentReports extent;
+	private static final ThreadLocal<ExtentTest> scenarioTest = new ThreadLocal<>();
+	private static final ThreadLocal<ExtentTest> stepNode = new ThreadLocal<>();
 
-    /**
-     * Initializes the driver and supporting classes like Actions and WebDriverWait.
-     * Sets the ThreadLocal driver for parallel execution support.
-     */
-    public void initializeDriver(WebDriver driver) {
-        this.driver = driver;
-        tlDriver.set(driver);
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        this.action = new Actions(driver);
-    }
+	public WebDriver driver;
+	public WebDriverWait wait;
+	public Actions action;
+	public HandleCookies hc = new HandleCookies();
+	public ReaderUtilities ru = new ReaderUtilities();
 
-    // --- Browser Configuration Methods ---
+	public void initializeDriver(WebDriver driver) {
+		this.driver = driver;
+		tlDriver.set(driver);
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.action = new Actions(driver);
+	}
 
-    public void ConfigMaximizeBrowser() {
-        driver.manage().window().maximize();
-    }
+	// --- Browser Configuration Methods ---
+	public void ConfigMaximizeBrowser() {
+		driver.manage().window().maximize();
+	}
 
-    public void ConfigMinmizeBrowser() {
-        driver.manage().window().minimize();
-    }
+	public void ConfigMinmizeBrowser() {
+		driver.manage().window().minimize();
+	}
 
-    public void ConfigFullscreenBrowser() {
-        driver.manage().window().fullscreen();
-    }
+	public void ConfigFullscreenBrowser() {
+		driver.manage().window().fullscreen();
+	}
 
-    public Dimension FetchBrowserSize() {
-        return driver.manage().window().getSize();
-    }
+	public Dimension FetchBrowserSize() {
+		return driver.manage().window().getSize();
+	}
 
-    public void ConfigBrowserSize(int width, int height) {
-        driver.manage().window().setSize(new Dimension(width, height));
-    }
+	public void ConfigBrowserSize(int w, int h) {
+		driver.manage().window().setSize(new Dimension(w, h));
+	}
 
-    public Point FetchBrowserCoordinates() {
-        return driver.manage().window().getPosition();
-    }
+	public Point FetchBrowserCoordinates() {
+		return driver.manage().window().getPosition();
+	}
 
-    public void ConfigBrowserCoordinates(int x, int y) {
-        driver.manage().window().setPosition(new Point(x, y));
-    }
+	public void ConfigBrowserCoordinates(int x, int y) {
+		driver.manage().window().setPosition(new Point(x, y));
+	}
 
-    // --- Navigation Methods ---
+	// --- Navigation Methods ---
+	public void navigateToApplication(String url) {
+		driver.navigate().to(url);
+	}
 
-    public void navigateToApplication(String url) {
-        driver.navigate().to(url);
-    }
+	public void navigateToForward() {
+		driver.navigate().forward();
+	}
 
-    public void navigateToForward() {
-        driver.navigate().forward();
-    }
+	public void navigateToBackward() {
+		driver.navigate().back();
+	}
 
-    public void navigateToBackward() {
-        driver.navigate().back();
-    }
+	public void RefreshCurrentpage() {
+		driver.navigate().refresh();
+	}
 
-    public void RefreshCurrentpage() {
-        driver.navigate().refresh();
-    }
+	public void EnterUrl(String url) {
+		driver.get(url);
+	}
 
-    public void EnterUrl(String url) {
-        driver.get(url);
-    }
+	public String FetchApplicationTitle() {
+		return driver.getTitle();
+	}
 
-    public String FetchApplicationTitle() {
-        return driver.getTitle();
-    }
+	public String FetchApplicationUrl() {
+		return driver.getCurrentUrl();
+	}
 
-    public String FetchApplicationUrl() {
-        return driver.getCurrentUrl();
-    }
+	public void CloseParentTab() {
+		driver.close();
+	}
 
-    public void CloseParentTab() {
-        driver.close();
-    }
+	public void QuitBrowser() {
+		driver.quit();
+	}
 
-    public void QuitBrowser() {
-        driver.quit();
-    }
+	// --- Wait Utility Methods ---
+	public void WaitForAllElements(long seconds) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
+	}
 
-    // --- Wait Utility Methods ---
+	public void WaitForVisibiltyOfElement(long seconds, WebElement ele) {
+		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.visibilityOf(ele));
+	}
 
-    public void WaitForAllElements(long seconds) {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
-    }
+	public void WaitForInvisibilityOfElement(int seconds, By locator) {
+		new WebDriverWait(driver, Duration.ofSeconds(seconds))
+				.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+	}
 
-    public void WaitForVisibiltyOfElement(long seconds, WebElement ele) {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-        explicitWait.until(ExpectedConditions.visibilityOf(ele));
-    }
+	public void waitForInvisibilityOfElement(WebElement element, int seconds) {
+		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.invisibilityOf(element));
+	}
 
-    public void WaitForInvisibilityOfElement(int seconds, By locator) {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-        explicitWait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
-    }
+	public void WaitForToBeClickableOfElement(long seconds, WebElement ele) {
+		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.elementToBeClickable(ele));
+	}
 
-    public void waitForInvisibilityOfElement(WebElement element, int seconds) {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-        explicitWait.until(ExpectedConditions.invisibilityOf(element));
-    }
+	public WebElement WaitForToBeClickableOfElement(int timeout, By locator) {
+		return new WebDriverWait(driver, Duration.ofSeconds(timeout))
+				.until(ExpectedConditions.elementToBeClickable(locator));
+	}
 
-    public void WaitForToBeClickableOfElement(long seconds, WebElement ele) {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(seconds));
-        explicitWait.until(ExpectedConditions.elementToBeClickable(ele));
-    }
+	public WebElement waitForRefreshedVisibility(By locator, int timeout) {
+		return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(locator)));
+	}
 
-    public WebElement WaitForToBeClickableOfElement(int timeout, By locator) {
-        WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
-        return explicitWait.until(ExpectedConditions.elementToBeClickable(locator));
-    }
+	public void waitForElementOrTimeout(By locator, int timeout) {
+		try {
+			new WebDriverWait(driver, Duration.ofSeconds(timeout))
+					.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		} catch (Exception e) {
+			System.out.println("Element not found within " + timeout + "s, continuing: " + locator);
+		}
+	}
 
-    public WebElement waitForRefreshedVisibility(By locator, int timeout) {
-        return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(locator)));
-    }
+	// --- JavaScript & Scroll Utilities ---
+	public void scrollToElement(WebElement element) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+		pauseOnAction(300);
+	}
 
-    public void waitForElementOrTimeout(By locator, int timeout) {
-        try {
-            new WebDriverWait(driver, Duration.ofSeconds(timeout)).until(ExpectedConditions.visibilityOfElementLocated(locator));
-        } catch (Exception e) {
-            System.out.println("Element not found within " + timeout + "s, continuing: " + locator);
-        }
-    }
+	public void scrollBypixcel(int pixels) {
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,arguments[0]);", pixels);
+	}
 
-    // --- JavaScript & Scroll Utilities ---
+	public void jsClick(WebElement element) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+	}
 
-    public void scrollToElement(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
-        pauseOnAction(300);
-    }
+	public void clearField(WebElement element) {
+		element.sendKeys(Keys.CONTROL + "a");
+		element.sendKeys(Keys.DELETE);
+	}
 
-    public void scrollBypixcel(int pixels) {
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,arguments[0]);", pixels);
-    }
+	// --- Popups & Windows ---
+	public void AcceptAlertMessage() {
+		driver.switchTo().alert().accept();
+	}
 
-    public void jsClick(WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].click();", element);
-    }
+	public void DismissAlertMessage() {
+		driver.switchTo().alert().dismiss();
+	}
 
-    public void clearField(WebElement element) {
-        element.sendKeys(Keys.CONTROL + "a");
-        element.sendKeys(Keys.DELETE);
-    }
+	public void EnterPromptInPopup(String msg) {
+		driver.switchTo().alert().sendKeys(msg);
+	}
 
-    // --- Popups & Windows ---
+	public void DisplayPopupMessage() {
+		System.out.println(driver.switchTo().alert().getText());
+	}
 
-    public void AcceptAlertMessage() {
-        driver.switchTo().alert().accept();
-    }
+	public void SwitchWindowUsingTitle(String wantedTitle) {
+		for (String handle : driver.getWindowHandles()) {
+			driver.switchTo().window(handle);
+			if (driver.getTitle().contains(wantedTitle))
+				break;
+		}
+	}
 
-    public void DismissAlertMessage() {
-        driver.switchTo().alert().dismiss();
-    }
+	public void SwitchWindowUsingUrl(String wantedURL) {
+		for (String handle : driver.getWindowHandles()) {
+			driver.switchTo().window(handle);
+			if (driver.getCurrentUrl().contains(wantedURL))
+				break;
+		}
+	}
 
-    public void EnterPromptInPopup(String message) {
-        driver.switchTo().alert().sendKeys(message);
-    }
+	// --- File & Property Readers ---
+	public String getPropertyKeyValue(String key) throws IOException {
+		FileInputStream fs = new FileInputStream("./src/test/resources/Readers/Common.properties");
+		Properties prop = new Properties();
+		prop.load(fs);
+		return prop.getProperty(key);
+	}
 
-    public void DisplayPopupMessage() {
-        System.out.println(driver.switchTo().alert().getText());
-    }
+	// --- Action Class Wrappers ---
+	public void pauseOnAction(long ms) {
+		action.pause(ms).perform();
+	}
 
-    public void SwitchWindowUsingTitle(String wantedTitle) {
-        Set<String> weblist = driver.getWindowHandles();
-        for (String handle : weblist) {
-            driver.switchTo().window(handle);
-            if (driver.getTitle().contains(wantedTitle)) break;
-        }
-    }
+	public void clickOnElement(WebElement element) {
+		action.click(element).perform();
+	}
 
-    public void SwitchWindowUsingUrl(String wantedURL) {
-        Set<String> weblist = driver.getWindowHandles();
-        for (String handle : weblist) {
-            driver.switchTo().window(handle);
-            if (driver.getCurrentUrl().contains(wantedURL)) break;
-        }
-    }
+	public void sendKeys(WebElement element, String value) {
+		action.sendKeys(element, value).perform();
+	}
 
-    // --- File & Property Readers ---
+	public void navigateDownDropdown(WebElement element, int count, long ms) {
+		action.click(element).pause(ms);
+		for (int i = 0; i < count; i++)
+			action.sendKeys(Keys.ARROW_DOWN);
+		action.sendKeys(Keys.ENTER).perform();
+	}
 
-    public String getPropertyKeyValue(String key) throws IOException {
-        FileInputStream fs = new FileInputStream("./src/test/resources/Readers/Common.properties");
-        Properties prop = new Properties();
-        prop.load(fs);
-        return prop.getProperty(key);
-    }
+	// --- Date & Random Generators ---
+	public int getRandomNumber(int range) {
+		return new Random().nextInt(range);
+	}
 
-    // --- Action Class Wrappers ---
+	public String getCurrentDate(String fmt) {
+		return new SimpleDateFormat(fmt).format(new Date());
+	}
 
-    public void pauseOnAction(long timeInMilliseconds) {
-        action.pause(timeInMilliseconds).perform();
-    }
+	public String getFutureDate(int days) {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DAY_OF_MONTH, days);
+		return sdf.format(cal.getTime());
+	}
 
-    public void clickOnElement(WebElement element) {
-        action.click(element).perform();
-    }
+	public String getDay(String dateStr) {
+		return String.valueOf(LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy")).getDayOfMonth());
+	}
 
-    public void sendKeys(WebElement element, String value) {
-        action.sendKeys(element, value).perform();
-    }
+	public String getMonthYear(String dateStr) {
+		LocalDate date = LocalDate.parse(dateStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		String month = date.getMonth().name();
+		return month.substring(0, 1) + month.substring(1).toLowerCase() + " " + date.getYear();
+	}
 
-    public void navigateDownDropdown(WebElement element, int count, long milliseconds) {
-        action.click(element).pause(milliseconds);
-        for (int i = 0; i < count; i++) {
-            action.sendKeys(Keys.ARROW_DOWN);
-        }
-        action.sendKeys(Keys.ENTER).perform();
-    }
+	public static synchronized ExtentReports getReport() {
+		if (extent == null) {
+			ExtentSparkReporter reporter = new ExtentSparkReporter("Reports/extent.html");
+			reporter.config().setReportName("NoBroker Automation Report");
+			reporter.config().setDocumentTitle("NoBroker Test Results");
+			extent = new ExtentReports();
+			extent.attachReporter(reporter);
+			extent.setSystemInfo("Application", "NoBroker");
+			extent.setSystemInfo("Team", "Capgemini Sprint Team 02");
+		}
+		return extent;
+	}
 
-    // --- Date & Random Generators ---
+	public static synchronized void createTest(String scenarioName) {
+		ExtentTest test = getReport().createTest(scenarioName);
+		scenarioTest.set(test);
+		stepNode.set(null); // clear any leftover step node
+	}
 
-    public int getRandomNumber(int range) {
-        return new Random().nextInt(range);
-    }
+	public static void createStepNode(String keyword, String stepText) {
+		ExtentTest parent = scenarioTest.get();
+		if (parent != null) {
+			ExtentTest node = parent.createNode("<b>" + keyword + "</b> " + stepText);
+			stepNode.set(node);
+		}
+	}
 
-    public String getCurrentDate(String dateFormat) {
-        return new SimpleDateFormat(dateFormat).format(new Date());
-    }
+	public static void pass(String msg) {
+		ExtentTest node = stepNode.get();
+		if (node != null) {
+			node.pass(msg);
+			return;
+		}
+		ExtentTest test = scenarioTest.get();
+		if (test != null)
+			test.pass(msg);
+	}
 
-    public String getFutureDate(int days) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DAY_OF_MONTH, days);
-        return sdf.format(cal.getTime());
-    }
+	public static void fail(String msg) {
+		ExtentTest node = stepNode.get();
+		if (node != null) {
+			node.fail(msg);
+			return;
+		}
+		ExtentTest test = scenarioTest.get();
+		if (test != null)
+			test.fail(msg);
+	}
 
-    public String getDay(String dateStr) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return String.valueOf(LocalDate.parse(dateStr, formatter).getDayOfMonth());
-    }
+	public static void info(String msg) {
+		ExtentTest node = stepNode.get();
+		if (node != null) {
+			node.info(msg);
+			return;
+		}
+		ExtentTest test = scenarioTest.get();
+		if (test != null)
+			test.info(msg);
+	}
+	public static void captureFailure(WebDriver driver, String testName) {
+		try {
+			WebDriver d = (driver != null) ? driver : tlDriver.get();
+			String name = testName.replaceAll(" ", "_");
+			if (d == null) {
+				fail("Test Failed: " + name + " (driver was null)");
+				return;
+			}
+			String relativePath = takeScreenshot(d, name);
+			String absolutePath = new File(relativePath).getAbsolutePath();
 
-    public String getMonthYear(String dateStr) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate date = LocalDate.parse(dateStr, formatter);
-        String month = date.getMonth().name();
-        return month.substring(0, 1) + month.substring(1).toLowerCase() + " " + date.getYear();
-    }
+			// Mark the current step node
+			ExtentTest node = stepNode.get();
+			if (node != null) {
+				node.fail("Step FAILED: " + name);
+				node.addScreenCaptureFromPath(absolutePath);
+			}
+			// Also mark the parent scenario node
+			ExtentTest test = scenarioTest.get();
+			if (test != null) {
+				test.fail("Scenario FAILED at: " + name);
+				if (node == null)
+					test.addScreenCaptureFromPath(absolutePath);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-    // --- Extent Reports & Screenshots ---
-
-    public static synchronized ExtentReports getReport() {
-        if (extent == null) {
-            ExtentSparkReporter reporter = new ExtentSparkReporter("Reports/extent.html");
-            extent = new ExtentReports();
-            extent.attachReporter(reporter);
-        }
-        return extent;
-    }
-
-    public static synchronized void createTest(String name) {
-        ExtentTest test = getReport().createTest(name);
-        testThreadLocal.set(test);
-    }
-
-    public static void pass(String msg) {
-        testThreadLocal.get().pass(msg);
-    }
-
-    public static void fail(String msg) {
-        testThreadLocal.get().fail(msg);
-    }
-
-    public static void captureFailure(WebDriver driver, String testName) {
-        try {
-            WebDriver d = (driver != null) ? driver : tlDriver.get();
-            if (d == null) {
-                testThreadLocal.get().fail("Test Failed: " + testName + " (driver was null)");
-                return;
-            }
-            String name = testName.replaceAll(" ", "_");
-            String relativePath = takeScreenshot(d, name);
-            File f = new File(relativePath);
-            String absolutePath = f.getAbsolutePath();
-            testThreadLocal.get().fail("Test Failed: " + name);
-            testThreadLocal.get().addScreenCaptureFromPath(absolutePath);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static String takeScreenshot(WebDriver driver, String name) {
-        String path = "Screenshot/" + name + "_" + System.currentTimeMillis() + ".png";
-        try {
-            File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileHandler.copy(src, new File(path));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return path;
-    }
+	public static String takeScreenshot(WebDriver driver, String name) {
+		String path = "Screenshot/" + name + "_" + System.currentTimeMillis() + ".png";
+		try {
+			File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+			FileHandler.copy(src, new File(path));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return path;
+	}
 }

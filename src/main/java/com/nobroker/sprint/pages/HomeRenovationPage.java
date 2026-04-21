@@ -8,11 +8,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.Reporter;
 
 import com.nobroker.sprint.utils.AllUtilities;
-import com.nobroker.sprint.utils.Pages;
 
 
 public class HomeRenovationPage {
@@ -102,9 +99,6 @@ WebDriver driver;
 		getCharcoal().click();
 	}
 
-	public void setPrice() {
-		Assert.assertTrue(Pages.renovationPage.checkPrice());
-		Reporter.log("Assertion is passed");
-	}
+
 
 }

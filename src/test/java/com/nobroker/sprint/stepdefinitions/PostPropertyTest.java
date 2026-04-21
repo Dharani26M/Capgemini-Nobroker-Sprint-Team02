@@ -27,88 +27,88 @@ public class PostPropertyTest extends AllUtilities {
 
 	@Given("the user has successfully logged into the application")
 	public void the_user_has_successfully_logged_into_the_application() {
-		WaitForVisibiltyOfElement(20, Pages.dashpage.getProfileImg());
-		Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed());
+		WaitForVisibiltyOfElement(20, Pages.get().dashpage.getProfileImg());
+		Assert.assertTrue(Pages.get().dashpage.getProfileImg().isDisplayed());
 	}
 
 	@When("User clicks on Post Your Property button")
 	public void user_clicks_on_post_your_property_button() {
 		WaitForAllElements(20);
-		Pages.PostProperty.getMenu().click();
-		Pages.PostProperty.getPropertylink().click();
+		Pages.get().postPage.getMenu().click();
+		Pages.get().postPage.getPropertylink().click();
 
 	}
 
 	@When("User Click PostNow")
 	public void user_click_post_now() {
-		WaitForToBeClickableOfElement(20,Pages.PostProperty.getPostNowBtn() );
-		scrollToElement(Pages.PostProperty.getPostNowBtn());
+		WaitForToBeClickableOfElement(20,Pages.get().postPage.getPostNowBtn() );
+		scrollToElement(Pages.get().postPage.getPostNowBtn());
 //		WaitForToBeClickableOfElement(20,Pages.PostProperty.getPostNowBtn() );
-		Pages.PostProperty.getPostNowBtn().click();
+		Pages.get().postPage.getPostNowBtn().click();
 
 	}
 
 	@When("User click SelectCity")
 	public void user_click_select_city() {
 //		WaitForAllElements(30);
-		scrollToElement(Pages.PostProperty.getSelectCity());
-		Pages.PostProperty.getSelectCity().click();
+		scrollToElement(Pages.get().postPage.getSelectCity());
+		Pages.get().postPage.getSelectCity().click();
 
 		WaitForAllElements(30);
-		navigateDownDropdown(Pages.PostProperty.getSelectCity(), 1, 10);
+		navigateDownDropdown(Pages.get().postPage.getSelectCity(), 1, 10);
 
 	}
 
 	@When("User click StartPosting")
 	public void user_click_start_posting() {
-		Pages.PostProperty.getPost().click();
+		Pages.get().postPage.getPost().click();
 
 	}
 
 	@When("User Enters the Property Details")
 	public void user_enters_the_property_details() {
-		Pages.PostProperty.accept(driver);
+		Pages.get().postPage.accept(driver);
 
-		scrollToElement(Pages.PostProperty.getNotification());
-		Pages.PostProperty.getNotification().click();
+		scrollToElement(Pages.get().postPage.getNotification());
+		Pages.get().postPage.getNotification().click();
 
-		Pages.PostProperty.getApartmentType().click();
-		navigateDownDropdown(Pages.PostProperty.getApartmentType(), 1, 10);
+		Pages.get().postPage.getApartmentType().click();
+		navigateDownDropdown(Pages.get().postPage.getApartmentType(), 1, 10);
 
-		Pages.PostProperty.getBHK().click();
-		navigateDownDropdown(Pages.PostProperty.getBHK(), 1, 10);
+		Pages.get().postPage.getBHK().click();
+		navigateDownDropdown(Pages.get().postPage.getBHK(), 1, 10);
 
-		Pages.PostProperty.getFloor().click();
-		navigateDownDropdown(Pages.PostProperty.getFloor(), 1, 10);
+		Pages.get().postPage.getFloor().click();
+		navigateDownDropdown(Pages.get().postPage.getFloor(), 1, 10);
 
-		Pages.PostProperty.getTotalFloor().click();
-		navigateDownDropdown(Pages.PostProperty.getTotalFloor(), 1, 10);
+		Pages.get().postPage.getTotalFloor().click();
+		navigateDownDropdown(Pages.get().postPage.getTotalFloor(), 1, 10);
 
-		Pages.PostProperty.getPropertyAge().click();
-		navigateDownDropdown(Pages.PostProperty.getPropertyAge(), 1, 10);
+		Pages.get().postPage.getPropertyAge().click();
+		navigateDownDropdown(Pages.get().postPage.getPropertyAge(), 1, 10);
 
-		Pages.PostProperty.getPropertyFacing().click();
-		navigateDownDropdown(Pages.PostProperty.getPropertyFacing(), 1, 10);
+		Pages.get().postPage.getPropertyFacing().click();
+		navigateDownDropdown(Pages.get().postPage.getPropertyFacing(), 1, 10);
 
-		Pages.PostProperty.getSize().click();
-		Pages.PostProperty.getSize().sendKeys("100");
-		Pages.PostProperty.getNotification1().click();
+		Pages.get().postPage.getSize().click();
+		Pages.get().postPage.getSize().sendKeys("100");
+		Pages.get().postPage.getNotification1().click();
 
 	}
 
 	@When("User Enters the Location")
 	public void user_enters_the_location() {
-		Pages.PostProperty.getCity().click();
-		navigateDownDropdown(Pages.PostProperty.getCity(), 5, 10);
-		Pages.PostProperty.getLocality().sendKeys("Porur");
-		navigateDownDropdown(Pages.PostProperty.getLocality(), 1, 10);
+		Pages.get().postPage.getCity().click();
+		navigateDownDropdown(Pages.get().postPage.getCity(), 5, 10);
+		Pages.get().postPage.getLocality().sendKeys("Porur");
+		navigateDownDropdown(Pages.get().postPage.getLocality(), 1, 10);
 
-		Pages.PostProperty.getStreet().sendKeys("Sivan Kovil");
+		Pages.get().postPage.getStreet().sendKeys("Sivan Kovil");
 	}
 
 	@When("User click the preview")
 	public void user_click_the_preview() {
-		Pages.PostProperty.getPreview().click();
+		Pages.get().postPage.getPreview().click();
 
 	}
 

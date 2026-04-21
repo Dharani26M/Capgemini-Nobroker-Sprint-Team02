@@ -7,7 +7,11 @@
         <methods>
           <include name="setUpClass"/>
           <include name="tearDownClass"/>
+<<<<<<< HEAD
           <include name="runScenario" invocation-numbers="4"/>
+=======
+          <include name="runScenario" invocation-numbers="3"/>
+>>>>>>> MenuAndProfile-Module
         </methods>
       </class> <!-- com.nobroker.sprint.runner.RunnerIO -->
     </classes>

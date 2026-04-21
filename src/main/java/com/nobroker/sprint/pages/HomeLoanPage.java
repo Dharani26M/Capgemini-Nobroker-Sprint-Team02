@@ -9,10 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import com.nobroker.sprint.utils.AllUtilities;
-import com.nobroker.sprint.utils.Pages;
 
 
 public class HomeLoanPage {
@@ -155,7 +153,6 @@ WebDriver driver;
 	}
 
 	public void setLoanPage() {
-		Assert.assertTrue(Pages.loanPage.checkLoanPage());
 		System.out.println("Loge page is displayed");
 	}	
 

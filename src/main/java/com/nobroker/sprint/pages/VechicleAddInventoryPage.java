@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Reporter;
 
 import com.nobroker.sprint.utils.AllUtilities;
 
@@ -122,9 +121,7 @@ public class VechicleAddInventoryPage {
 
 	        decBtn.click();
 
-	    } else {
-	        Reporter.log("Item not added yet, cannot decrement: " + carType);
-	    }
+	    } 
 	}
 	
 	public void RelocateFromCity(String City) {
