@@ -1,7 +1,10 @@
 
 package com.nobroker.sprint.stepdefinitions;
 
+import java.io.IOException;
 import java.time.Duration;
+
+import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -13,7 +16,7 @@ import org.testng.Assert;
 
 import com.nobroker.sprint.utils.AllUtilities;
 import com.nobroker.sprint.utils.BaseClass;
-import com.nobroker.sprint.utils.ExcelUtility;
+import com.nobroker.sprint.utils.ExcelUtilities;
 import com.nobroker.sprint.utils.Pages;
 
 import io.cucumber.java.en.*;
@@ -88,7 +91,7 @@ public class RentalTest extends AllUtilities {
     }
 
     @When("user enters required contract details")
-    public void user_enters_required_contract_details() throws InterruptedException {
+    public void user_enters_required_contract_details() throws InterruptedException, EncryptedDocumentException, IOException {
         // 1. Fill Refundable Amount
         fillField(Pages.rental.getRefundableAmount(), "9999");
 
@@ -116,15 +119,15 @@ public class RentalTest extends AllUtilities {
         Thread.sleep(1000); 
 
         // 5. Fill Landlord and Tenant details from Excel
-        ExcelUtility excel = new ExcelUtility();
+        ExcelUtilities excel = new ExcelUtilities(driver);
         
-        fillField(Pages.rental.getLandlordName(), excel.readdata("Sheet1", 1, 0));
-        fillField(Pages.rental.getLandlordEmail(), excel.readdata("Sheet1", 1, 1));
-        fillField(Pages.rental.getLandlordPhone(), excel.readdata("Sheet1", 1, 2));
+        fillField(Pages.rental.getLandlordName(), excel.getExcelData("Sheet1", 1, 0));
+        fillField(Pages.rental.getLandlordEmail(), excel.getExcelData("Sheet1", 1, 1));
+        fillField(Pages.rental.getLandlordPhone(), excel.getExcelData("Sheet1", 1, 2));
 
-        fillField(Pages.rental.getTenantName(), excel.readdata("Sheet1", 1, 3));
-        fillField(Pages.rental.getTenantEmail(), excel.readdata("Sheet1", 1, 4));
-        fillField(Pages.rental.getTenantPhone(), excel.readdata("Sheet1", 1, 5));
+        fillField(Pages.rental.getTenantName(), excel.getExcelData("Sheet1", 1, 3));
+        fillField(Pages.rental.getTenantEmail(), excel.getExcelData("Sheet1", 1, 4));
+        fillField(Pages.rental.getTenantPhone(), excel.getExcelData("Sheet1", 1, 5));
     }
 
     @When("user clicks on Save and Continue")
