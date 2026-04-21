@@ -6,7 +6,7 @@ public class BaseClass {
 
     private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
-    public WebDriver driver; // kept for source-level compatibility
+    public WebDriver driver; 
 
     public void setDriver(WebDriver driver) {
         this.driver = driver;

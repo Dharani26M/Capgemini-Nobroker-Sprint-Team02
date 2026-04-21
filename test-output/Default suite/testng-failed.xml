@@ -8,6 +8,7 @@
           <include name="setUpClass"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
           <include name="runScenario" invocation-numbers="0"/>
 >>>>>>> PGandHostel-Module
@@ -33,6 +34,10 @@
           <include name="tearDownClass"/>
           <include name="runScenario" invocation-numbers="3"/>
 >>>>>>> PGandHostel-Module
+=======
+          <include name="tearDownClass"/>
+          <include name="runScenario" invocation-numbers="4"/>
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
         </methods>
       </class> <!-- com.nobroker.sprint.runner.RunnerIO -->
     </classes>

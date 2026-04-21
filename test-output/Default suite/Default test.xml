@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <testsuite ignored="0" hostname="Dharani" failures="0" tests="8" name="Default test" time="61.583" errors="0" timestamp="2026-04-20T11:50:55 IST">
   <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="49.79"/>
   <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="49.79"/>
@@ -73,4 +74,15 @@ at ✽.User clicks on "View details" for Microwave Repair(file:///C:/Users/prabh
   <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="25.247"/>
   <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="84.472"/>
 >>>>>>> PGandHostel-Module
+=======
+<testsuite ignored="0" hostname="Dharani" failures="0" tests="8" name="Default test" time="97.094" errors="0" timestamp="2026-04-20T17:51:02 IST">
+  <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="74.648"/>
+  <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="74.653"/>
+  <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="74.647"/>
+  <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="74.647"/>
+  <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="74.668"/>
+  <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="74.67"/>
+  <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="74.676"/>
+  <testcase classname="io.cucumber.testng.AbstractTestNGCucumberTests" name="runScenario" time="96.398"/>
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
 </testsuite> <!-- Default test -->

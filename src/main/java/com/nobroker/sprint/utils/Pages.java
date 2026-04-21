@@ -3,13 +3,9 @@ package com.nobroker.sprint.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-<<<<<<< HEAD
-
 import com.nobroker.sprint.pages.Buy;
 import com.nobroker.sprint.pages.MapPage;
-=======
 import com.nobroker.sprint.pages.CareersPage;
->>>>>>> PGandHostel-Module
 import com.nobroker.sprint.pages.DashboardPage;
 import com.nobroker.sprint.pages.HomeLoanPage;
 import com.nobroker.sprint.pages.HomeRenovationPage;
@@ -24,7 +20,7 @@ public class Pages {
 	public HomeInteriorsPage homeinteriorpage;
 	public NewIconPage iconpage;
 	public PaintingsAndCleaningPage paintpage;
-	public PostYourPropertyPage postpage;
+	public PostyourPropertyPage postpage;
 	public ProfilePage profilepage;
 	public ReferAndEarnPage referpage;
 	public RentReceiptPage rentpage;
@@ -39,7 +35,7 @@ public class Pages {
 		p.homeinteriorpage = PageFactory.initElements(driver, HomeInteriorsPage.class);
 		p.iconpage = PageFactory.initElements(driver, NewIconPage.class);
 		p.paintpage = PageFactory.initElements(driver, PaintingsAndCleaningPage.class);
-		p.postpage = PageFactory.initElements(driver, PostYourPropertyPage.class);
+		p.postpage = PageFactory.initElements(driver, PostyourPropertyPage.class);
 		p.profilepage = PageFactory.initElements(driver, ProfilePage.class);
 		p.referpage = PageFactory.initElements(driver, ReferAndEarnPage.class);
 		p.rentpage = PageFactory.initElements(driver, RentReceiptPage.class);
@@ -49,8 +45,6 @@ public class Pages {
 		p.PgHostel = PageFactory.initElements(driver, PG_HostelPage.class);
 		p.PostProperty = PageFactory.initElements(driver, PostyourPropertyPage.class);
 		threadPages.set(p);
-		
-		
 	}
 
 	public static Pages get() {
@@ -77,7 +71,7 @@ public class Pages {
 		return get().paintpage;
 	}
 
-	public static PostYourPropertyPage getPostpage() {
+	public static PostyourPropertyPage getPostpage() {
 		return get().postpage;
 	}
 
@@ -91,7 +85,7 @@ public class Pages {
 
 	public static RentReceiptPage getRentpage() {
 		return get().rentpage;
-
+	}
 	public static HomeCleaningPage getHomeCleaningpage() {
 		return get().homecleaning;
 	}
