@@ -6,12 +6,45 @@
       <class name="com.nobroker.sprint.runner.RunnerIO">
         <methods>
           <include name="setUpClass"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+          <include name="runScenario" invocation-numbers="0"/>
+>>>>>>> PGandHostel-Module
+          <include name="tearDownClass"/>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+          <include name="runScenario" invocation-numbers="0 3 5"/>
+=======
+          <include name="runScenario" invocation-numbers="0"/>
+>>>>>>> 2f3bb03 (Packers And Movers Module Updated with feature and step definition)
+=======
+          <include name="runScenario" invocation-numbers="5"/>
+>>>>>>> 1314867 (updated code for refer and earn)
+=======
+          <include name="runScenario" invocation-numbers="1"/>
+>>>>>>> 70249ad (Menu And Profile Module Updation With Cucumber Reports)
+=======
+          <include name="runScenario" invocation-numbers="1"/>
+>>>>>>> MenuAndProfile-Module
+=======
+          <include name="tearDownClass"/>
+          <include name="runScenario" invocation-numbers="3"/>
+>>>>>>> PGandHostel-Module
+=======
           <include name="tearDownClass"/>
 <<<<<<< HEAD
           <include name="runScenario" invocation-numbers="4"/>
+<<<<<<< HEAD
 =======
           <include name="runScenario" invocation-numbers="3"/>
 >>>>>>> MenuAndProfile-Module
+=======
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
+>>>>>>> 5c61d0fe179722cae18ee953805318e62016b5ee
         </methods>
       </class> <!-- com.nobroker.sprint.runner.RunnerIO -->
     </classes>

@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <testng-results ignored="0" total="8" passed="7" failed="1" skipped="0">
+=======
+<<<<<<< HEAD
+<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-04-21T10:16:29 IST" name="Default suite" finished-at="2026-04-21T10:17:55 IST" duration-ms="85367">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@544fa968]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2026-04-21T10:16:29 IST" name="Default test" finished-at="2026-04-21T10:17:55 IST" duration-ms="85367">
+      <class name="com.nobroker.sprint.runner.RunnerIO">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@544fa968]" started-at="2026-04-21T10:16:29 IST" name="setUpClass" finished-at="2026-04-21T10:16:30 IST" duration-ms="808" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@c9413d8]]>
+=======
+<testng-results ignored="0" total="8" passed="8" failed="0" skipped="0">
+>>>>>>> 5c61d0fe179722cae18ee953805318e62016b5ee
   <reporter-output>
   </reporter-output>
 <<<<<<< HEAD
@@ -20,6 +42,7 @@
             <param index="0">
               <value>
                 <![CDATA[org.testng.TestRunner@7cc586a8]]>
+<<<<<<< HEAD
 =======
     <test started-at="2026-04-21T13:49:43 IST" name="Default test" finished-at="2026-04-21T13:51:17 IST" duration-ms="94659">
       <class name="com.nobroker.sprint.runner.RunnerIO">
@@ -29,6 +52,9 @@
               <value>
                 <![CDATA[org.testng.TestRunner@2187fff7]]>
 >>>>>>> MenuAndProfile-Module
+=======
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
+>>>>>>> 5c61d0fe179722cae18ee953805318e62016b5ee
               </value>
             </param>
           </params>
@@ -36,11 +62,21 @@
           </reporter-output>
         </test-method> <!-- setUpClass -->
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@544fa968]" started-at="2026-04-21T10:16:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T10:16:48 IST" duration-ms="17842" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Navigate to Careers page and view all opportunities"]]>
+=======
+>>>>>>> 5c61d0fe179722cae18ee953805318e62016b5ee
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:40 IST" duration-ms="74647" status="PASS">
           <params>
             <param index="0">
               <value>
                 <![CDATA["Generate and download a Rent Receipt"]]>
+<<<<<<< HEAD
 =======
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:29 IST" duration-ms="45655" status="PASS">
           <params>
@@ -48,15 +84,25 @@
               <value>
                 <![CDATA["End-to-End validation of Rewards and VIP Membership flow"]]>
 >>>>>>> MenuAndProfile-Module
+=======
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
+>>>>>>> 5c61d0fe179722cae18ee953805318e62016b5ee
               </value>
             </param>
             <param index="1">
               <value>
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <![CDATA["Rent Receipts Validation"]]>
 =======
                 <![CDATA["NoBroker Rewards and Membership Navigation"]]>
 >>>>>>> MenuAndProfile-Module
+=======
+                <![CDATA["Careers Page Functionality"]]>
+=======
+                <![CDATA["Rent Receipts Validation"]]>
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
+>>>>>>> 5c61d0fe179722cae18ee953805318e62016b5ee
               </value>
             </param>
           </params>
@@ -64,6 +110,15 @@
           </reporter-output>
         </test-method> <!-- runScenario -->
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@544fa968]" started-at="2026-04-21T10:16:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T10:16:49 IST" duration-ms="19223" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["User books a home cleaning service successfully"]]>
+=======
+>>>>>>> 5c61d0fe179722cae18ee953805318e62016b5ee
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:40 IST" duration-ms="74653" status="PASS">
 =======
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:29 IST" duration-ms="45655" status="PASS">
@@ -72,11 +127,16 @@
             <param index="0">
               <value>
                 <![CDATA["Update user profile name with invalid format"]]>
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
               </value>
             </param>
             <param index="1">
               <value>
+<<<<<<< HEAD
+                <![CDATA["Home Cleaning Service Booking"]]>
+=======
                 <![CDATA["Negative Profile and Feature Validation"]]>
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
               </value>
             </param>
           </params>
@@ -84,38 +144,67 @@
           </reporter-output>
         </test-method> <!-- runScenario -->
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@544fa968]" started-at="2026-04-21T10:16:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T10:16:55 IST" duration-ms="25247" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Search for PG with filters using multiple data sets"]]>
+=======
+>>>>>>> 5c61d0fe179722cae18ee953805318e62016b5ee
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:51:02 IST" duration-ms="96398" status="PASS">
           <params>
             <param index="0">
               <value>
                 <![CDATA["Navigate to Painting and Cleaning Home Interiors"]]>
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
               </value>
             </param>
             <param index="1">
               <value>
+<<<<<<< HEAD
+                <![CDATA["add NoBroker PG Search and Shortlist"]]>
+=======
                 <![CDATA["Paintings and Cleaning Validation"]]>
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@544fa968]" started-at="2026-04-21T10:16:30 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T10:17:55 IST" duration-ms="84472" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["User posts a property with valid details"]]>
+=======
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:41 IST" duration-ms="74668" status="PASS">
           <params>
             <param index="0">
               <value>
                 <![CDATA["End-to-End validation of Rewards and VIP Membership flow"]]>
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
               </value>
             </param>
             <param index="1">
               <value>
+<<<<<<< HEAD
+                <![CDATA["Post Your Property on NoBroker"]]>
+=======
                 <![CDATA["NoBroker Rewards and Membership Navigation"]]>
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
+<<<<<<< HEAD
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@544fa968]" started-at="2026-04-21T10:17:55 IST" name="tearDownClass" finished-at="2026-04-21T10:17:55 IST" duration-ms="22" status="PASS">
+=======
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:49:26 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-20T17:50:41 IST" duration-ms="74676" status="PASS">
 =======
         <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:49:43 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-21T13:50:42 IST" duration-ms="58516" status="PASS">
@@ -229,6 +318,7 @@
           </reporter-output>
         </test-method> <!-- runScenario -->
         <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-20T17:51:02 IST" name="tearDownClass" finished-at="2026-04-20T17:51:02 IST" duration-ms="23" status="PASS">
+<<<<<<< HEAD
 =======
           <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
@@ -279,6 +369,9 @@ at ✽.the user should see property listing options(file:///C:/Users/itsdh/Capge
         </test-method> <!-- runScenario -->
         <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@279fedbd]" started-at="2026-04-21T13:51:17 IST" name="tearDownClass" finished-at="2026-04-21T13:51:17 IST" duration-ms="11" status="PASS">
 >>>>>>> MenuAndProfile-Module
+=======
+>>>>>>> 5f6b2009ba0c7cbf3cd46e1305f70c1cb2a70690
+>>>>>>> 5c61d0fe179722cae18ee953805318e62016b5ee
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

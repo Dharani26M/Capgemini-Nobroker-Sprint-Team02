@@ -3,10 +3,17 @@ package com.nobroker.sprint.utils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import com.nobroker.sprint.pages.Buy;
+import com.nobroker.sprint.pages.MapPage;
+import com.nobroker.sprint.pages.CareersPage;
+import com.nobroker.sprint.pages.DashboardPage;
+import com.nobroker.sprint.pages.HomeLoanPage;
+import com.nobroker.sprint.pages.HomeRenovationPage;
+
 import com.nobroker.sprint.pages.*;
 
 public class Pages {
-
+	
 	private static final ThreadLocal<Pages> threadPages = new ThreadLocal<>();
 
 	public DashboardPage dashpage;
@@ -18,6 +25,10 @@ public class Pages {
 	public ProfilePage profilepage;
 	public ReferAndEarnPage referpage;
 	public RentReceiptPage rentpage;
+	public HomeCleaningPage homecleaning;
+	public CareersPage Careers;
+	public PG_HostelPage PgHostel;
+	public PostyourPropertyPage PostProperty;
 
 	public static void LoadAllPages(WebDriver driver) {
 		Pages p = new Pages();
@@ -30,6 +41,11 @@ public class Pages {
 		p.profilepage = PageFactory.initElements(driver, ProfilePage.class);
 		p.referpage = PageFactory.initElements(driver, ReferAndEarnPage.class);
 		p.rentpage = PageFactory.initElements(driver, RentReceiptPage.class);
+		p.dashpage = PageFactory.initElements(driver, DashboardPage.class);
+		p.homecleaning = PageFactory.initElements(driver, HomeCleaningPage.class);
+		p.Careers = PageFactory.initElements(driver, CareersPage.class);
+		p.PgHostel = PageFactory.initElements(driver, PG_HostelPage.class);
+		p.PostProperty = PageFactory.initElements(driver, PostyourPropertyPage.class);
 		threadPages.set(p);
 	}
 
@@ -76,4 +92,20 @@ public class Pages {
 	public static RentReceiptPage getRentpage() {
 		return get().rentpage;
 	}
+	public static HomeCleaningPage getHomeCleaningpage() {
+		return get().homecleaning;
+	}
+
+	public static CareersPage getCareerspage() {
+		return get().Careers;
+	}
+
+	public static PG_HostelPage getPghostelpage() {
+		return get().PgHostel;
+	}
+
+	public static PostyourPropertyPage getPostproperty() {
+		return get().PostProperty;
+	}
+
 }

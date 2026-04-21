@@ -16,7 +16,7 @@ public class PostyourPropertyPage {
 
 	public PostyourPropertyPage(WebDriver driver) {
 		this.driver = driver;
-		this.utility = new AllUtilities();
+		utility = new AllUtilities();
 		this.utility.initializeDriver(driver); // Pass the active driver to utility
 		PageFactory.initElements(driver, this);
 	}
@@ -46,48 +46,15 @@ public class PostyourPropertyPage {
 
 	@FindBy(xpath = "//button[.='Start Posting Your Ad For FREE']")
 	private WebElement Post;
+	
+	@FindBy(xpath="//div[.='Property Details']")
+	private WebElement click;
 
-	@FindBy(xpath = "//div[@class=\" modal-body \"]/..//button[.='Yes']")
-	private WebElement Notification;
-
-	@FindBy(id = "apartmentType")
-	private WebElement ApartmentType;
-
-	@FindBy(id = "bhkType")
-	private WebElement BHK;
-
-	@FindBy(id = "commercialFloorSearch")
-	private WebElement Floor;
-
-	@FindBy(id = "commercialTotalSearch")
-	private WebElement TotalFloor;
-
-	@FindBy(id = "propertyAge")
-	private WebElement PropertyAge;
-
-	@FindBy(id = "propertyFacing")
-	private WebElement propertyFacing;
-
-	@FindBy(id = "propertySize")
-	private WebElement size;
-
-	@FindBy(id = "saveAndContinue")
-	private WebElement ContinueBtn;
-
-	@FindBy(xpath = "//button[.='The data is correct']")
-	private WebElement notification;
-
-	@FindBy(id = "city")
-	private WebElement city;
-
-	@FindBy(id = "propertyLocality")
-	private WebElement Locality;
-
-	@FindBy(id = "street")
-	private WebElement street;
+	@FindBy(xpath = "//button[contains(text(),'Yes')]")
+	private WebElement Yes;
 
 	@FindBy(xpath = "//button[.='Preview']")
-	private WebElement preview;
+	private WebElement Preview;
 
 	// --- Getters ---
 	public WebElement getToggle() {
@@ -126,62 +93,16 @@ public class PostyourPropertyPage {
 		return Post;
 	}
 
-	public WebElement getNotification1() {
-		return Notification;
-	}
-
-	public WebElement getApartmentType() {
-		return ApartmentType;
-	}
-
-	public WebElement getBHK() {
-		return BHK;
-	}
-
-	public WebElement getFloor() {
-		return Floor;
-	}
-
-	public WebElement getTotalFloor() {
-		return TotalFloor;
-	}
-
-	public WebElement getPropertyAge() {
-		return PropertyAge;
-	}
-
-	public WebElement getPropertyFacing() {
-		return propertyFacing;
-	}
-
-	public WebElement getSize() {
-		return size;
-	}
-
-	public WebElement getContinueBtn() {
-		return ContinueBtn;
-	}
-
-	public WebElement getNotification() {
-		return notification;
-	}
-
-	public WebElement getCity() {
-		return city;
-	}
-
-	public WebElement getLocality() {
-		return Locality;
-	}
-
-	public WebElement getStreet() {
-		return street;
-	}
-
 	public WebElement getPreview() {
-		return preview;
+		return Preview;
 	}
 
+	public WebElement getYes() {
+		return Yes;
+	}
+	public WebElement getclick() {
+		return click;
+	}
 	// --- Action Methods ---
 	public void ClickOnToggle() {
 		getToggle().click();

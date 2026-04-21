@@ -3,6 +3,7 @@ package com.nobroker.sprint.stepdefinitions;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -46,24 +47,42 @@ public class PostPropertyTest extends AllUtilities {
 //		WaitForToBeClickableOfElement(20,Pages.PostProperty.getPostNowBtn() );
 		Pages.get().postPage.getPostNowBtn().click();
 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+//	    WebElement postNow = wait.until(
+//	        ExpectedConditions.elementToBeClickable(Pages.PostProperty.getPostNowBtn())
+//	    );
+		WaitForToBeClickableOfElement(20, Pages.get().PostProperty.getPostNowBtn());
+
+		scrollToElement(Pages.get().PostProperty.getPostNowBtn());
+
+		try {
+			Pages.get().PostProperty.getPostNowBtn().click(); // normal click
+		} catch (Exception e) {
+			// fallback JS click (important)
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("arguments[0].click();", Pages.get().PostProperty.getPostNowBtn());
+		}
 	}
 
 	@When("User click SelectCity")
 	public void user_click_select_city() {
-//		WaitForAllElements(30);
 		scrollToElement(Pages.get().postPage.getSelectCity());
 		Pages.get().postPage.getSelectCity().click();
-
 		WaitForAllElements(30);
 		navigateDownDropdown(Pages.get().postPage.getSelectCity(), 1, 10);
+
+
 
 	}
 
 	@When("User click StartPosting")
 	public void user_click_start_posting() {
 		Pages.get().postPage.getPost().click();
+		Pages.get().PostProperty.getclick().click();
 
-	}
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 	@When("User Enters the Property Details")
 	public void user_enters_the_property_details() {
@@ -104,12 +123,21 @@ public class PostPropertyTest extends AllUtilities {
 		navigateDownDropdown(Pages.get().postPage.getLocality(), 1, 10);
 
 		Pages.get().postPage.getStreet().sendKeys("Sivan Kovil");
+			WaitForToBeClickableOfElement(5, Pages.get().PostProperty.getYes());
+
+			scrollToElement(Pages.get().PostProperty.getYes());
+			Pages.get().PostProperty.getYes().click();
+
+			System.out.println("Popup handled");
 	}
+
+	
 
 	@When("User click the preview")
 	public void user_click_the_preview() {
 		Pages.get().postPage.getPreview().click();
 
+		Pages.get().PostProperty.getPreview().click();
 	}
 
 	@Then("User should be navigated to the preview page")

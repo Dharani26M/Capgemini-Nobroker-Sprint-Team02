@@ -27,36 +27,56 @@ public class PG_HostelPage {
 	private WebElement Search;
 
 	// Filter
-
-
+	
+	@FindBy(id="pg_girls")
+	private WebElement female;
+	
+	@FindBy(id="sharing_four")
+	private WebElement Room;
+	
+	@FindBy(id="Prefence_professional")
+	private WebElement Preference;
+	
+	@FindBy(id="food_breakfast")
+	private WebElement Breakfast;
+	
+	@FindBy(id="food_dinner")
+	private WebElement Dinnner;
+	
+	
 	
 	@FindBy(id = "sortingSection")
 	private WebElement Sorting;
-	
+
 	@FindBy(id = "shortlistProperty")
 	private WebElement Shortlist;
-	
+
 	@FindBy(id = "listCardContainer")
 	private WebElement click;
 	
+	@FindBy(id="contactOwnerClose")
+	private WebElement close;
 	
+	@FindBy(css = "[alt='shortlist']")
+	private WebElement shortlist;
 
+	public WebElement getShortlist() {
+	    return shortlist;
+	}
 	
+	public WebElement getclose() {
+		return close;
+	}
+
 	public WebElement getclick() {
 		return click;
 	}
-	public WebElement getShortlist() {
-		return Shortlist;
-	}
-	
-	
-	
+
+
 
 	public WebElement getLocation() {
 		return location;
 	}
-
-	
 
 	public WebElement getSearchLocality() {
 		return searchLocality;
@@ -69,9 +89,37 @@ public class PG_HostelPage {
 	public WebElement getSearch() {
 		return Search;
 	}
+
 	public WebElement getSorting() {
 		return Sorting;
 	}
 	
+	public WebElement getFemale() {
+		return female;
+	}
+
+	public WebElement getRoom() {
+		return Room;
+	}
+
+	
+
+	public WebElement getPreference() {
+		return Preference;
+	}
+
+	
+
+	public WebElement getBreakfast() {
+		return Breakfast;
+	}
+
+	
+	public WebElement getDinnner() {
+		return Dinnner;
+	}
+
+	
+
 
 }
