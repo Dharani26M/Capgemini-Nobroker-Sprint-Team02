@@ -1,14 +1,11 @@
 package com.nobroker.sprint.stepdefinitions;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.nobroker.sprint.utils.AllUtilities;
 import com.nobroker.sprint.utils.BaseClass;
@@ -62,7 +59,6 @@ public class Hooks extends AllUtilities {
 		Pages.LoadAllPages(bhook.driver);
 	    HandleCookies cookiesUtil = new HandleCookies();
 	    String cookieFile = "nobroker.data";
-
 	    // 1. Attempt to inject existing cookies
 	    cookiesUtil.loadCookies(bhook.driver, cookieFile);
 	    

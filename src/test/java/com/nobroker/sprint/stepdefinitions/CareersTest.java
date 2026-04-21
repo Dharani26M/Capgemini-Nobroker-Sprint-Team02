@@ -31,13 +31,13 @@ public class CareersTest extends AllUtilities {
 
 	@When("User clicks on menu button")
 	public void user_clicks_on_menu_button()  {
-		Pages.Careers.getMenu().click();
+		Pages.get().Careers.getMenu().click();
 	}
 
 	@When("User clicks on Careers option from menu")
 	public void user_clicks_on_careers_option_from_menu() {
-		WaitForToBeClickableOfElement(20, Pages.Careers.getCareersLink());
-		Pages.Careers.getCareersLink().click();
+		WaitForToBeClickableOfElement(20, Pages.get().Careers.getCareersLink());
+		Pages.get().Careers.getCareersLink().click();
 	}
 
 	@Then("Careers page should be displayed")
@@ -48,7 +48,7 @@ public class CareersTest extends AllUtilities {
 
 	@When("User clicks on See all opportunities button")
 	public void user_clicks_on_see_all_opportunities_button() {
-		Pages.Careers.getSeeAllOpportunities().click();
+		Pages.get().Careers.getSeeAllOpportunities().click();
 
 	}
 
