@@ -31,12 +31,22 @@ public class Shortlist {
 	
 	@FindBy(id="saleShortlistTab")
 	private WebElement saleshortlisttab;
+	
+	
+	
+	@FindBy(xpath="//div[text()='Sale']")
+	private WebElement sale;
+	public WebElement getSale() {
+		return sale;
+	}
+
+
 	public WebElement getIcon() {
 		return icon;
 	}
 
 	public void setIcon() {
-		getIcon().click();;
+		getIcon().click();
 	}
 
 	public WebElement getDashBoard() {

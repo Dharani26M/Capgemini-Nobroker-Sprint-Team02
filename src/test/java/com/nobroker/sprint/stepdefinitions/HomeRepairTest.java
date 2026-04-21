@@ -35,16 +35,16 @@ public class HomeRepairTest extends AllUtilities{
     	
     	
     	
-        WaitForInvisibilityOfElement(5, Pages.homerepair.getOverlay());
+        WaitForInvisibilityOfElement(2, Pages.homerepair.getOverlay());
 
         
-        WaitForToBeClickableOfElement(5, Pages.homerepair.getPaintIcon());
+        WaitForToBeClickableOfElement(2, Pages.homerepair.getPaintIcon());
 
         
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", Pages.homerepair.getPaintIcon());
 
-        new WebDriverWait(driver, Duration.ofSeconds(10))
+        new WebDriverWait(driver, Duration.ofSeconds(5))
                 .until(d -> d.getWindowHandles().size() > 1);
 
         SwitchWindowUsingTitle("NoBroker");
@@ -69,60 +69,94 @@ public class HomeRepairTest extends AllUtilities{
     	js.executeScript("arguments[0].click();", Pages.homerepair.getHomeRepair());
     }
 
-    @When("Click on Switch and Socket")
-    public void click_on_switch_and_socket() {
+    @When("Click on first product")
+    public void click_on_switch_and_socket() throws InterruptedException {
     	
 
-        WaitForVisibiltyOfElement(10, Pages.homerepair.getSwitchSocket());
-        WaitForToBeClickableOfElement(10, Pages.homerepair.getSwitchSocket());
-        Pages.homerepair.getSwitchSocket().click();
-    	
-    	
-    	 
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//    	JavascriptExecutor js = (JavascriptExecutor) driver;
+//    	
+//   	     WaitForToBeClickableOfElement(5, Pages.homerepair.getSwitchReplacement());
+//
+//    		js.executeScript("arguments[0].scrollIntoView({block:'center'});",Pages.homerepair.getSwitchReplacement());
+//    		js.executeScript("arguments[0].click();",Pages.homerepair.getSwitchReplacement());
+//        
+//    		Thread.sleep(500);
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        
+        WebElement firstProd = wait.until(ExpectedConditions.presenceOfElementLocated(
+            By.xpath("//div[text()='Switch Replacement']/following::button[text()='Add'][1]")));
+
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", firstProd);
+        js.executeScript("arguments[0].click();", firstProd);
+        
+        Thread.sleep(1000); // Give the DOM a moment to process the addition
 
        
     }
 
-    @When("Add product and proceed in home repair")
-    public void add_product_and_proceed_in_home_repair() {
-    	
-            
+    @When("Add second product")
+    public void add_product_and_proceed_in_home_repair() throws InterruptedException {
     	
     	
-//	    WaitForToBeClickableOfElement(20, Pages.homerepair.getAddProduct());
-//	    Pages.homerepair.getAddProduct().click();
+    	
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        
+        WebElement firstProd = wait.until(ExpectedConditions.presenceOfElementLocated(
+            By.xpath("//div[text()='Switch Replacement']/following::button[text()='Add'][1]")));
+
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", firstProd);
+        js.executeScript("arguments[0].click();", firstProd);
+        
+        Thread.sleep(1000); // Give the DOM a moment to process the addition
+    	
+    	
+//    	JavascriptExecutor js = (JavascriptExecutor) driver;
+////        
+////        new WebDriverWait(driver, Duration.ofSeconds(10))
+////            .until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(@class,'busy-holder')]")));
+////
+////        
+////        WebElement secondProduct = new WebDriverWait(driver, Duration.ofSeconds(10))
+////            .until(ExpectedConditions.presenceOfElementLocated(
+////                By.xpath("//div[text()='Home Cleaning']/ancestor::div//div[text()='Add']") 
+////                
+////            ));
+////
+////        js.executeScript("arguments[0].scrollIntoView({block:'center'});", secondProduct);
+////        js.executeScript("arguments[0].click();", secondProduct);
+//    	
+//    	
+//    	
 //
-//	    WebElement addSpecific = Pages.homerepair.getAddSpecificProduct();
+//        WebElement proceedBtn = Pages.homerepair.getProceed(); 
+//        js.executeScript("arguments[0].click();", proceedBtn);
+//    	
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 //
-//	    // scroll inside modal
-//	    ((JavascriptExecutor) driver)
-//	        .executeScript("arguments[0].scrollIntoView(true);", addSpecific);
+//    	JavascriptExecutor js = (JavascriptExecutor) driver;
+//    	
+//  	     WaitForToBeClickableOfElement(5, Pages.homerepair.getSocketReplacement());
 //
-//	    // wait
-//	    WaitForVisibiltyOfElement(20, addSpecific);
-//	    WaitForToBeClickableOfElement(20, addSpecific);
 //
-//	    // click
-//	    addSpecific.click();
-//
-//	    // proceed
-//	    WaitForToBeClickableOfElement(20, Pages.homerepair.getProceed());
-//	    Pages.homerepair.getProceed().click();
-       
+//    		js.executeScript("arguments[0].scrollIntoView({block:'center'});",Pages.homerepair.getSocketReplacement());
+//    		js.executeScript("arguments[0].click();",Pages.homerepair.getSocketReplacement());
+//     	 
 
 
     }
 
-    @Then("login popup should be displayed")
+    @Then("Order Summary should be displayed")
     public void login_popup_should_be_displayed() {
-    	System.out.println();
           
-//       WaitForVisibiltyOfElement(20, Pages.homerepair.getVerify());
-//
-//        String actualText = Pages.homerepair.getVerify().getText();
-//        Assert.assertTrue(
-//        	    Pages.homerepair.getVerify().getText().contains("Order Summary")
-//        	);
-//        System.out.println("Order Summary is displayed");
+       WaitForVisibiltyOfElement(20, Pages.homerepair.getVerify());
+
+        String actualText = Pages.homerepair.getVerify().getText();
+        Assert.assertTrue(
+        	    Pages.homerepair.getVerify().getText().contains("Order Summary")
+        	);
+        System.out.println("Order Summary is displayed");
     }
 }

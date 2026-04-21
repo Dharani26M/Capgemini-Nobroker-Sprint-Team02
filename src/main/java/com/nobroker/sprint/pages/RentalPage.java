@@ -80,11 +80,26 @@ public class RentalPage {
     @FindBy(xpath="//div[.='Caution']/child::div")
     private WebElement Caution;
     
- // Date input (to open calendar)
+    
+    @FindBy(xpath="//div[.='Get Digital Copy on your device']")
+    private WebElement dcopy;
+    
+
+
+	
+
+	// Date input (to open calendar)
     @FindBy(id = "date-input")
     private WebElement dateInput;
+    
+    @FindBy(xpath="//div[contains(@class,'react-datepicker__day')  and not(contains(@class,'react-datepicker__day--outside-month'))  and text()='29']")
+    private WebElement calendar;
 
-    // Getter
+    public WebElement getCalendar() {
+		return calendar;
+	}
+
+	// Getter
     public WebElement getDateInput() {
         return dateInput;
     }
@@ -174,5 +189,10 @@ public class RentalPage {
 	public WebElement getRadioBtnNo() {
 		// TODO Auto-generated method stub
 		return radioBtnNo ;
+	}
+
+	public WebElement getDcopy() {
+		// TODO Auto-generated method stub
+		return dcopy;
 	}
 }

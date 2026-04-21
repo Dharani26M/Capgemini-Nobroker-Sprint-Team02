@@ -40,9 +40,32 @@ public class HomeRepair {
     @FindBy(xpath="//div[contains(text(),'Order Summary')]")
     private WebElement Verify;
 	
-
+    @FindBy(xpath="//div[text()='Switch Replacement']/following::button[text()='Add'][1]")
+    private WebElement SwitchReplacement;
     
-    @FindBy(id = "add-ons-proceed")
+    
+    
+    @FindBy(xpath="//div[text()='Socket Replacement']/following::button[text()='Add'][1]")
+    private WebElement SocketReplacement;
+    
+    
+    
+    public WebElement getSwitchReplacement() {
+		return SwitchReplacement;
+	}
+
+
+	
+
+
+	public WebElement getSocketReplacement() {
+		return SocketReplacement;
+	}
+
+
+	
+
+	@FindBy(id = "add-ons-proceed")
     private WebElement Proceed;
     
     public WebElement getProceed() {

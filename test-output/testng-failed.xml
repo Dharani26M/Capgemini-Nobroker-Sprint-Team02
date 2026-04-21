@@ -6,7 +6,7 @@
       <class name="com.nobroker.sprint.runner.RunnerIO">
         <methods>
           <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="0"/>
+          <include name="runScenario" invocation-numbers="5 6"/>
           <include name="tearDownClass"/>
         </methods>
       </class> <!-- com.nobroker.sprint.runner.RunnerIO -->

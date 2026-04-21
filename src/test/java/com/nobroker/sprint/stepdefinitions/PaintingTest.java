@@ -67,33 +67,31 @@ public class PaintingTest extends AllUtilities{
 
     @When("Add AC service")
     public void add_ac_service() {
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        try {
+            new WebDriverWait(driver, Duration.ofSeconds(5))
+                .until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[contains(@class,'busy-holder')]")));
+        } catch (Exception e) {
+            // Continue if no overlay is found
+        }
+
+        WaitForVisibiltyOfElement(20, Pages.paintingAc.getAdd());
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", Pages.paintingAc.getAdd());
+        
+        js.executeScript("arguments[0].click();", Pages.paintingAc.getAdd());
+
+        WebElement addSpecific = Pages.paintingAc.getAddSpecific();
+        WaitForVisibiltyOfElement(20, addSpecific);
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", addSpecific);
+        js.executeScript("arguments[0].click();", addSpecific);
+
+        WaitForToBeClickableOfElement(20, Pages.paintingAc.getProceed());
+        js.executeScript("arguments[0].click();", Pages.paintingAc.getProceed());
 
 
-    	
-    	
     	
     
-
-    	    // First Add (Foam Blast)
-    	    WaitForToBeClickableOfElement(20, Pages.paintingAc.getAdd());
-    	    Pages.paintingAc.getAdd().click();
-
-    	    WebElement addSpecific = Pages.paintingAc.getAddSpecific();
-
-    	    // scroll inside modal
-    	    ((JavascriptExecutor) driver)
-    	        .executeScript("arguments[0].scrollIntoView(true);", addSpecific);
-
-    	    // wait
-    	    WaitForVisibiltyOfElement(20, addSpecific);
-    	    WaitForToBeClickableOfElement(20, addSpecific);
-
-    	    // click
-    	    addSpecific.click();
-
-    	    // proceed
-    	    WaitForToBeClickableOfElement(20, Pages.paintingAc.getProceed());
-    	    Pages.paintingAc.getProceed().click();
     	}
     	
     
