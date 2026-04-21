@@ -7,8 +7,6 @@ Background:
     And User Click PostNow 
     And User click SelectCity
     And User click StartPosting 
-    And User Enters the Property Details
-    And User Enters the Location
     And User click the preview 
     Then User should be navigated to the preview page
 

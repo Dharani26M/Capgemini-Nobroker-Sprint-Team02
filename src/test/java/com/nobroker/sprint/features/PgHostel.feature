@@ -6,7 +6,7 @@ Scenario Outline: Search for PG with filters using multiple data sets
     And User clicks on PG Hostel tab
     And User clicks the Search button
     And User clicks the filters
-    And login using mobno "<mobileno>"
+    Then The shortlist page should be displayed
     
 
     Examples:

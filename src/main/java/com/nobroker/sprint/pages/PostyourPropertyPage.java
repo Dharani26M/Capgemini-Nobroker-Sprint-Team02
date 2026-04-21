@@ -18,7 +18,7 @@ public class PostyourPropertyPage {
 		this.driver = driver;
 		utility = new AllUtilities();
 		this.utility.initializeDriver(driver);// Pass the active driver to utility
-	} 
+	}
 
 	@FindBy(xpath = "//div[@id='main-menu']")
 	private WebElement Menu;
@@ -26,7 +26,7 @@ public class PostyourPropertyPage {
 	@FindBy(xpath = "//*[normalize-space()='Post Your Property']")
 	private WebElement Propertylink;
 
-	@FindBy(id="postNow")
+	@FindBy(id = "postNow")
 	private WebElement PostNowBtn;
 
 	@FindBy(xpath = "//div[contains(text(),'Select City')]")
@@ -34,48 +34,15 @@ public class PostyourPropertyPage {
 
 	@FindBy(xpath = "//button[.='Start Posting Your Ad For FREE']")
 	private WebElement Post;
+	
+	@FindBy(xpath="//div[.='Property Details']")
+	private WebElement click;
 
-	@FindBy(xpath = "//div[@class=\" modal-body \"]/..//button[.='Yes']")
-	private WebElement Notification;
-
-	@FindBy(id = "apartmentType")
-	private WebElement ApartmentType;
-
-	@FindBy(id = "bhkType")
-	private WebElement BHK;
-
-	@FindBy(id = "commercialFloorSearch")
-	private WebElement Floor;
-
-	@FindBy(id = "commercialTotalSearch")
-	private WebElement TotalFloor;
-
-	@FindBy(id = "propertyAge")
-	private WebElement PropertyAge;
-
-	@FindBy(id = "propertyFacing")
-	private WebElement propertyFacing;
-
-	@FindBy(id = "propertySize")
-	private WebElement size;
-
-	@FindBy(id = "saveAndContinue")
-	private WebElement ContinueBtn;
-
-	@FindBy(xpath = "//button[.='The data is correct']")
-	private WebElement notification;
-
-	@FindBy(id = "city")
-	private WebElement city;
-
-	@FindBy(id = "propertyLocality")
-	private WebElement Locality;
-
-	@FindBy(id = "street")
-	private WebElement street;
+	@FindBy(xpath = "//button[contains(text(),'Yes')]")
+	private WebElement Yes;
 
 	@FindBy(xpath = "//button[.='Preview']")
-	private WebElement preview;
+	private WebElement Preview;
 
 	public WebDriver getDriver() {
 		return driver;
@@ -101,65 +68,15 @@ public class PostyourPropertyPage {
 		return Post;
 	}
 
-	public WebElement getNotification1() {
-		return Notification;
-	}
-
-	public WebElement getApartmentType() {
-		return ApartmentType;
-	}
-
-	public WebElement getBHK() {
-		return BHK;
-	}
-
-	public WebElement getFloor() {
-		return Floor;
-	}
-
-	public WebElement getTotalFloor() {
-		return TotalFloor;
-	}
-
-	public WebElement getPropertyAge() {
-		return PropertyAge;
-	}
-
-	public WebElement getPropertyFacing() {
-		return propertyFacing;
-	}
-
-	public WebElement getSize() {
-		return size;
-	}
-
-	public WebElement getContinueBtn() {
-		return ContinueBtn;
-	}
-
-	public WebElement getNotification() {
-		return notification;
-	}
-
-	public WebElement getCity() {
-		return city;
-	}
-
-	public WebElement getLocality() {
-		return Locality;
-	}
-
-	public WebElement getStreet() {
-		return street;
-	}
-
 	public WebElement getPreview() {
-		return preview;
+		return Preview;
 	}
-	public void accept(WebDriver driver){
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(80));
-		wait.until(ExpectedConditions.elementToBeClickable(getNotification())).click();
-		
+
+	public WebElement getYes() {
+		return Yes;
+	}
+	public WebElement getclick() {
+		return click;
 	}
 
 }

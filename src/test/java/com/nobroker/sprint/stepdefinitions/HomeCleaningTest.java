@@ -37,21 +37,21 @@ public class HomeCleaningTest extends AllUtilities {
 
 	@When("User clicks on Home tile")
 	public void user_clicks_on_home_tile() throws InterruptedException {
-		Pages.homecleaning.getMenu().click();
+		Pages.get().homecleaning.getMenu().click();
 		WaitForAllElements(20);
-		scrollToElement(Pages.homecleaning.getPaintandClean());
-		Pages.homecleaning.getPaintandClean().click();
+		scrollToElement(Pages.get().homecleaning.getPaintandClean());
+		Pages.get().homecleaning.getPaintandClean().click();
 	}
 
 	@When("User selects Home Cleaning option")
 	public void user_selects_home_cleaning_option() {
 		WaitForAllElements(20);
-		WebElement Location = Pages.homecleaning.getLocation();
+		WebElement Location = Pages.get().homecleaning.getLocation();
 		scrollToElement(Location);
 		WaitForToBeClickableOfElement(20, Location);
 		Location.click();
 		WaitForAllElements(20);
-		WebElement element = Pages.homecleaning.getHomeCleaningOption();
+		WebElement element = Pages.get().homecleaning.getHomeCleaningOption();
 		scrollToElement(element);
 		WaitForToBeClickableOfElement(20, element);
 		element.click();
@@ -60,7 +60,7 @@ public class HomeCleaningTest extends AllUtilities {
 	@When("User selects Weekly Cleaning service")
 	public void user_selects_weekly_cleaning_service() {
 		WaitForAllElements(20);
-		WebElement element = Pages.homecleaning.getWeeklyCleaning();
+		WebElement element = Pages.get().homecleaning.getWeeklyCleaning();
 		scrollToElement(element);
 		WaitForToBeClickableOfElement(20, element);
 		element.click();
@@ -69,18 +69,18 @@ public class HomeCleaningTest extends AllUtilities {
 	@When("User selects number of bathrooms")
 	public void user_selects_number_of_bathrooms() {
 		WaitForAllElements(20);
-		scrollToElement(Pages.homecleaning.getNoOfBathrooms());
-		Pages.homecleaning.getNoOfBathrooms().click();
+		scrollToElement(Pages.get().homecleaning.getNoOfBathrooms());
+		Pages.get().homecleaning.getNoOfBathrooms().click();
 	}
 
 	@When("User selects frequency as Once in {int} weeks")
 	public void user_selects_frequency_as_once_in_weeks(Integer int1) {
-		Pages.homecleaning.getOnceInTwoWeeks().click();
+		Pages.get().homecleaning.getOnceInTwoWeeks().click();
 	}
 
 	@When("User clicks on Proceed button")
 	public void user_clicks_on_proceed_button() {
-		Pages.homecleaning.getProceedButton().click();
+		Pages.get().homecleaning.getProceedButton().click();
 	}
 
 	@Then("Bathroom Clean Page should be displayed")
