@@ -13,7 +13,7 @@ public class Pages {
 	public HomeInteriorsPage homeinteriorpage;
 	public NewIconPage iconpage;
 	public PaintingsAndCleaningPage paintpage;
-	public PostYourPropertyPage postpage;
+	public PropertyPremium postpage;
 	public ProfilePage profilepage;
 	public ReferAndEarnPage referpage;
 	public RentReceiptPage rentpage;
@@ -24,7 +24,7 @@ public class Pages {
 		p.homeinteriorpage = PageFactory.initElements(driver, HomeInteriorsPage.class);
 		p.iconpage = PageFactory.initElements(driver, NewIconPage.class);
 		p.paintpage = PageFactory.initElements(driver, PaintingsAndCleaningPage.class);
-		p.postpage = PageFactory.initElements(driver, PostYourPropertyPage.class);
+		p.postpage = PageFactory.initElements(driver, PropertyPremium.class);
 		p.profilepage = PageFactory.initElements(driver, ProfilePage.class);
 		p.referpage = PageFactory.initElements(driver, ReferAndEarnPage.class);
 		p.rentpage = PageFactory.initElements(driver, RentReceiptPage.class);
@@ -55,7 +55,7 @@ public class Pages {
 		return get().paintpage;
 	}
 
-	public static PostYourPropertyPage getPostpage() {
+	public static PropertyPremium getPostpage() {
 		return get().postpage;
 	}
 

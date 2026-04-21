@@ -8,4 +8,4 @@ Feature: Post property Validation
   Scenario: Navigate to Post Your Property section
     When the user clicks on Post Your Property from the menu
     And the user toggles the property status
-    Then the user should see no property listing options
+    Then the user should see property listing options

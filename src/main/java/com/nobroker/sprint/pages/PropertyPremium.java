@@ -5,12 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import com.nobroker.sprint.utils.AllUtilities;
 
-public class PostYourPropertyPage {
+public class PropertyPremium {
 	public WebDriver driver;
 	public AllUtilities utility;
 
 	// Constructor logic combined
-	public PostYourPropertyPage(WebDriver driver) {
+	public PropertyPremium(WebDriver driver) {
 		this.driver = driver;
 		this.utility = new AllUtilities();
 		this.utility.initializeDriver(driver); // Pass the active driver to utility
@@ -40,6 +40,9 @@ public class PostYourPropertyPage {
 
 	@FindBy(xpath = "//button[.='Preview']")
 	private WebElement Preview;
+	
+	@FindBy(xpath = "//button[text()=' Go Premium']")
+	private WebElement gopremium;
 
 	// --- Locators from second snippet ---
 	@FindBy(css = ".nb-switch-toggle")
@@ -99,6 +102,9 @@ public class PostYourPropertyPage {
 	
 	public WebElement getPropertyField() {
 		return PropertiesField;
+	}
+	public WebElement getPremium() {
+		return gopremium;
 	}
 	
 	public void ClickOnToggle() {
