@@ -40,13 +40,18 @@ public class NewIcon extends AllUtilities {
         Pages.get().iconpage.clickBuyBtn();
     }
 
-    @Then("the user should navigate to the NoBroker VIP Memberships page")
-    public void the_user_should_navigate_to_the_no_broker_vip_memberships_page() {
+    @Then("the user should navigate to the NoBroker VIP Memberships page{string}")
+    public void the_user_should_navigate_to_the_no_broker_vip_memberships_page(String expectedUrlPart) {
         WaitForAllElements(10); 
+        String actualUrl = FetchApplicationUrl();
+        Assert.assertTrue(actualUrl.contains(expectedUrlPart), 
+            "URL mismatch! Expected to contain: " + expectedUrlPart + " but found: " + actualUrl);
     }
 
     @Then("the URL should contain {string}")
     public void the_url_should_contain(String expectedUrlPart) {
+        Pages.get().iconpage.clickVipBuyButton(base.driver);
+        Pages.get().iconpage.clickBackButton(base.driver);
         String actualUrl = FetchApplicationUrl();
         Assert.assertTrue(actualUrl.contains(expectedUrlPart), 
             "URL mismatch! Expected to contain: " + expectedUrlPart + " but found: " + actualUrl);
