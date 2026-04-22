@@ -32,8 +32,9 @@ public class PaintingTest extends AllUtilities{
 
     @Given("the user has logged into the application")
 	public void the_user_has_logged_into_the_application() {
-		WaitForVisibiltyOfElement(20, Pages.dashpage.getProfileImg());
-		Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed());
+		WaitForVisibiltyOfElement(20, Pages.get().dashpage.getProfileImg());
+		Assert.assertTrue(Pages.get().dashpage.getProfileImg().isDisplayed());
+		AllUtilities.info("User session verified: Profile image is visible.");
 	}
     
 
@@ -41,27 +42,30 @@ public class PaintingTest extends AllUtilities{
     public void click_on_painting_option_for_ac_repair() {
 
 
-    	WaitForToBeClickableOfElement(5,Pages.paintingAc.getPaintIcon());
-    	Pages.paintingAc.getPaintIcon().click();
+    	WaitForToBeClickableOfElement(5,Pages.get().paintingAc.getPaintIcon());
+    	Pages.get().paintingAc.getPaintIcon().click();
     	new WebDriverWait(driver, Duration.ofSeconds(10))
         .until(d -> d.getWindowHandles().size() > 1);
     	SwitchWindowUsingTitle("NoBroker");
+    	AllUtilities.info("Clicked Painting icon and switched to the NoBroker service window.");
 
     }
 
     @When("Select city for AC repair")
     public void select_city_for_ac_repair() {
-    	WaitForToBeClickableOfElement(20,Pages.paintingAc.getLocation());
-    	Pages.paintingAc.getLocation().click();
+    	WaitForToBeClickableOfElement(20,Pages.get().paintingAc.getLocation());
+    	Pages.get().paintingAc.getLocation().click();
+    	AllUtilities.info("Selected the city for AC repair service.");
 
     }
 
     @When("Select AC repair service")
     public void select_ac_repair_service() {
-    	WaitForToBeClickableOfElement(20,Pages.paintingAc.getAcSection());
-    	Pages.paintingAc.getAcSection().click();
-    	WaitForToBeClickableOfElement(20,Pages.paintingAc.getAcRepair());
-    	Pages.paintingAc.getAcRepair().click();
+    	WaitForToBeClickableOfElement(20,Pages.get().paintingAc.getAcSection());
+    	Pages.get().paintingAc.getAcSection().click();
+    	WaitForToBeClickableOfElement(20,Pages.get().paintingAc.getAcRepair());
+    	Pages.get().paintingAc.getAcRepair().click();
+    	AllUtilities.info("Navigated through AC Section and selected AC Repair service.");
         
     }
 
@@ -76,18 +80,22 @@ public class PaintingTest extends AllUtilities{
             // Continue if no overlay is found
         }
 
-        WaitForVisibiltyOfElement(20, Pages.paintingAc.getAdd());
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", Pages.paintingAc.getAdd());
+        WaitForVisibiltyOfElement(20, Pages.get().paintingAc.getAdd());
+        js.executeScript("arguments[0].scrollIntoView({block:'center'});", Pages.get().paintingAc.getAdd());
         
-        js.executeScript("arguments[0].click();", Pages.paintingAc.getAdd());
+        js.executeScript("arguments[0].click();", Pages.get().paintingAc.getAdd());
+        AllUtilities.info("Clicked initial 'Add' button for AC service.");
 
-        WebElement addSpecific = Pages.paintingAc.getAddSpecific();
+        WebElement addSpecific = Pages.get().paintingAc.getAddSpecific();
         WaitForVisibiltyOfElement(20, addSpecific);
         js.executeScript("arguments[0].scrollIntoView({block:'center'});", addSpecific);
         js.executeScript("arguments[0].click();", addSpecific);
+        AllUtilities.info("Confirmed specific AC service selection.");
 
-        WaitForToBeClickableOfElement(20, Pages.paintingAc.getProceed());
-        js.executeScript("arguments[0].click();", Pages.paintingAc.getProceed());
+        WaitForToBeClickableOfElement(20, Pages.get().paintingAc.getProceed());
+        js.executeScript("arguments[0].click();", Pages.get().paintingAc.getProceed());
+        AllUtilities.info("Clicked 'Proceed' button via Javascript.");
+        
 
 
     	
@@ -99,12 +107,12 @@ public class PaintingTest extends AllUtilities{
     @Then("payment page should be displayed verified")
     public void login_popup_should_be_displayed_for_ac_repair() {
 
-        WaitForVisibiltyOfElement(20, Pages.paintingAc.getVerify());
+        WaitForVisibiltyOfElement(20, Pages.get().paintingAc.getVerify());
 
-        String actualText = Pages.paintingAc.getVerify().getText();
+        String actualText = Pages.get().paintingAc.getVerify().getText();
         Assert.assertTrue(
-        	    Pages.paintingAc.getVerify().getText().contains("Order Summary")
+        	    Pages.get().paintingAc.getVerify().getText().contains("Order Summary")
         	);
-        System.out.println("Order Summary is displayed");
+        AllUtilities.info("Verified: Payment/Order Summary page reached. Displayed text: " + actualText);
     }
 }

@@ -36,6 +36,17 @@ public class Shortlist {
 	
 	@FindBy(xpath="//div[text()='Sale']")
 	private WebElement sale;
+	
+	
+	@FindBy(id="getOwnerDetails")
+	private WebElement Ownerdetails;
+	
+	
+
+
+	
+
+
 	public WebElement getSale() {
 		return sale;
 	}
@@ -79,6 +90,15 @@ public class Shortlist {
 
 	public void setSaleshortlisttab() {
 		getSaleshortlisttab().click();
+	}
+
+
+
+
+
+	public WebElement getOwnerdetails() {
+		// TODO Auto-generated method stub
+		return Ownerdetails;
 	}
 	
 	

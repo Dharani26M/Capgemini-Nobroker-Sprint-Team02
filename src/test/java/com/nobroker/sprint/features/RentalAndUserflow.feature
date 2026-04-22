@@ -1,5 +1,4 @@
 Feature: Combined Functionalities - Blog, AC Repair, Home Repair, Rental, Shortlist
-
  @Blog
   Scenario Outline: User subscribes to blog successfully
 
@@ -17,9 +16,10 @@ Feature: Combined Functionalities - Blog, AC Repair, Home Repair, Rental, Shortl
       | test1@gmail.com   |
       | user123@yahoo.com |
       | sample@mail.com   |
-	  
-	  
-	  
+      
+      
+      
+      	  
   @Shortlist
   Scenario: Shortlisting properties
 
@@ -31,6 +31,31 @@ Feature: Combined Functionalities - Blog, AC Repair, Home Repair, Rental, Shortl
     
     
     
+   
+@Rental
+  Scenario: Upload draft successfully
+
+    Given user logged in for rental
+    And user clicks on Rental Agreement module
+    And user uploads the draft document
+    And user enters required contract details
+    And user clicks on Save and Continue
+    Then user should be navigated to Summary page
+    
+    
+    
+	@HomeRepair
+  Scenario: Verify login is required before booking home repair service
+
+    When Click on Painting option for home repair
+    And Select city for home repair
+    And Select Home Repair service
+    And Click on first product
+    And Add second product
+    Then Order Summary should be displayed
+	
+	
+		  
   @ACRepair
   Scenario: Verify user can trigger login in AC repair
   
@@ -44,28 +69,3 @@ Feature: Combined Functionalities - Blog, AC Repair, Home Repair, Rental, Shortl
     
     
    
-	@HomeRepair
-  Scenario: Verify login is required before booking home repair service
-
-    When Click on Painting option for home repair
-    And Select city for home repair
-    And Select Home Repair service
-    And Click on first product
-    And Add second product
-    Then Order Summary should be displayed
-	
-
-
-
-
-
-
-@Rental
-  Scenario: Upload draft successfully
-
-    Given user logged in for rental
-    And user clicks on Rental Agreement module
-    And user uploads the draft document
-    And user enters required contract details
-    And user clicks on Save and Continue
-    Then user should be navigated to Summary page
