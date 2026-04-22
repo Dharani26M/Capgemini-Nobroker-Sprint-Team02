@@ -38,6 +38,7 @@ public class Hooks extends AllUtilities {
 
 			// lanuch the browser
 
+<<<<<<< HEAD
 			if (Browser.equalsIgnoreCase("Edge"))
 				bhook.driver = new EdgeDriver();
 			else if (Browser.equalsIgnoreCase("chrome")) {
@@ -59,6 +60,19 @@ public class Hooks extends AllUtilities {
 			Pages.LoadAllPages(bhook.driver);
 		    HandleCookies cookiesUtil = new HandleCookies();
 		    String cookieFile = "nobrokersample.data";
+=======
+        // Launch browser
+        WebDriver driver;
+        if (Browser.equalsIgnoreCase("Edge"))
+            driver = new EdgeDriver();
+        else if (Browser.equalsIgnoreCase("chrome")) {
+//        	ChromeOptions opt =new ChromeOptions();
+//        	opt.addArguments("--headless=new");
+            driver = new ChromeDriver();
+        }
+        else
+            driver = new FirefoxDriver();
+>>>>>>> MenuAndProfile-Module
 
 		    // 1. Attempt to inject existing cookies
 		    cookiesUtil.loadCookies(bhook.driver, cookieFile);

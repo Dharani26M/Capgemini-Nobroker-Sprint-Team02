@@ -36,6 +36,7 @@ public class PostProperty extends AllUtilities {
     @When("the user toggles the property status")
     public void the_user_toggles_the_property_status() {
         try {
+        	WaitForVisibiltyOfElement(70, Pages.get().dashpage.getProfileImg());
             WaitForVisibiltyOfElement(70, Pages.get().postpage.getToggle());
             Pages.get().postpage.ClickOnToggle();
         } catch (StaleElementReferenceException e) {
