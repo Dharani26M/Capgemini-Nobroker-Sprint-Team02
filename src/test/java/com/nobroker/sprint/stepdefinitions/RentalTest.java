@@ -36,15 +36,16 @@ public class RentalTest extends AllUtilities {
 
     @Given("user logged in for rental")
     public void the_user_has_logged_into_the_application() {
-        WaitForVisibiltyOfElement(15, Pages.dashpage.getProfileImg());
-        Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed(), "User profile image not displayed!");
+        WaitForVisibiltyOfElement(15, Pages.get().dashpage.getProfileImg());
+        Assert.assertTrue(Pages.get().dashpage.getProfileImg().isDisplayed(), "User profile image not displayed!");
+        AllUtilities.info("User successfully logged in for the Rental module.");
     }
 
     @When("user clicks on Rental Agreement module")
     public void user_clicks_on_rental_agreement_module() {
-        WaitForToBeClickableOfElement(15, Pages.rental.getRentalAgreementIcon());
-        Pages.rental.getRentalAgreementIcon().click();
-
+        WaitForToBeClickableOfElement(15, Pages.get().rental.getRentalAgreementIcon());
+        Pages.get().rental.getRentalAgreementIcon().click();
+        AllUtilities.info("Clicked Rental Agreement icon and switching to the new tab.");
         String parent = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {
             if (!handle.equals(parent)) {
@@ -54,57 +55,56 @@ public class RentalTest extends AllUtilities {
         }
 
         try {
-            WaitForVisibiltyOfElement(10, Pages.rental.getCityPopupInput());
-            Pages.rental.getCityPopupInput().sendKeys("Chennai");
-            WaitForToBeClickableOfElement(10, Pages.rental.getChennaiOption());
-            Pages.rental.getChennaiOption().click();
+            WaitForVisibiltyOfElement(10, Pages.get().rental.getCityPopupInput());
+            Pages.get().rental.getCityPopupInput().sendKeys("Chennai");
+            WaitForToBeClickableOfElement(10, Pages.get().rental.getChennaiOption());
+            Pages.get().rental.getChennaiOption().click();
+            AllUtilities.info("City selection popup handled: Chennai selected.");
         } catch (Exception e) {
-            System.out.println("City selection popup did not appear, proceeding...");
+        	AllUtilities.info("City selection popup did not appear, proceeding with default.");
         }
 
-        WaitForVisibiltyOfElement(20, Pages.rental.getUploadDraft());
-        js.executeScript("arguments[0].click();", Pages.rental.getUploadDraft());
+        WaitForVisibiltyOfElement(20, Pages.get().rental.getUploadDraft());
+        js.executeScript("arguments[0].click();", Pages.get().rental.getUploadDraft());
+        AllUtilities.info("Clicked on 'Upload Draft' button.");
     }
 
     @When("user uploads the draft document")
     public void user_uploads_the_draft_document() {
-        js.executeScript("arguments[0].click();", Pages.rental.getUploadFile());
+        js.executeScript("arguments[0].click();", Pages.get().rental.getUploadFile());
 
         WebElement fileInput = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@type='file']")));
         js.executeScript("arguments[0].style.display='block';", fileInput);
         
         fileInput.sendKeys("C:\\Users\\KARTHIKEYAN\\Downloads\\Acceptance proof.pdf");
-        System.out.println("File uploaded successfully");
+        AllUtilities.info("Uploaded draft document from path: " + fileInput);
 
-//        WaitForToBeClickableOfElement(20, Pages.rental.getCaution());
-//        js.executeScript("arguments[0].click();", Pages.rental.getCaution());
+        WaitForToBeClickableOfElement(20, Pages.get().rental.getCaution());
+        js.executeScript("arguments[0].click();", Pages.get().rental.getCaution());
+        AllUtilities.info("Acknowledged the caution/terms checkbox.");
         
-        
-     // Replace your Caution click logic with this:
-        By cautionLocator = By.xpath("//div[contains(text(),'Caution')]");
-        WebElement caution = wait.until(ExpectedConditions.presenceOfElementLocated(cautionLocator));
-
-        // Scroll to it first so JS doesn't click off-screen
-        js.executeScript("arguments[0].scrollIntoView({block:'center'});", caution);
-        // Force the click
-        js.executeScript("arguments[0].click();", caution);
+     
     }
 
     @When("user enters required contract details")
     public void user_enters_required_contract_details() throws InterruptedException, EncryptedDocumentException, IOException {
         // 1. Fill Refundable Amount
-        fillField(Pages.rental.getRefundableAmount(), "9999");
+        fillField(Pages.get().rental.getRefundableAmount(), "9999");
+        AllUtilities.info("Refundable amount set to 9999.");
 
         // 2. Select Stamp Duty
         WebElement stamp = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(text(),'100 Stamp')]")));
         js.executeScript("arguments[0].click();", stamp);
+        AllUtilities.info("Selected 100 Rupees Stamp Duty.");
 
         // 3. Maintenance selection
-        WaitForToBeClickableOfElement(15, Pages.rental.getRadioBtnNo());
-        Pages.rental.getRadioBtnNo().click();
+        WaitForToBeClickableOfElement(15, Pages.get().rental.getRadioBtnNo());
+        Pages.get().rental.getRadioBtnNo().click();
+        AllUtilities.info("Selected 'No' for maintenance.");
 
         // 4. Calendar Handling
-        WebElement dateInput = Pages.rental.getDateInput();
+        AllUtilities.info("Selecting date from the calendar...");
+        WebElement dateInput = Pages.get().rental.getDateInput();
         js.executeScript("arguments[0].scrollIntoView({block:'center'});", dateInput);
         js.executeScript("arguments[0].click();", dateInput);
 
@@ -119,25 +119,26 @@ public class RentalTest extends AllUtilities {
         Thread.sleep(1000); 
 
         // 5. Fill Landlord and Tenant details from Excel
+        AllUtilities.info("Fetching Landlord and Tenant details from Excel...");
         ExcelUtilities excel = new ExcelUtilities(driver);
         
-        fillField(Pages.rental.getLandlordName(), excel.getExcelData("Sheet1", 1, 0));
-        fillField(Pages.rental.getLandlordEmail(), excel.getExcelData("Sheet1", 1, 1));
-        fillField(Pages.rental.getLandlordPhone(), excel.getExcelData("Sheet1", 1, 2));
+        fillField(Pages.get().rental.getLandlordName(), excel.getExcelData("Sheet2", 1, 0));
+        fillField(Pages.get().rental.getLandlordEmail(), excel.getExcelData("Sheet2", 1, 1));
+        fillField(Pages.get().rental.getLandlordPhone(), excel.getExcelData("Sheet2", 1, 2));
 
-        fillField(Pages.rental.getTenantName(), excel.getExcelData("Sheet1", 1, 3));
-        fillField(Pages.rental.getTenantEmail(), excel.getExcelData("Sheet1", 1, 4));
-        fillField(Pages.rental.getTenantPhone(), excel.getExcelData("Sheet1", 1, 5));
+        fillField(Pages.get().rental.getTenantName(), excel.getExcelData("Sheet2", 1, 3));
+        fillField(Pages.get().rental.getTenantEmail(), excel.getExcelData("Sheet2", 1, 4));
+        fillField(Pages.get().rental.getTenantPhone(), excel.getExcelData("Sheet2", 1, 5));
     }
 
     @When("user clicks on Save and Continue")
     public void user_clicks_on_save_and_continue() {
-        WebElement btn = Pages.rental.getContinueButton();
+        WebElement btn = Pages.get().rental.getContinueButton();
         js.executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
         
-        // Use JS click to ensure it bypasses any invisible overlays
         wait.until(ExpectedConditions.elementToBeClickable(btn));
         js.executeScript("arguments[0].click();", btn);
+        AllUtilities.info("Clicked 'Save and Continue' button.");
     }
 
     @Then("user should be navigated to Summary page")
@@ -147,21 +148,20 @@ public class RentalTest extends AllUtilities {
         
         WebElement digitalBtn = wait.until(ExpectedConditions.elementToBeClickable(digitalCopyOption));
         js.executeScript("arguments[0].click();", digitalBtn);
+        AllUtilities.info("Selected 'Get Digital Copy' from the post-save popup.");
         
-        System.out.println("Clicked on Digital Copy option inside the popup.");
-
         try {
             wait.until(ExpectedConditions.urlContains("summary"));
+            AllUtilities.info("Navigation confirmed: Currently on Summary page - " + driver.getCurrentUrl());
             String currentUrl = driver.getCurrentUrl();
             Assert.assertTrue(currentUrl.contains("summary"), "Navigation to summary page failed!");
             System.out.println("Passed: Successfully navigated to " + currentUrl);
         } catch (TimeoutException e) {
-            
+        	AllUtilities.info("URL didn't update automatically, attempting fallback window switch...");
             switchWindowAndVerify();
         }
     }
 
-    // Helper to handle the "New Tab" scenario if the above fails
     private void switchWindowAndVerify() {
         String parent = driver.getWindowHandle();
         for (String handle : driver.getWindowHandles()) {

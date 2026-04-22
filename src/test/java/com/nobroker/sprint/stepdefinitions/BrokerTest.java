@@ -1,4 +1,3 @@
-
 package com.nobroker.sprint.stepdefinitions;
 
 import java.time.Duration;
@@ -32,8 +31,9 @@ public class BrokerTest extends AllUtilities{
 
     @Given("the user has logged into  application")
 	public void the_user_has_logged_into_the_application() {
-		WaitForVisibiltyOfElement(20, Pages.dashpage.getProfileImg());
-		Assert.assertTrue(Pages.dashpage.getProfileImg().isDisplayed());
+		WaitForVisibiltyOfElement(20, Pages.get().dashpage.getProfileImg());
+		Assert.assertTrue(Pages.get().dashpage.getProfileImg().isDisplayed());
+		AllUtilities.info("User is successfully logged in and dashboard is visible.");
 	}
 
 
@@ -43,59 +43,66 @@ public class BrokerTest extends AllUtilities{
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,600)");
         
-        System.out.println(Pages.Broker.getAvoidBrokers());
+        System.out.println(Pages.get().Broker.getAvoidBrokers());
 
-        WaitForToBeClickableOfElement(20,Pages.Broker.getAvoidBrokers());
+        WaitForToBeClickableOfElement(20,Pages.get().Broker.getAvoidBrokers());
 
-        Pages.Broker.setAvoidBrokers();
+        Pages.get().Broker.setAvoidBrokers();
+        AllUtilities.info("Scrolled down and clicked on 'Avoid Broker' option.");
     }
     
     
 
     @When("user navigates to blog section")
     public void user_navigates_to_blog_section() {
-    	Pages.Broker.setOurBlog();
+    	Pages.get().Broker.setOurBlog();
         SwitchWindowUsingTitle("No Broker");
+        AllUtilities.info("Navigated to the Blog section and switched to the new window.");
         
     }
 
     @When("user clicks subscribe option in blog")
     public void user_clicks_subscribe_option_in_blog() {
-    	Pages.Broker.setSubscribe();
+    	Pages.get().Broker.setSubscribe();
+    	AllUtilities.info("Clicked on the Blog subscription option.");
+    	
     }
 
     @When("user enters email in blog subscription field {string}")
     public void user_enter_email_in_subscription_field(String email) {
     	
-    	WaitForVisibiltyOfElement(20,Pages.Broker.getEmailField());
-    	WaitForToBeClickableOfElement(20,Pages.Broker.getEmailField());
-        Pages.Broker.setEmailField(email);     
+    	WaitForVisibiltyOfElement(20,Pages.get().Broker.getEmailField());
+    	WaitForToBeClickableOfElement(20,Pages.get().Broker.getEmailField());
+        Pages.get().Broker.setEmailField(email);
+        AllUtilities.info("Entered email address: " + email + " for subscription.");
     }
 
     @When("user enters preferences in blog form")
     public void user_enters_preferences_in_blog_form() {
-    	Pages.Broker.setNRI();
-    	Pages.Broker.setPayment();
-    	Pages.Broker.setFinance();
+    	Pages.get().Broker.setNRI();
+    	Pages.get().Broker.setPayment();
+    	Pages.get().Broker.setFinance();
+    	AllUtilities.info("Selected blog preferences: NRI, Payment, and Finance.");
 
     }
 
     @When("user submits blog subscription")
     public void user_submits_blog_subscription() {
-    	Pages.Broker.setSubscribebtn();;
+    	Pages.get().Broker.setSubscribebtn();
+    	AllUtilities.info("Clicked the final 'Subscribe' button.");
 
     }
 
     @Then("blog subscription should be successful")
     public void blog_subscription_should_be_successful() {
     	
-    	WaitForVisibiltyOfElement(10,Pages.Broker.getVerifying());
-    	String msg = Pages.Broker.getVerifying().getText();
+    	WaitForVisibiltyOfElement(10,Pages.get().Broker.getVerifying());
+    	String msg = Pages.get().Broker.getVerifying().getText();
     	
 
         Assert.assertTrue(msg.toLowerCase().contains("set"),
                 "Subscription message not displayed");
+        AllUtilities.info("Blog subscription confirmed. Success message: " + msg);
 
-        System.out.println("Blog subscription successful");
     }
 }
