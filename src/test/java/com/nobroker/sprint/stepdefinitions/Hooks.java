@@ -3,6 +3,7 @@ package com.nobroker.sprint.stepdefinitions;
 import java.io.IOException;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -39,8 +40,10 @@ public class Hooks extends AllUtilities {
 
 			if (Browser.equalsIgnoreCase("Edge"))
 				bhook.driver = new EdgeDriver();
-			else if (Browser.equalsIgnoreCase("chrome"))
-				bhook.driver = new ChromeDriver();
+			else if (Browser.equalsIgnoreCase("chrome")) {
+				
+				
+				bhook.driver = new ChromeDriver();}
 			else
 				bhook.driver = new FirefoxDriver();
 			
@@ -64,10 +67,10 @@ public class Hooks extends AllUtilities {
 		    System.out.println("🔍 Checking session status...");
 
 		    // 3. Verify with Profile Image
-		    if (!Pages.dashpage.isUserLoggedIn()) {
+		    if (!Pages.get().dashpage.isUserLoggedIn()) {
 		        System.out.println("👉 Session not found. Redirecting to Login...");
 		        
-		        Pages.dashpage.LoginIn(bhook.driver, phone);
+		        Pages.get().dashpage.LoginIn(bhook.driver, phone);
 		        
 		        System.out.println("⏳ Please enter OTP manually. Waiting 30s...");
 		        try {
@@ -77,7 +80,7 @@ public class Hooks extends AllUtilities {
 		        }
 
 		        // 4. VERIFY LOGIN SUCCESS before saving
-		        if (Pages.dashpage.isUserLoggedIn()) {
+		        if (Pages.get().dashpage.isUserLoggedIn()) {
 		            cookiesUtil.saveCookies(bhook.driver, cookieFile);
 		            System.out.println("✅ Login verified! Cookies captured for future use.");
 		        } else {

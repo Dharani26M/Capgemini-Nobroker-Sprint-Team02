@@ -1,14 +1,19 @@
 package com.nobroker.sprint.pages;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Reporter;
 
 import com.nobroker.sprint.utils.AllUtilities;
+import com.nobroker.sprint.utils.Pages;
 
 public class VechicleAddInventoryPage {
 	
@@ -34,9 +39,7 @@ public class VechicleAddInventoryPage {
 	private WebElement Continue;
 	
 	
-	public WebElement getEdit() {
-		return Edit;
-	}
+
 	
 	@FindBy(id="pnmLandingPageFromRelocationFormLocalitySearch")
 	private WebElement RelocateFromLocation;
@@ -53,9 +56,21 @@ public class VechicleAddInventoryPage {
 	private WebElement UpdateLocation;
 
 	
-	@FindBy(xpath="//img[@alt='Success']/..")
+	
+	@FindBy(xpath="//p[contains(text(),'Congratulations')]")
 	private WebElement Confirmation;
 	
+	@FindBy(xpath="//button[text()='Close']")
+	private WebElement CloseBtn;
+	
+	
+	public WebElement getCloseBtn() {
+		return CloseBtn;
+	}
+
+	public WebElement getEdit() {
+		return Edit;
+	}
 	public WebElement getConfirmation() {
 		return Confirmation;
 	}
@@ -91,24 +106,25 @@ public class VechicleAddInventoryPage {
 
 	    By incLocator = By.xpath("//div[normalize-space()='" + carType + "']/ancestor::div[contains(@class,'item')]//button[@id='increament']" );
 
-	    List<WebElement> addButtons = driver.findElements(addLocator);
+	    if (driver.findElements(addLocator).size() > 0) {
 
-	    if (!addButtons.isEmpty()) {
-	   
-	        WebElement addBtn = Utilities.WaitForToBeClickableOfElement(5, addLocator);
+	        WebElement addBtn = driver.findElement(addLocator);
 
-	        Utilities.scrollToElement(addBtn);
+	        if (addBtn.isDisplayed()) {
+	            Utilities.scrollToElement(addBtn);
+	            addBtn.click();
+	            return;
+	        }
+	    }
 
-	        addBtn.click();
+	    if (driver.findElements(incLocator).size() > 0) {
 
-	    } else {
+	        WebElement incBtn = driver.findElement(incLocator);
 
-	        WebElement incBtn = Utilities.WaitForToBeClickableOfElement(5, incLocator);
 	        Utilities.scrollToElement(incBtn);
 	        incBtn.click();
 	    }
 	}
-	
 		
 	public void decrementVehicle(String carType) {
 
@@ -130,14 +146,79 @@ public class VechicleAddInventoryPage {
 	public void RelocateFromCity(String City) {
 		getRelocateFromLocation().sendKeys(City);
 		Utilities.WaitForToBeClickableOfElement(40, getShiftingDropDowm());
-		getShiftingDropDowm().click();
+		waitForStableDropdownAndClick();
+		
 	}
 	
 	public void RelocateToCity(String City) {
 		getRelocateToLocation().sendKeys(City);
 		Utilities.WaitForToBeClickableOfElement(40, getShiftingDropDowm());
-		getShiftingDropDowm().click();
+		waitForStableDropdownAndClick();
 	}
+	private By getDropDown() {
+	    return By.xpath("(//div[@id='autocomplete-dropdown-container']//div)[1]");
+	}
+	
+	   public  void waitForStableDropdownAndClick() {
+	        
+	        String previousText = "";
+	        int stableCount = 0;
+
+	        FluentWait<WebDriver> fluentWait = new FluentWait<>(driver)
+	                .withTimeout(Duration.ofSeconds(20))        // max wait time
+	                .pollingEvery(Duration.ofMillis(300))        // check every 300ms
+	                .ignoring(StaleElementReferenceException.class)  // ignore stale during poll
+	                .ignoring(NoSuchElementException.class);         // ignore if not found yet
+
+	        for (int i = 0; i < 20; i++) {
+
+	            try {
+	            	List<WebElement> items = fluentWait.until(
+	            	    driver -> {
+	            	    	 List<WebElement> elements = driver.findElements(getDropDown());
+
+	            	    	    if (!elements.isEmpty()) {
+	            	    	    }
+
+	            	    	 return elements.isEmpty() ? null : elements; 
+	            	    	 
+	            	    }
+	            	);
+
+	                if (items.isEmpty()) {
+	                    stableCount = 0;
+	                    continue;
+	                }
+
+	                String currentText = items.get(0).getText();
+
+	                if (currentText.equals(previousText)) {
+	                    stableCount++;
+	                } else {
+	                    stableCount = 0;
+	                    previousText = currentText;
+	                }
+
+	                if (stableCount >= 3) {
+	                    items.get(0).click();
+	                    System.out.println("✅ Clicked: " + currentText);
+	                    return;
+	                }
+
+	            } catch (StaleElementReferenceException e) {
+	                stableCount = 0;
+	            }
+	        }
+	        throw new RuntimeException("❌ Dropdown never stabilized!");
+	    }
+	   
+	   public void editlocation(String fromcity , String tocity ) {
+		   Pages.get().vechicleinventory.getEdit().click();
+		    Pages.get().vechicleinventory.RelocateFromCity(fromcity);
+		    Pages.get().vechicleinventory.RelocateToCity(tocity);
+		    Pages.get().vechicleinventory.getUpdateLocation().click();
+			Pages.get().vechicleinventory.getContinue().click();
+	   }
 }
 
 

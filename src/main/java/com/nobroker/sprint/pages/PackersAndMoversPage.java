@@ -1,13 +1,17 @@
 package com.nobroker.sprint.pages;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 
 import com.nobroker.sprint.utils.AllUtilities;
 
@@ -30,14 +34,10 @@ public class PackersAndMoversPage {
 	@FindBy(xpath = "//div[text()='Vehicle Shifting']")
 	private WebElement VechicleShifting;
 
-	@FindBy(xpath="//div[@class=\"flex gap-4 overflow-auto hide-scrollbar\"]//a")
+	@FindBy(xpath = "//div[@class=\"flex gap-4 overflow-auto hide-scrollbar\"]//a")
 	private WebElement comment;
-	
-	
-	
-	
 
-	@FindBy(xpath = "//div[text()='Within City']")
+	@FindBy(xpath = "//div[@class='grid justify-between grid-cols-2 gap-2 p-2 rounded-32 md:bg-background-color']//div[text()='Within City']")
 	private WebElement WithinCity;
 
 	// Locating SelectCity WebElement
@@ -121,8 +121,8 @@ public class PackersAndMoversPage {
 
 	@FindBy(css = "[class='text-13']")
 	private WebElement CalendarMonth;
-	
-	@FindBy(css="[style='box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;']")
+
+	@FindBy(css = "[style='box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;']")
 	private WebElement chatbox;
 
 	// Locating CheckPrice
@@ -139,19 +139,44 @@ public class PackersAndMoversPage {
 	@FindBy(xpath = "//div[@controlid='toCity']/..//li")
 	private WebElement ToCityDropDown;
 
-	@FindBy(xpath="//div[text()='Where are you going to relocate?']")
+	@FindBy(xpath = "//div[text()='Where are you going to relocate?']")
 	private WebElement ShiftingRelocation;
-	
-	@FindBy(xpath="//div[text()='Update Location']")
+
+	@FindBy(xpath = "//div[text()='Update Location']")
 	private WebElement UpdateLocation;
-	
-	@FindBy(xpath="//span[contains(text(),'Complete booking')]")
+
+	@FindBy(xpath = "//span[contains(text(),'Complete booking')]")
 	private WebElement Completebooking;
+
+	@FindBy(xpath = "//div[contains(text(),'pickup locality')]")
+	private WebElement PickupError;
+
+	@FindBy(xpath = "//div[contains(text(),'destination locality')]")
+	private WebElement DestinationError;
+
+	@FindBy(xpath = "//button[text()='Edit Package']")
+	private WebElement EditPackage;
+
 	
+	@FindBy(xpath="//button[text()='No']")
+	private WebElement NoPopupButton;
+	
+	public WebElement getPickupError() {
+		return PickupError;
+	}
+
+	public WebElement getEditPackage() {
+		return EditPackage;
+	}
+
+	public WebElement getDestinationError() {
+		return DestinationError;
+	}
+
 	public WebElement getCompletebooking() {
 		return Completebooking;
 	}
-	
+
 	public WebElement getComment() {
 		return comment;
 	}
@@ -242,7 +267,7 @@ public class PackersAndMoversPage {
 
 	public WebElement getShiftingDropDowm() {
 		return ShiftingDropDowm;
-		
+
 	}
 
 	public WebElement getPageTitle() {
@@ -260,26 +285,19 @@ public class PackersAndMoversPage {
 	public WebElement getSerivcesInOtherCities() {
 		return SerivcesInOtherCities;
 	}
-	
+
 	public WebElement getChatbox() {
 		return chatbox;
 	}
-
 	
- 
-	public void MoversWithinCity(String City, String ShiftingFrom, String ShiftingTo) {
-
-		getWithinCity().click();
-		SelectCity(City);
-		getShiftingFrom().sendKeys(ShiftingFrom);
-		Utilities.WaitForToBeClickableOfElement(40, getShiftingDropDowm());
-		getShiftingDropDowm().click();
-		getShiftingTo().sendKeys(ShiftingTo);
-		Utilities.WaitForToBeClickableOfElement(40, getShiftingDropDowm());
-		getShiftingDropDowm().click();
-		getCheckPrices().click();
-
+	public WebElement getNoPopupButton() {
+		return NoPopupButton;
 	}
+
+	private By getDropDown() {
+		return By.xpath("(//div[@id='autocomplete-dropdown-container']//div)[1]");
+	}
+
 
 	public void SelectDate(String Date) {
 
@@ -288,61 +306,30 @@ public class PackersAndMoversPage {
 		// calendar select
 		String Month = Utilities.getMonthYear(Date);
 		String date = Utilities.getDay(Date);
-		
-		  //  Navigate to correct month
-	    while (getDateNextArrow().getAttribute("style").equals("opacity: 1;")) {
-	        String currentMonth = driver.findElement(By.cssSelector("[class='text-13']")).getText();
 
-	        if (getCalendarMonth().getText().equalsIgnoreCase(Month)) {
-	            break;
-	        } else {
-	            driver.findElement(By.xpath("//div[@class='cursor-pointer p-1p'][2]")).click();
-	        }
-	    }
-
-	    //  Locate day
-	    List<WebElement> days = driver.findElements(By.xpath("//div[@class=\"react-datepicker__month\"]//div[text()='"+date+"']" ));
-
-	    for (WebElement d : days) {
-
-	        String classes = d.getAttribute("class");
-
-	        if (!classes.contains("react-datepicker__day--disabled") && 
-	        	    !classes.contains("--outside-month")) {
-	        	    d.click();
-	        	}
-	    }
-
-	}
-
-	public void RelocateBetweenCity(String SourceCity, String DestinationCity, String Date) {
-
-		getSearchSourceCity().sendKeys(SourceCity, Keys.ARROW_DOWN.ENTER);
-		getSearchDestinationCity().sendKeys(DestinationCity, Keys.ARROW_DOWN.ENTER);
-
-		getDateInput().click();
-
-		// calendar select
-		String Month = Utilities.getMonthYear(Date);
-		String date = Utilities.getDay(Date);
+		// Navigate to correct month
 		while (getDateNextArrow().getAttribute("style").equals("opacity: 1;")) {
+			String currentMonth = driver.findElement(By.cssSelector("[class='text-13']")).getText();
 
-			if (Month.equals(getCalendarMonth().getText())) {
+			if (getCalendarMonth().getText().equalsIgnoreCase(Month)) {
 				break;
+			} else {
+				driver.findElement(By.xpath("//div[@class='cursor-pointer p-1p'][2]")).click();
 			}
 		}
 
+		// Locate day
 		List<WebElement> days = driver
 				.findElements(By.xpath("//div[@class=\"react-datepicker__month\"]//div[text()='" + date + "']"));
+
 		for (WebElement d : days) {
 
 			String classes = d.getAttribute("class");
+
 			if (!classes.contains("react-datepicker__day--disabled") && !classes.contains("--outside-month")) {
 				d.click();
 			}
 		}
-
-		getCheckPrices().click();
 
 	}
 
@@ -350,57 +337,142 @@ public class PackersAndMoversPage {
 
 		Utilities.clearField(getSearchSourceCity());
 		getSearchSourceCity().sendKeys(city);
-		Utilities.WaitForToBeClickableOfElement(20, getFromcityDropDown());
+		Utilities.WaitForToBeClickableOfElement(5, getFromcityDropDown());
 		getFromcityDropDown().click();
 	}
 
 	public void SelectBetweenTocity(String city) {
 		Utilities.clearField(getSearchDestinationCity());
 		getSearchDestinationCity().sendKeys(city);
-		Utilities.WaitForToBeClickableOfElement(20, getToCityDropDown());
+		Utilities.WaitForToBeClickableOfElement(5, getToCityDropDown());
 		getToCityDropDown().click();
+
 	}
-	
-	
 
 	public void SelectCity(String City) {
 
 		getSelectCity().click();
 		driver.findElement(By.xpath("//div[@class='relative rounded-12 ']//div[text()='" + City + "']")).click();
+
+	}
+
+	public void ShiftingCity(String fromcity, String tocity) {
+
+		if (isModalPresent()) {
+			getShiftingFrom().sendKeys(fromcity);
+			getShiftingTo().sendKeys(tocity);
+			waitForStableDropdownAndClick();
+			getUpdateLocation().click();
+		}
+
+	}
+
+	private boolean isModalPresent() {
+		try {
+			Utilities.wait.until(ExpectedConditions.visibilityOf(getShiftingFrom()));
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public boolean isPickupErrorDisplayed() {
+		try {
+			WebElement error = driver.findElement(By.xpath(
+					"//input[@placeholder='Shifting From']/following-sibling::div[contains(@class,'error')] | //div[contains(text(),'Shifting From') and contains(@class,'error')]"));
+			return error.isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public void waitForStableDropdownAndClick() {
+
+		String previousText = "";
+		int stableCount = 0;
+
+		FluentWait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(20)) // max wait time
+				.pollingEvery(Duration.ofMillis(300)) // check every 300ms
+				.ignoring(StaleElementReferenceException.class) // ignore stale during poll
+				.ignoring(NoSuchElementException.class); // ignore if not found yet
+
+		for (int i = 0; i < 20; i++) {
+
+			try {
+				List<WebElement> items = fluentWait.until(driver -> {
+					List<WebElement> elements = driver.findElements(getDropDown());
+
+					// 👇 Add this to see what's happening in console
+					if (!elements.isEmpty()) {
+					}
+
+					return elements.isEmpty() ? null : elements;
+				});
+
+				if (items.isEmpty()) {
+					stableCount = 0;
+					continue;
+				}
+
+				String currentText = items.get(0).getText();
+
+				if (currentText.equals(previousText)) {
+					stableCount++;
+				} else {
+					stableCount = 0;
+					previousText = currentText;
+				}
+
+				if (stableCount >= 3) {
+					items.get(0).click();
+					return;
+				}
+
+			} catch (StaleElementReferenceException e) {
+				stableCount = 0;
+			}
+		}
+		throw new RuntimeException("❌ Dropdown never stabilized!");
+	}
+
+	public void handlePackagePopup(WebElement element) {
+		try {
+
+		FluentWait<WebDriver> fluentWait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(15))
+				.pollingEvery(Duration.ofMillis(300)).ignoring(StaleElementReferenceException.class)
+				.ignoring(NoSuchElementException.class);
+
+		fluentWait.until(driver -> {
+		     // throws if missing → ignored
+			return element.isDisplayed() ? true : null; // null = keep polling
+		});
+
+		final int[] prevY = { -1 };
+		final int[] stable = { 0 };
+
+		fluentWait.until(driver -> {
+			
+			int y = element.getLocation().getY();
+
+			if (y == prevY[0])
+				stable[0]++;
+			else {
+				stable[0] = 0;
+				prevY[0] = y;
+			}
+
+			if (stable[0] >= 3) {
+				getEditPackage().click();
+				return true;
+			}
+			return null;
+		});
+	}
+		catch(Exception e) {
+			
+		}
 	}
 	
-	public void ShiftingCity(String fromcity,String tocity) {
-		
 
-		
-		if(isModalPresent()){
-		getShiftingFrom().sendKeys(fromcity);
-		Utilities.WaitForToBeClickableOfElement(20, getShiftingDropDowm());
-		getShiftingDropDowm().click();
-		getShiftingTo().sendKeys(tocity);
-		Utilities.WaitForToBeClickableOfElement(20, getShiftingDropDowm());
-		getShiftingDropDowm().click();
-		getUpdateLocation().click();
-		}
-		
-	}
 
-    private boolean isModalPresent() {
-        try {
-            Utilities.wait.until(ExpectedConditions.visibilityOf(getShiftingFrom()));
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-    
-    public boolean isPickupErrorDisplayed() {
-        try {
-            WebElement error = driver.findElement(By.xpath("//input[@placeholder='Shifting From']/following-sibling::div[contains(@class,'error')] | //div[contains(text(),'Shifting From') and contains(@class,'error')]"));
-            return error.isDisplayed();
-        } catch (Exception e) {
-            return false;
-        }
-    }
 }
-
