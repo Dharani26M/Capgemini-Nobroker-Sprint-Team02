@@ -4,67 +4,138 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import com.nobroker.sprint.pages.*;
 
+
 public class Pages {
 
-    // ThreadLocal container to hold an instance of Pages for each thread
-    private static final ThreadLocal<Pages> threadPages = new ThreadLocal<>();
-
-    // Instance variables (not static) for your specific pages
-    public  DashboardPage dashpage;
+	private static final ThreadLocal<Pages> threadPages = new ThreadLocal<>();
+	public  DashboardPage dashpage;
     public  AvoidBrokers Broker;
     public  HomeRepair homerepair;
     public  Painiting_AC paintingAc;
     public  RentalPage rental;
     public  Shortlist shortlist;
+	public HomeInteriorsPage homeinteriorpage;
+	public NewIconPage iconpage;
+	public PaintingsAndCleaningPage paintpage;
+	public PostyourPropertyPage postPage;
+	public PropertyPremium postpage;
+	public ProfilePage profilepage;
+	public ReferAndEarnPage referpage;
+	public RentReceiptPage rentpage;
+	public HomeCleaningPage homecleaning;
+	public CareersPage Careers;
+	public PG_HostelPage PgHostel;
+	public PostyourPropertyPage PostProperty;
+	public HomeLoanPage homeloan;
 
-   
-    public static void LoadAllPages(WebDriver driver) {
-        Pages p = new Pages();
-        p.dashpage = PageFactory.initElements(driver, DashboardPage.class);
-        p.Broker = PageFactory.initElements(driver, AvoidBrokers.class);
-        p.homerepair = PageFactory.initElements(driver, HomeRepair.class);
-        p.paintingAc = PageFactory.initElements(driver, Painiting_AC.class);
-        p.rental = PageFactory.initElements(driver, RentalPage.class);
-        p.shortlist = PageFactory.initElements(driver, Shortlist.class);
-        
-        threadPages.set(p);
-    }
+	public static void LoadAllPages(WebDriver driver) {
+		Pages p = new Pages();
+		p.dashpage = PageFactory.initElements(driver, DashboardPage.class);
+		p.homeinteriorpage = PageFactory.initElements(driver, HomeInteriorsPage.class);
+		p.iconpage = PageFactory.initElements(driver, NewIconPage.class);
+		p.paintpage = PageFactory.initElements(driver, PaintingsAndCleaningPage.class);
+		p.postPage = PageFactory.initElements(driver, PostyourPropertyPage.class);
+		p.postpage = PageFactory.initElements(driver, PropertyPremium.class);
+		p.profilepage = PageFactory.initElements(driver, ProfilePage.class);
+		p.referpage = PageFactory.initElements(driver, ReferAndEarnPage.class);
+		p.rentpage = PageFactory.initElements(driver, RentReceiptPage.class);
+		p.dashpage = PageFactory.initElements(driver, DashboardPage.class);
+		p.homecleaning = PageFactory.initElements(driver, HomeCleaningPage.class);
+		p.Careers = PageFactory.initElements(driver, CareersPage.class);
+		p.PgHostel = PageFactory.initElements(driver, PG_HostelPage.class);
+		p.PostProperty = PageFactory.initElements(driver, PostyourPropertyPage.class);
+		p.homeloan = PageFactory.initElements(driver, HomeLoanPage.class);
+		p.Broker = PageFactory.initElements(driver, AvoidBrokers.class);
+		p.homerepair = PageFactory.initElements(driver, HomeRepair.class);
+		p.paintingAc = PageFactory.initElements(driver, Painiting_AC.class);
+		p.rental = PageFactory.initElements(driver, RentalPage.class);
+		p.shortlist = PageFactory.initElements(driver, Shortlist.class);
+		threadPages.set(p);
+	}
 
-   
-    public static Pages get() {
-        return threadPages.get();
-    }
+	public static Pages get() {
+		return threadPages.get();
+	}
 
-    
-    public static void remove() {
-        threadPages.remove();
-    }
+	public static void remove() {
+		threadPages.remove();
+	}
 
-    // --- Static Getters for easier access in Test scripts ---
+	public static DashboardPage getDashpage() {
+		return get().dashpage;
+	}
 
-    public static DashboardPage getDashpage() {
-        return get().dashpage;
-    }
+	public static HomeInteriorsPage getHomeinteriorpage() {
+		return get().homeinteriorpage;
+	}
 
-    public static AvoidBrokers getBroker() {
-        return get().Broker;
-    }
+	public static NewIconPage getIconpage() {
+		return get().iconpage;
+	}
 
-    public static HomeRepair getHomeRepair() {
-        return get().homerepair;
-    }
+	public static PaintingsAndCleaningPage getPaintpage() {
+		return get().paintpage;
+	}
 
-    public static Painiting_AC getPaintingAc() {
-        return get().paintingAc;
-    }
+	public static PostyourPropertyPage getPostPage() {
+		return get().postPage;
 
-    public static RentalPage getRental() {
-        return get().rental;
-    }
+	}
 
-    public static Shortlist getShortlist() {
-        return get().shortlist;
-    }
+	public static PropertyPremium getPostpage() {
+		return get().postpage;
+	}
+
+	public static ProfilePage getProfilepage() {
+		return get().profilepage;
+	}
+
+	public static ReferAndEarnPage getReferpage() {
+		return get().referpage;
+	}
+
+	public static RentReceiptPage getRentpage() {
+		return get().rentpage;
+	}
+
+	public static HomeCleaningPage getHomeCleaningpage() {
+		return get().homecleaning;
+	}
+
+	public static CareersPage getCareerspage() {
+		return get().Careers;
+	}
+
+	public static PG_HostelPage getPghostelpage() {
+		return get().PgHostel;
+	}
+
+	public static PostyourPropertyPage getPostproperty() {
+		return get().PostProperty;
+	}
+
+	public static HomeLoanPage getHomeLoanPage() {
+		return get().homeloan;
+	}
+
+	public static AvoidBrokers getBroker() {
+		return get().Broker;
+	}
+
+	public static HomeRepair getHomeRepair() {
+		return get().homerepair;
+	}
+
+	public static Painiting_AC getPaintingAc() {
+		return get().paintingAc;
+	}
+
+	public static RentalPage getRental() {
+		return get().rental;
+	}
+
+	public static Shortlist getShortlist() {
+		return get().shortlist;
+	}
+
 }
-
-

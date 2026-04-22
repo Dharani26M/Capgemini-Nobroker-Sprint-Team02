@@ -6,10 +6,12 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-		features = {"./src/test/java/com/nobroker/sprint/features/RentalAndUserflow.feature" },
+
+		features = {"src/test/java/com/nobroker/sprint/features" },
 		dryRun = false,
-		plugin = {"pretty", "html:Reports/Rental-Report.html","com.nobroker.sprint.stepdefinitions.StepEventListener"  },
+		plugin = {"pretty", "html:Reports/Nobroker-Report.html","com.nobroker.sprint.stepdefinitions.StepEventListener" },
 		glue = "com.nobroker.sprint.stepdefinitions")
+
 public class RunnerIO extends AbstractTestNGCucumberTests {
 //	parallel execution
 	@Override
@@ -18,7 +20,6 @@ public class RunnerIO extends AbstractTestNGCucumberTests {
         return super.scenarios();
     }
 }
-
 
 
 
