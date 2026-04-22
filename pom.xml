@@ -3,7 +3,7 @@
   <groupId>com.capgemini.nobroker.sprint</groupId>
   <artifactId>nobroker-sprint-team02-automation</artifactId>
   <version>0.0.1-SNAPSHOT</version>
- <dependencies>
+<dependencies>
 		<!-- Source:
 		https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
 		<dependency>
@@ -72,6 +72,12 @@
 			<version>5.1.2</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.9.0</version>
+    <scope>test</scope>
+</dependency>
 	</dependencies>
 </project>
 

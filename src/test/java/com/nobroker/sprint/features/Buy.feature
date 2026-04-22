@@ -12,5 +12,3 @@ And user applies filter
 And user clicks on View All projects
 And user select the property from list 
 Then user clicks on contact builder 
-
-

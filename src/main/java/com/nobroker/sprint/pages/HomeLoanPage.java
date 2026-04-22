@@ -1,71 +1,158 @@
 package com.nobroker.sprint.pages;
 
+import java.time.Duration;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import com.nobroker.sprint.utils.AllUtilities;
+import com.nobroker.sprint.utils.Pages;
+
 
 public class HomeLoanPage {
-	public WebDriver driver;
-	public AllUtilities utility;
-
+WebDriver driver;
+	
+	public AllUtilities utilities; 
 	public HomeLoanPage(WebDriver driver) {
+		utilities =new AllUtilities();
 		this.driver = driver;
-		this.utility = new AllUtilities();
-		this.utility.initializeDriver(driver);
-		PageFactory.initElements(driver, this);
+		this.utilities.initializeDriver(driver);
+	}
+	
+	//home loan
+	@FindBy(xpath="//a[text()='Apply Home Loan']")
+	private WebElement loan;
+	
+	//property finialized radio button
+	@FindBy(xpath="//label[text()='No']//..//input")
+	private WebElement radio;
+	
+	//loan amount
+	@FindBy(xpath="(//span[text()='Loan Amount']/..//input[@type='text'])[1]")
+	private WebElement loanamt;
+	
+	//rate of intrest
+	@FindBy(xpath="(//span[text()='Rate of Interest (P.A)']/..//input[@type='Number'])[1]")
+	private WebElement interest;
+	
+	//loan tenure
+	@FindBy(xpath="(//span[text()='Loan Tenure']/..//input[@type='Number'])[1]")
+	private WebElement tenure;
+	
+	//check loan eligibility
+	@FindBy(xpath="(//button[text()='Check Eligibility'])[2]")
+	private WebElement checkbtn;
+	
+//	//pan number
+//	@FindBy(xpath="(//span[text()='PAN Number *'])[2]/..//input")
+//	private WebElement pan;
+//	
+//	//continue
+//	@FindBy(xpath="(//button[text()='Continue'])[3]")
+//	private WebElement continueBtn;
+	
+//	//assert the loan page
+//	@FindBy(xpath="//p[.='Income Details']")
+//	private WebElement loanPage;
+	
+	//getters
+	public WebElement getLoan() {
+		return loan;
 	}
 
-	@FindBy(xpath = "//span[.='Loan Amount']/..//input[@placeholder='1000000']")
-	public WebElement loanAmount;
-
-	@FindBy(xpath = "//span[.='Monthly Income']/..//input[@placeholder='25000']")
-	public WebElement monthlyIncome;
-
-	@FindBy(xpath = "//span[.='Other EMI']/..//input[@placeholder='0']")
-	public WebElement EMI;
-
-	@FindBy(xpath = "//span[.='Rate of Interest (P.A)']/..//input[@placeholder='6.7']")
-	public WebElement RateofInterest;
-
-	@FindBy(xpath = "//div[.='Check Eligibility']")
-	private WebElement check;
-
-	@FindBy(css = "[for='switcher-1']")
-	private WebElement Eligibility;
-
-	@FindBy(xpath = "//span[text()='Estimated EMI']/..")
-	private WebElement Verify;
-
-	public WebElement getVerify() {
-		return Verify;
+	public WebElement getRadio() {
+		return radio;
 	}
 
-	public WebElement getEligibility() {
-		return Eligibility;
+	public WebElement getLoanamt() {
+		return loanamt;
 	}
 
-	public WebElement getLoanAmount() {
-		return loanAmount;
+	public WebElement getInterest() {
+		return interest;
 	}
 
-	public WebElement getMonthlyIncome() {
-		return monthlyIncome;
+	public WebElement getTenure() {
+		return tenure;
 	}
 
-	public WebElement getEMI() {
-		return EMI;
+	public WebElement getCheckbtn() {
+		return checkbtn;
 	}
 
-	public WebElement getRateofInterest() {
-		return RateofInterest;
+//	public WebElement getPan() {
+//		return pan;
+//	}
+//
+//	public WebElement getContinueBtn() {
+//		return continueBtn;
+//	}
+//
+//	public boolean checkLoanPage() {
+//		return loanPage.isDisplayed();
+//	}
+	
+	//setters
+	public void clickLoan() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement loanBtn = wait.until(ExpectedConditions.elementToBeClickable(getLoan()));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", loanBtn);
+	}
+	
+	public void clickRadio() {
+		utilities.SwitchWindowUsingUrl("loan");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(getRadio())).click();
 	}
 
-	public WebElement getCheck() {
-		// TODO Auto-generated method stub
-		return check;
+	public void setLoanamt(String loanamt) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement amt =wait.until(ExpectedConditions.visibilityOf(getLoanamt()));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", amt);
+		getLoanamt().sendKeys(Keys.CONTROL+"a");
+		getLoanamt().sendKeys(Keys.BACK_SPACE);
+		getLoanamt().sendKeys(loanamt);
 	}
+
+	public void setInterest(String interest) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement intr =wait.until(ExpectedConditions.visibilityOf(getInterest()));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", intr);
+		getInterest().sendKeys(Keys.CONTROL+"a");
+		getInterest().sendKeys(Keys.BACK_SPACE);
+		getInterest().sendKeys(interest);
+	}
+
+	public void setTenure(String tenure) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement yr =wait.until(ExpectedConditions.visibilityOf(getTenure()));
+		((JavascriptExecutor) driver).executeScript("arguments[0].click();", yr);
+		getTenure().sendKeys(Keys.CONTROL+"a");
+		getTenure().sendKeys(Keys.BACK_SPACE);
+		getTenure().sendKeys(tenure);
+	}
+
+	public void setCheckbtn() {
+		
+		utilities.WaitForToBeClickableOfElement(10, getCheckbtn());
+		getCheckbtn().click();
+	}
+
+//	public void setPan(String pan) {
+//		utilities.WaitForVisibiltyOfElement(10, getPan());
+//		getPan().sendKeys(pan);
+//	}
+//
+//	public void setContinueBtn() {
+//		utilities.WaitForToBeClickableOfElement(10, getContinueBtn());
+//		getContinueBtn().click();
+//	}
+	
 
 }

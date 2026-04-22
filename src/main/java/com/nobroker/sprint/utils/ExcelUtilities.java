@@ -1,6 +1,7 @@
 package com.nobroker.sprint.utils;
 
 import java.io.FileInputStream;
+<<<<<<< HEAD
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -39,4 +40,18 @@ public class ExcelUtilities {
             return 0;
         }
     }
+    public String getData(int row, int col) {
+
+		if (sheet == null) {
+			System.out.println("Invaid Sheet : Initilize");
+			return null;
+		}
+		CellType type = sheet.getRow(row).getCell(col).getCellType();
+
+		if (type == CellType.NUMERIC) {
+			String value = sheet.getRow(row).getCell(col).toString();
+			return value.split("\\.")[0];
+		}
+		return sheet.getRow(row).getCell(col).toString();
+	}
 }

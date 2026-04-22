@@ -4,16 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import com.nobroker.sprint.pages.*;
 
-
 public class Pages {
 
 	private static final ThreadLocal<Pages> threadPages = new ThreadLocal<>();
-	public  DashboardPage dashpage;
-    public  AvoidBrokers Broker;
-    public  HomeRepair homerepair;
-    public  Painiting_AC paintingAc;
-    public  RentalPage rental;
-    public  Shortlist shortlist;
+	public DashboardPage dashpage;
+	public AvoidBrokers Broker;
+	public HomeRepair homerepair;
+	public Painiting_AC paintingAc;
+	public RentalPage rental;
+	public Shortlist shortlist;
 	public HomeInteriorsPage homeinteriorpage;
 	public NewIconPage iconpage;
 	public PaintingsAndCleaningPage paintpage;
@@ -34,9 +33,16 @@ public class Pages {
 	public PaymentPage payment;
 	public NobrokerAskQuestion askquestion;
 	public NobrokerForumPage forumpage;
+	public Buy buy;
+	public MapPage mapPage;
+	public HomeRenovationPage renovationPage;
+	public HomeLoanPage loanPage;
+	public NotaryAdvocatePage notaryPage;
+	public ContactPage contactPage;
 
 	public static void LoadAllPages(WebDriver driver) {
 		Pages p = new Pages();
+
 		p.dashpage = PageFactory.initElements(driver, DashboardPage.class);
 		p.homeinteriorpage = PageFactory.initElements(driver, HomeInteriorsPage.class);
 		p.iconpage = PageFactory.initElements(driver, NewIconPage.class);
@@ -64,8 +70,14 @@ public class Pages {
 		p.payment = PageFactory.initElements(driver, PaymentPage.class);
 		p.askquestion = PageFactory.initElements(driver, NobrokerAskQuestion.class);
 		p.forumpage = PageFactory.initElements(driver, NobrokerForumPage.class);
+		p.buy = PageFactory.initElements(driver, Buy.class);
+		p.mapPage = PageFactory.initElements(driver, MapPage.class);
+		p.renovationPage = PageFactory.initElements(driver, HomeRenovationPage.class);
+		p.loanPage = PageFactory.initElements(driver, HomeLoanPage.class);
+		p.notaryPage = PageFactory.initElements(driver, NotaryAdvocatePage.class);
+		p.contactPage = PageFactory.initElements(driver, ContactPage.class);
 		threadPages.set(p);
-	
+
 	}
 
 	public static Pages get() {
@@ -152,6 +164,7 @@ public class Pages {
 	public static Shortlist getShortlist() {
 		return get().shortlist;
 	}
+
 	public static PackersAndMoversPage getMoversPage() {
 		return get().moverspage;
 	}

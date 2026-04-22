@@ -3,8 +3,7 @@ package com.nobroker.sprint.utils;
 import org.openqa.selenium.WebDriver;
 
 public class BaseClass {
-
-    private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+	private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
     public WebDriver driver; 
 
@@ -20,4 +19,5 @@ public class BaseClass {
     public static void removeDriver() {
         driverThreadLocal.remove();
     }
+
 }
