@@ -9,5 +9,5 @@ Feature: NoBroker Rewards and Membership Navigation
     Then the user should be redirected to the NoBroker Rewards page
     And the page title should contain "Rewards"
     When the user clicks on the Buy VIP button
-    Then the user should navigate to the NoBroker VIP Memberships page
-    And the URL should contain "vip"
+    Then the user should navigate to the NoBroker VIP Memberships page"vip"
+    And the URL should contain "checkout"

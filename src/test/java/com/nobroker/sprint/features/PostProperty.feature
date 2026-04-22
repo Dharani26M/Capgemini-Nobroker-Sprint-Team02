@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Feature: Post property Validation
 
   Background:
@@ -9,6 +8,7 @@ Feature: Post property Validation
   Scenario: Navigate to Post Your Property section
     When the user clicks on Post Your Property from the menu
     And the user toggles the property status
+<<<<<<< HEAD
     Then the user should see no property listing options
 =======
 Feature: Post Your Property on NoBroker
@@ -24,3 +24,6 @@ Background:
     Then User should be navigated to the preview page
 
 >>>>>>> PGandHostel-Module
+=======
+    Then the user should see property listing options
+>>>>>>> 9ceadec66fab79b1c3037331d3754939938af090
