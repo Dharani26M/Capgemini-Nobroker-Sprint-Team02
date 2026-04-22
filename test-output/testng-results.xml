@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="14" passed="6" failed="8" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[Assertion from renovation is passed]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2026-04-22T14:23:05 IST" name="Default suite" finished-at="2026-04-22T14:27:31 IST" duration-ms="265530">
+    <groups>
+      <group name="cucumber">
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2026-04-22T14:23:05 IST" name="Default test" finished-at="2026-04-22T14:27:31 IST" duration-ms="265530">
+      <class name="com.nobroker.sprint.runner.RunnerIO">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="setUpClass" finished-at="2026-04-22T14:23:06 IST" duration-ms="517" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@67427b69]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:27:31 IST" duration-ms="264934" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["5 the user getting advocate via nobroker"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["the user wants to get legal document"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:25:56 IST" duration-ms="170097" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["2 The user wants to see the nearby metro lines"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Verfying the metro lines"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:26:03 IST" duration-ms="176808" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["6 Connect them on facebook"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Verifies facebook icon redirects"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1590)
+at org.testng.Assert.assertTrue(Assert.java:57)
+at org.testng.Assert.assertTrue(Assert.java:67)
+at com.nobroker.sprint.stepDefinition.ContactTest.the_user_has_to_navigate(ContactTest.java:39)
+at ✽.the user has to navigate(file:///C:/Users/hp/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/Conatct.feature:8)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:27:31 IST" duration-ms="264605" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Profile Name Persistence and Refresh Validation"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Profile and Feature Validation"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'the user has successfully logged into the application' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("the user navigates to the Profile page")
+public void the_user_navigates_to_the_profile_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user updates the profile name to {string}")
+public void the_user_updates_the_profile_name_to(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user refreshes the current page")
+public void the_user_refreshes_the_current_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the profile name should be displayed as {string}")
+public void the_profile_name_should_be_displayed_as(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'the user has successfully logged into the application' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("the user navigates to the Profile page")
+public void the_user_navigates_to_the_profile_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user updates the profile name to {string}")
+public void the_user_updates_the_profile_name_to(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user refreshes the current page")
+public void the_user_refreshes_the_current_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the profile name should be displayed as {string}")
+public void the_profile_name_should_be_displayed_as(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at ✽.the user has successfully logged into the application(file:///C:/Users/hp/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/Profile.feature:4)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:27:22 IST" duration-ms="255825" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["2 The user wants to see the nearby metro lines"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Verfying the metro lines"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:27:31 IST" duration-ms="264824" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["select User search property with different location and locality"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Buy property on No Broker"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:27:31 IST" duration-ms="264775" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["3 the user wants to renovate the home and check the available options"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["user wants to rennovate their home"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Assertion from renovation is passed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:27:31 IST" duration-ms="264929" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["4 The user wants to take loan and check the interest"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Apply the home loan"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:25:38 IST" duration-ms="152434" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Navigate to Post Your Property section"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Profile and Feature Validation"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'the user has successfully logged into the application' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Post Your Property from the menu")
+public void the_user_clicks_on_post_your_property_from_the_menu() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user toggles the property status")
+public void the_user_toggles_the_property_status() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the user should see no property listing options")
+public void the_user_should_see_no_property_listing_options() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'the user has successfully logged into the application' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Post Your Property from the menu")
+public void the_user_clicks_on_post_your_property_from_the_menu() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user toggles the property status")
+public void the_user_toggles_the_property_status() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the user should see no property listing options")
+public void the_user_should_see_no_property_listing_options() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at ✽.the user has successfully logged into the application(file:///C:/Users/hp/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/Profile.feature:4)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:23:06 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:25:27 IST" duration-ms="141455" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Update user profile name with invalid format"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Profile and Feature Validation"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'the user has successfully logged into the application' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("the user navigates to the Profile page")
+public void the_user_navigates_to_the_profile_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user updates the profile name to {string}")
+public void the_user_updates_the_profile_name_to(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("an error message should be displayed indicating an invalid name format")
+public void an_error_message_should_be_displayed_indicating_an_invalid_name_format() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the profile changes should not be saved {string}")
+public void the_profile_changes_should_not_be_saved(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'the user has successfully logged into the application' and 4 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Given("the user navigates to the Profile page")
+public void the_user_navigates_to_the_profile_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user updates the profile name to {string}")
+public void the_user_updates_the_profile_name_to(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("an error message should be displayed indicating an invalid name format")
+public void an_error_message_should_be_displayed_indicating_an_invalid_name_format() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the profile changes should not be saved {string}")
+public void the_profile_changes_should_not_be_saved(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at ✽.the user has successfully logged into the application(file:///C:/Users/hp/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/Profile.feature:4)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:25:28 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:26:43 IST" duration-ms="75728" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Generate and download a Rent Receipt"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Profile and Feature Validation"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'the user has successfully logged into the application' and 5 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user navigates to the Rent Receipts section")
+public void the_user_navigates_to_the_rent_receipts_section() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user fills the rent receipt form with {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, and {string}")
+public void the_user_fills_the_rent_receipt_form_with_and(String string, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Generate Receipt")
+public void the_user_clicks_on_generate_receipt() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Download Receipt")
+public void the_user_clicks_on_download_receipt() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the page should navigate to a URL containing {string}")
+public void the_page_should_navigate_to_a_url_containing(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'the user has successfully logged into the application' and 5 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user navigates to the Rent Receipts section")
+public void the_user_navigates_to_the_rent_receipts_section() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user fills the rent receipt form with {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, and {string}")
+public void the_user_fills_the_rent_receipt_form_with_and(String string, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Generate Receipt")
+public void the_user_clicks_on_generate_receipt() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Download Receipt")
+public void the_user_clicks_on_download_receipt() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the page should navigate to a URL containing {string}")
+public void the_page_should_navigate_to_a_url_containing(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at ✽.the user has successfully logged into the application(file:///C:/Users/hp/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/Profile.feature:4)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:25:38 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:27:08 IST" duration-ms="89165" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Generate and download a Rent Receipt"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Profile and Feature Validation"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'the user has successfully logged into the application' and 5 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user navigates to the Rent Receipts section")
+public void the_user_navigates_to_the_rent_receipts_section() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user fills the rent receipt form with {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, and {string}")
+public void the_user_fills_the_rent_receipt_form_with_and(String string, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Generate Receipt")
+public void the_user_clicks_on_generate_receipt() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Download Receipt")
+public void the_user_clicks_on_download_receipt() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the page should navigate to a URL containing {string}")
+public void the_page_should_navigate_to_a_url_containing(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'the user has successfully logged into the application' and 5 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user navigates to the Rent Receipts section")
+public void the_user_navigates_to_the_rent_receipts_section() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user fills the rent receipt form with {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, and {string}")
+public void the_user_fills_the_rent_receipt_form_with_and(String string, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Generate Receipt")
+public void the_user_clicks_on_generate_receipt() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user clicks on Download Receipt")
+public void the_user_clicks_on_download_receipt() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the page should navigate to a URL containing {string}")
+public void the_page_should_navigate_to_a_url_containing(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at ✽.the user has successfully logged into the application(file:///C:/Users/hp/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/Profile.feature:4)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:25:56 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:27:11 IST" duration-ms="74949" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Refer an Owner and Earn"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Profile and Feature Validation"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'the user has successfully logged into the application' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user navigates to the Refer and Earn section")
+public void the_user_navigates_to_the_refer_and_earn_section() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user enters owner details for referral:")
+public void the_user_enters_owner_details_for_referral(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the referral details should be submitted")
+public void the_referral_details_should_be_submitted() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'the user has successfully logged into the application' and 3 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user navigates to the Refer and Earn section")
+public void the_user_navigates_to_the_refer_and_earn_section() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user enters owner details for referral:")
+public void the_user_enters_owner_details_for_referral(io.cucumber.datatable.DataTable dataTable) {
+    // Write code here that turns the phrase above into concrete actions
+    // For automatic transformation, change DataTable to one of
+    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+    //
+    // For other transformations you can register a DataTableType.
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the referral details should be submitted")
+public void the_referral_details_should_be_submitted() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at ✽.the user has successfully logged into the application(file:///C:/Users/hp/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/Profile.feature:4)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:26:03 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2026-04-22T14:27:26 IST" duration-ms="82881" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Navigate to Painting and Cleaning Home Interiors"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Profile and Feature Validation"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="io.cucumber.testng.UndefinedStepException">
+            <message>
+              <![CDATA[The step 'the user has successfully logged into the application' and 5 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user navigates to the Painting and Cleaning section")
+public void the_user_navigates_to_the_painting_and_cleaning_section() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user selects the city {string} for cleaning services")
+public void the_user_selects_the_city_for_cleaning_services(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user selects Interior and Renovation")
+public void the_user_selects_interior_and_renovation() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user schedules a visit for Home Interiors")
+public void the_user_schedules_a_visit_for_home_interiors() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the share button should be visible on the interiors page")
+public void the_share_button_should_be_visible_on_the_interiors_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[io.cucumber.testng.UndefinedStepException: The step 'the user has successfully logged into the application' and 5 other step(s) are undefined.
+You can implement these steps using the snippet(s) below:
+
+@Given("the user has successfully logged into the application")
+public void the_user_has_successfully_logged_into_the_application() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user navigates to the Painting and Cleaning section")
+public void the_user_navigates_to_the_painting_and_cleaning_section() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user selects the city {string} for cleaning services")
+public void the_user_selects_the_city_for_cleaning_services(String string) {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user selects Interior and Renovation")
+public void the_user_selects_interior_and_renovation() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@When("the user schedules a visit for Home Interiors")
+public void the_user_schedules_a_visit_for_home_interiors() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+@Then("the share button should be visible on the interiors page")
+public void the_share_button_should_be_visible_on_the_interiors_page() {
+    // Write code here that turns the phrase above into concrete actions
+    throw new io.cucumber.java.PendingException();
+}
+
+at ✽.the user has successfully logged into the application(file:///C:/Users/hp/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/Profile.feature:4)
+]]>
+            </full-stacktrace>
+          </exception> <!-- io.cucumber.testng.UndefinedStepException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.nobroker.sprint.runner.RunnerIO@7d8704ef]" started-at="2026-04-22T14:27:31 IST" name="tearDownClass" finished-at="2026-04-22T14:27:31 IST" duration-ms="31" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.nobroker.sprint.runner.RunnerIO -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

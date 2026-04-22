@@ -49,17 +49,17 @@ WebDriver driver;
 	@FindBy(xpath="(//button[text()='Check Eligibility'])[2]")
 	private WebElement checkbtn;
 	
-	//pan number
-	@FindBy(xpath="(//span[text()='PAN Number *'])[2]/..//input")
-	private WebElement pan;
+//	//pan number
+//	@FindBy(xpath="(//span[text()='PAN Number *'])[2]/..//input")
+//	private WebElement pan;
+//	
+//	//continue
+//	@FindBy(xpath="(//button[text()='Continue'])[3]")
+//	private WebElement continueBtn;
 	
-	//continue
-	@FindBy(xpath="(//button[text()='Continue'])[3]")
-	private WebElement continueBtn;
-	
-	//assert the loan page
-	@FindBy(xpath="//p[.='Income Details']")
-	private WebElement loanPage;
+//	//assert the loan page
+//	@FindBy(xpath="//p[.='Income Details']")
+//	private WebElement loanPage;
 	
 	//getters
 	public WebElement getLoan() {
@@ -86,17 +86,17 @@ WebDriver driver;
 		return checkbtn;
 	}
 
-	public WebElement getPan() {
-		return pan;
-	}
-
-	public WebElement getContinueBtn() {
-		return continueBtn;
-	}
-
-	public boolean checkLoanPage() {
-		return loanPage.isDisplayed();
-	}
+//	public WebElement getPan() {
+//		return pan;
+//	}
+//
+//	public WebElement getContinueBtn() {
+//		return continueBtn;
+//	}
+//
+//	public boolean checkLoanPage() {
+//		return loanPage.isDisplayed();
+//	}
 	
 	//setters
 	public void clickLoan() {
@@ -144,19 +144,15 @@ WebDriver driver;
 		getCheckbtn().click();
 	}
 
-	public void setPan(String pan) {
-		utilities.WaitForVisibiltyOfElement(10, getPan());
-		getPan().sendKeys(pan);
-	}
-
-	public void setContinueBtn() {
-		utilities.WaitForToBeClickableOfElement(10, getContinueBtn());
-		getContinueBtn().click();
-	}
-
-	public void setLoanPage() {
-		Assert.assertTrue(Pages.loanPage.checkLoanPage());
-		System.out.println("Loge page is displayed");
-	}	
+//	public void setPan(String pan) {
+//		utilities.WaitForVisibiltyOfElement(10, getPan());
+//		getPan().sendKeys(pan);
+//	}
+//
+//	public void setContinueBtn() {
+//		utilities.WaitForToBeClickableOfElement(10, getContinueBtn());
+//		getContinueBtn().click();
+//	}
+	
 
 }

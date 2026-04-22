@@ -10,7 +10,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-
 public class BuyTest extends AllUtilities{
 	private BaseClass base;
 
@@ -26,53 +25,49 @@ public class BuyTest extends AllUtilities{
 	}
 	@When("user clicks on buy button")
 	public void user_clicks_on_buy_button() {
-	    Pages.dashPage.clickBuyModule();
+	    Pages.get().dashPage.clickBuyModule();
+	    AllUtilities.info("user clicks on buy button");
 	}
 	@When("user selects the city {string}")
 	public void user_selects_the_city(String city) {
-	    Pages.dashPage.selectCityWithDropdown(city, driver);
+	    Pages.get().dashPage.selectCityWithDropdown(city, driver);
+	    AllUtilities.info("User selects city: " + city);
 	}
 	@When("user enters the locality {string}")
 	public void user_enters_the_locality(String loc) throws InterruptedException {
-	    Pages.dashPage.writeLocality(loc, driver);
+	    Pages.get().dashPage.writeLocality(loc, driver);
+	    AllUtilities.info("User enters locality: " + loc);
 	}
 	@When("user clicks on search")
 	public void user_clicks_on_search() {
-	    Pages.dashPage.clickSearch();
+	    Pages.get().dashPage.clickSearch();
+	    AllUtilities.info("User clicks on Search button");
 	}
 	@When("user skips the popup")
 	public void user_skips_the_popup() {
-	    Pages.buy.clickSkip(driver);
+	    Pages.get().buy.clickSkip(driver);
+	    AllUtilities.info("User skips the popup");
 	}
 	@When("user applies filter")
 	public void user_applies_filter() {
-	    Pages.buy.clickFiter();
+	    Pages.get().buy.clickFiter();
+	    AllUtilities.info("User applies property filter");
 	}
 	@When("user clicks on View All projects")
 	public void user_clicks_on_view_all_projects() {
-	    Pages.buy.clickViewAll(driver);
+	    Pages.get().buy.clickViewAll(driver);
+	    AllUtilities.info("User clicks on View All Projects");
 	}
 	@When("user selects the property from list")
 	public void user_selects_the_property_from_list() {
-	    Pages.buy.setProperty(driver);
+	    Pages.get().buy.setProperty(driver);
+	    AllUtilities.info("User selects a property from the list");
 	}
 	@Then("user clicks on contact builder")
 	public void user_clicks_on_contact_builder() {
-	    Pages.buy.clickContact(driver);
+	    Pages.get().buy.clickContact(driver);
+	    AllUtilities.info("User clicks on Contact Builder");
 	}
 	
-	//map page
-	@When("user clicks on map")
-	public void user_clicks_on_map() {
-	    Pages.mapPage.clickMap();
-	}
-	@When("user clicks on metro")
-	public void user_clicks_on_metro() {
-	    Pages.mapPage.clickMetro();
-	}
-	@Then("user should see the lines")
-	public void user_should_see_the_lines() {
-	    Pages.mapPage.checkLines();
-	}
 
 }

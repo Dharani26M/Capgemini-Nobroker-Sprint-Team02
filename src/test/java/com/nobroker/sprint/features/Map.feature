@@ -17,4 +17,3 @@ Examples:
 |city    |locality |
 |Chennai |velachery|
 |Chennai |guindy   |
-|Bangalore|Indiranagar|

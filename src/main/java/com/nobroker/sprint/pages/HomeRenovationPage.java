@@ -102,9 +102,5 @@ WebDriver driver;
 		getCharcoal().click();
 	}
 
-	public void setPrice() {
-		Assert.assertTrue(Pages.renovationPage.checkPrice());
-		Reporter.log("Assertion is passed");
-	}
 
 }

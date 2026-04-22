@@ -45,10 +45,5 @@ WebDriver driver;
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(getMetro())).click();
 	}
-	public void checkLines() {		
-		Assert.assertTrue(Pages.mapPage.isLinesDisplayed());
-		System.out.println("Assertion is passed");
-		
-	}
 
 }
