@@ -38,7 +38,6 @@ public class ReferAndEarn extends AllUtilities {
 
     @When("the user enters owner details for referral:")
     public void the_user_enters_owner_details_for_referral(DataTable dataTable) {
-        WaitForVisibiltyOfElement(60, Pages.get().dashpage.getProfileImg());
         Pages.get().referpage.ClickOwnerDetails();
         List<Map<String, String>> data = dataTable.asMaps(String.class, String.class);
         Map<String, String> row = data.get(0);

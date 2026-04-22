@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -38,8 +39,11 @@ public class Hooks extends AllUtilities {
         WebDriver driver;
         if (Browser.equalsIgnoreCase("Edge"))
             driver = new EdgeDriver();
-        else if (Browser.equalsIgnoreCase("chrome"))
+        else if (Browser.equalsIgnoreCase("chrome")) {
+//        	ChromeOptions opt =new ChromeOptions();
+//        	opt.addArguments("--headless=new");
             driver = new ChromeDriver();
+        }
         else
             driver = new FirefoxDriver();
 
