@@ -1,5 +1,8 @@
-package com.nobroker.sprint.stepDefinition;
+package com.nobroker.sprint.stepdefinitions;
 
+import java.io.IOException;
+
+import org.apache.poi.EncryptedDocumentException;
 import org.testng.Assert;
 
 import com.nobroker.sprint.utils.AllUtilities;
@@ -14,11 +17,11 @@ import io.cucumber.java.en.When;
 
 public class NotaryAdvocateTest extends AllUtilities{
 	private BaseClass base;
-	ExcelUtilities  eu = new ExcelUtilities();
-
-	public NotaryAdvocateTest(BaseClass base) {
+	ExcelUtilities eu;
+	public NotaryAdvocateTest(BaseClass base) throws EncryptedDocumentException, IOException {
 		this.base = base;
 		this.initializeDriver(base.driver);
+		eu = new ExcelUtilities(base.driver);
 	}
 	
 	@Given("the user logged in")

@@ -98,5 +98,5 @@ WebDriver driver;
 		utilities.WaitForToBeClickableOfElement(10, getCharcoal());
 		getCharcoal().click();
 	}
-e
+
 }

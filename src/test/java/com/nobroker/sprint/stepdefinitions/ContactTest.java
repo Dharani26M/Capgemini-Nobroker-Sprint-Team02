@@ -1,4 +1,4 @@
-package com.nobroker.sprint.stepDefinition;
+package com.nobroker.sprint.stepdefinitions;
 
 import org.testng.Assert;
 import org.testng.Reporter;

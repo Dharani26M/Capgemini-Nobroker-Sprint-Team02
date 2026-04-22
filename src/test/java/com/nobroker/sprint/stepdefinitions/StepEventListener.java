@@ -1,4 +1,4 @@
-package com.nobroker.sprint.stepDefinition;
+package com.nobroker.sprint.stepdefinitions;
 
 import com.nobroker.sprint.utils.AllUtilities;
 

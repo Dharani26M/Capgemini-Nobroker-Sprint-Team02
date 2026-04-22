@@ -1,4 +1,4 @@
-package com.nobroker.sprint.stepDefinition;
+package com.nobroker.sprint.stepdefinitions;
 
 import org.testng.Assert;
 
@@ -25,22 +25,22 @@ public class BuyTest extends AllUtilities{
 	}
 	@When("user clicks on buy button")
 	public void user_clicks_on_buy_button() {
-	    Pages.get().dashPage.clickBuyModule();
+	    Pages.get().dashpage.clickBuyModule();
 	    AllUtilities.info("user clicks on buy button");
 	}
 	@When("user selects the city {string}")
 	public void user_selects_the_city(String city) {
-	    Pages.get().dashPage.selectCityWithDropdown(city, driver);
+	    Pages.get().dashpage.selectCityWithDropdown(city, driver);
 	    AllUtilities.info("User selects city: " + city);
 	}
 	@When("user enters the locality {string}")
 	public void user_enters_the_locality(String loc) throws InterruptedException {
-	    Pages.get().dashPage.writeLocality(loc, driver);
+	    Pages.get().dashpage.writeLocality(loc, driver);
 	    AllUtilities.info("User enters locality: " + loc);
 	}
 	@When("user clicks on search")
 	public void user_clicks_on_search() {
-	    Pages.get().dashPage.clickSearch();
+	    Pages.get().dashpage.clickSearch();
 	    AllUtilities.info("User clicks on Search button");
 	}
 	@When("user skips the popup")

@@ -24,22 +24,22 @@ public class MapTest extends AllUtilities{
 	}
 	@When("user clicks on the buy button")
 	public void user_clicks_on_the_buy_button() {
-	    Pages.get().dashPage.clickBuyModule();
+	    Pages.get().dashpage.clickBuyModule();
 	    AllUtilities.info("User clicks on Buy module");
 	}
 	@When("user selects a city {string}")
 	public void user_selects_a_city(String city) {
-	    Pages.get().dashPage.selectCityWithDropdown(city, driver);
+	    Pages.get().dashpage.selectCityWithDropdown(city, driver);
 	    AllUtilities.info("User selects city: " + city);
 	}
 	@When("user enter the locality {string}")
 	public void user_enter_the_locality(String loc) throws InterruptedException {
-	    Pages.get().dashPage.writeLocality(loc, driver);
+	    Pages.get().dashpage.writeLocality(loc, driver);
 	    AllUtilities.info("User enters locality: " + loc);
 	}
 	@When("user clicks on search button")
 	public void user_clicks_on_search_button() {
-	    Pages.get().dashPage.clickSearch();
+	    Pages.get().dashpage.clickSearch();
 	    AllUtilities.info("User clicks on Search button");
 	}
 	@When("user skips the popups")

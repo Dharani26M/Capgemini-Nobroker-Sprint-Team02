@@ -1,15 +1,5 @@
 package com.nobroker.sprint.pages;
 
-<<<<<<< HEAD
-import java.util.List;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import com.nobroker.sprint.utils.AllUtilities;
-=======
 import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -20,11 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.testng.Reporter;
 
 import com.nobroker.sprint.utils.AllUtilities;
 import com.nobroker.sprint.utils.Pages;
->>>>>>> PackersAndMovers-Module
 
 public class VechicleAddInventoryPage {
 	
@@ -50,13 +38,7 @@ public class VechicleAddInventoryPage {
 	private WebElement Continue;
 	
 	
-<<<<<<< HEAD
-	public WebElement getEdit() {
-		return Edit;
-	}
-=======
 
->>>>>>> PackersAndMovers-Module
 	
 	@FindBy(id="pnmLandingPageFromRelocationFormLocalitySearch")
 	private WebElement RelocateFromLocation;
@@ -73,11 +55,6 @@ public class VechicleAddInventoryPage {
 	private WebElement UpdateLocation;
 
 	
-<<<<<<< HEAD
-	@FindBy(xpath="//img[@alt='Success']/..")
-	private WebElement Confirmation;
-	
-=======
 	
 	@FindBy(xpath="//p[contains(text(),'Congratulations')]")
 	private WebElement Confirmation;
@@ -93,7 +70,6 @@ public class VechicleAddInventoryPage {
 	public WebElement getEdit() {
 		return Edit;
 	}
->>>>>>> PackersAndMovers-Module
 	public WebElement getConfirmation() {
 		return Confirmation;
 	}
@@ -129,21 +105,6 @@ public class VechicleAddInventoryPage {
 
 	    By incLocator = By.xpath("//div[normalize-space()='" + carType + "']/ancestor::div[contains(@class,'item')]//button[@id='increament']" );
 
-<<<<<<< HEAD
-	    List<WebElement> addButtons = driver.findElements(addLocator);
-
-	    if (!addButtons.isEmpty()) {
-	   
-	        WebElement addBtn = Utilities.WaitForToBeClickableOfElement(5, addLocator);
-
-	        Utilities.scrollToElement(addBtn);
-
-	        addBtn.click();
-
-	    } else {
-
-	        WebElement incBtn = Utilities.WaitForToBeClickableOfElement(5, incLocator);
-=======
 	    if (driver.findElements(addLocator).size() > 0) {
 
 	        WebElement addBtn = driver.findElement(addLocator);
@@ -159,15 +120,10 @@ public class VechicleAddInventoryPage {
 
 	        WebElement incBtn = driver.findElement(incLocator);
 
->>>>>>> PackersAndMovers-Module
 	        Utilities.scrollToElement(incBtn);
 	        incBtn.click();
 	    }
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> PackersAndMovers-Module
 		
 	public void decrementVehicle(String carType) {
 
@@ -181,33 +137,19 @@ public class VechicleAddInventoryPage {
 
 	        decBtn.click();
 
-<<<<<<< HEAD
 	    } 
-=======
-	    } else {
-	        Reporter.log("Item not added yet, cannot decrement: " + carType);
-	    }
->>>>>>> PackersAndMovers-Module
 	}
 	
 	public void RelocateFromCity(String City) {
 		getRelocateFromLocation().sendKeys(City);
 		Utilities.WaitForToBeClickableOfElement(40, getShiftingDropDowm());
-<<<<<<< HEAD
-		getShiftingDropDowm().click();
-=======
 		waitForStableDropdownAndClick();
 		
->>>>>>> PackersAndMovers-Module
 	}
 	
 	public void RelocateToCity(String City) {
 		getRelocateToLocation().sendKeys(City);
 		Utilities.WaitForToBeClickableOfElement(40, getShiftingDropDowm());
-<<<<<<< HEAD
-		getShiftingDropDowm().click();
-	}
-=======
 		waitForStableDropdownAndClick();
 	}
 	private By getDropDown() {
@@ -274,7 +216,4 @@ public class VechicleAddInventoryPage {
 		    Pages.get().vechicleinventory.getUpdateLocation().click();
 			Pages.get().vechicleinventory.getContinue().click();
 	   }
->>>>>>> PackersAndMovers-Module
 }
-
-

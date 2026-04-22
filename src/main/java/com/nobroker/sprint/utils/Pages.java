@@ -2,7 +2,38 @@ package com.nobroker.sprint.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import com.nobroker.sprint.pages.*;
+
+import com.nobroker.sprint.pages.AddInventoryPage;
+import com.nobroker.sprint.pages.AvoidBrokers;
+import com.nobroker.sprint.pages.Buy;
+import com.nobroker.sprint.pages.CareersPage;
+import com.nobroker.sprint.pages.ContactPage;
+import com.nobroker.sprint.pages.DashboardPage;
+import com.nobroker.sprint.pages.HomeCleaningPage;
+import com.nobroker.sprint.pages.HomeInteriorsPage;
+import com.nobroker.sprint.pages.HomeLoan;
+import com.nobroker.sprint.pages.HomeLoanPage;
+import com.nobroker.sprint.pages.HomeRenovationPage;
+import com.nobroker.sprint.pages.HomeRepair;
+import com.nobroker.sprint.pages.MapPage;
+import com.nobroker.sprint.pages.NewIconPage;
+import com.nobroker.sprint.pages.NobrokerAskQuestion;
+import com.nobroker.sprint.pages.NobrokerForumPage;
+import com.nobroker.sprint.pages.NotaryAdvocatePage;
+import com.nobroker.sprint.pages.OrderSummary;
+import com.nobroker.sprint.pages.PG_HostelPage;
+import com.nobroker.sprint.pages.PackersAndMoversPage;
+import com.nobroker.sprint.pages.Painiting_AC;
+import com.nobroker.sprint.pages.PaintingsAndCleaningPage;
+import com.nobroker.sprint.pages.PaymentPage;
+import com.nobroker.sprint.pages.PostyourPropertyPage;
+import com.nobroker.sprint.pages.ProfilePage;
+import com.nobroker.sprint.pages.PropertyPremium;
+import com.nobroker.sprint.pages.ReferAndEarnPage;
+import com.nobroker.sprint.pages.RentReceiptPage;
+import com.nobroker.sprint.pages.RentalPage;
+import com.nobroker.sprint.pages.Shortlist;
+import com.nobroker.sprint.pages.VechicleAddInventoryPage;
 
 public class Pages {
 
@@ -39,6 +70,7 @@ public class Pages {
 	public HomeLoanPage loanPage;
 	public NotaryAdvocatePage notaryPage;
 	public ContactPage contactPage;
+	public HomeLoan home;
 
 	public static void LoadAllPages(WebDriver driver) {
 		Pages p = new Pages();
@@ -76,6 +108,7 @@ public class Pages {
 		p.loanPage = PageFactory.initElements(driver, HomeLoanPage.class);
 		p.notaryPage = PageFactory.initElements(driver, NotaryAdvocatePage.class);
 		p.contactPage = PageFactory.initElements(driver, ContactPage.class);
+		p.home=PageFactory.initElements(driver, HomeLoan.class);
 		threadPages.set(p);
 
 	}
@@ -159,6 +192,10 @@ public class Pages {
 
 	public static RentalPage getRental() {
 		return get().rental;
+	}
+	
+	public static HomeLoan gethomeloan() {
+		return get().home;
 	}
 
 	public static Shortlist getShortlist() {
