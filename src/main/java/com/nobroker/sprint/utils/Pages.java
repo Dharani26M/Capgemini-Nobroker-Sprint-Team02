@@ -27,6 +27,13 @@ public class Pages {
 	public PG_HostelPage PgHostel;
 	public PostyourPropertyPage PostProperty;
 	public HomeLoanPage homeloan;
+	public PackersAndMoversPage moverspage;
+	public AddInventoryPage inventorypage;
+	public OrderSummary summary;
+	public VechicleAddInventoryPage vechicleinventory;
+	public PaymentPage payment;
+	public NobrokerAskQuestion askquestion;
+	public NobrokerForumPage forumpage;
 
 	public static void LoadAllPages(WebDriver driver) {
 		Pages p = new Pages();
@@ -50,7 +57,15 @@ public class Pages {
 		p.paintingAc = PageFactory.initElements(driver, Painiting_AC.class);
 		p.rental = PageFactory.initElements(driver, RentalPage.class);
 		p.shortlist = PageFactory.initElements(driver, Shortlist.class);
+		p.moverspage = PageFactory.initElements(driver, PackersAndMoversPage.class);
+		p.inventorypage = PageFactory.initElements(driver, AddInventoryPage.class);
+		p.vechicleinventory = PageFactory.initElements(driver, VechicleAddInventoryPage.class);
+		p.summary = PageFactory.initElements(driver, OrderSummary.class);
+		p.payment = PageFactory.initElements(driver, PaymentPage.class);
+		p.askquestion = PageFactory.initElements(driver, NobrokerAskQuestion.class);
+		p.forumpage = PageFactory.initElements(driver, NobrokerForumPage.class);
 		threadPages.set(p);
+	
 	}
 
 	public static Pages get() {
@@ -136,6 +151,33 @@ public class Pages {
 
 	public static Shortlist getShortlist() {
 		return get().shortlist;
+	}
+	public static PackersAndMoversPage getMoversPage() {
+		return get().moverspage;
+	}
+
+	public static AddInventoryPage getInventoryPage() {
+		return get().inventorypage;
+	}
+
+	public static OrderSummary getSummaryPage() {
+		return get().summary;
+	}
+
+	public static VechicleAddInventoryPage getVechicleInventoryPage() {
+		return get().vechicleinventory;
+	}
+
+	public static PaymentPage getPaymentPage() {
+		return get().payment;
+	}
+
+	public static NobrokerAskQuestion getAskQuestionPage() {
+		return get().askquestion;
+	}
+
+	public static NobrokerForumPage getForumPage() {
+		return get().forumpage;
 	}
 
 }

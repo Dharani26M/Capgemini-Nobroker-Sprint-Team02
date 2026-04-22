@@ -20,6 +20,3 @@ public class RunnerIO extends AbstractTestNGCucumberTests {
         return super.scenarios();
     }
 }
-
-
-

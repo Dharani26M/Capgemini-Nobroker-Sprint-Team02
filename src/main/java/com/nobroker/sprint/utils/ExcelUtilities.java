@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 
@@ -25,6 +26,17 @@ public class ExcelUtilities {
             return data;
         } catch (Exception e) {
             return "";
+        }
+    }
+    
+    public static int getRowCount(String sheet) {
+        try (FileInputStream fis = new FileInputStream("./src/test/resources/Readers/Config.xlsx");
+             Workbook wb = WorkbookFactory.create(fis)) {
+
+            return wb.getSheet(sheet).getLastRowNum();
+
+        } catch (Exception e) {
+            return 0;
         }
     }
 }

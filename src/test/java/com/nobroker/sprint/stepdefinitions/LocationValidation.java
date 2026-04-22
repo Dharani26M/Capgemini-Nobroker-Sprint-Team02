@@ -21,70 +21,73 @@ public class LocationValidation extends AllUtilities {
 	
 	@Given("User is on Packers and Movers page")
 	public void user_is_on_packers_and_movers_page() {
-		Pages.dashpage.clickPackersAndMovers();
+		Pages.get().dashpage.clickPackersAndMovers();
 		SwitchWindowUsingUrl("packers");
 	    waitForElementOrTimeout(By.xpath("//span[contains(text(),'Complete booking')]"), 40);
+	    info("User is on Packers and Movers page");
 	}
 	@When("User enters ShiftingFrom as {string}")
 	public void user_enters_shifting_from_as(String from) {
-		Pages.moverspage.getClearShiftingFrom().click();
+		Pages.get().moverspage.getClearShiftingFrom().click();
+		
 
 	    if (!from.isEmpty()) {
-	        Pages.moverspage.getShiftingFrom().sendKeys(from);
-	        pauseOnAction(20);
-			Pages.moverspage.getShiftingDropDowm().click();
+	        Pages.get().moverspage.getShiftingFrom().sendKeys(from);
+	        
+			Pages.get().moverspage.waitForStableDropdownAndClick();
 	    }
+	    info("User entered Shifting From location: " + from);
 	}
 	@When("User enters ShiftingTo as {string}")
 	public void user_enters_shifting_to_as(String to) {
-		Pages.moverspage.getClearShiftingTo().click();
+		Pages.get().moverspage.getClearShiftingTo().click();
 
 	    if (!to.isEmpty()) {
-	        Pages.moverspage.getShiftingTo().sendKeys(to);
-	        pauseOnAction(20);
-			Pages.moverspage.getShiftingDropDowm().click();
+	        Pages.get().moverspage.getShiftingTo().sendKeys(to);
+	        
+			Pages.get().moverspage.waitForStableDropdownAndClick();
 	}
+	    info("User entered Shifting To location: " + to);
+	    
 	}
 	@When("User clicks on Check Prices")
 	public void user_clicks_on_check_prices() {
-		WaitForToBeClickableOfElement(40, Pages.moverspage.getCheckPrices());
-		 Pages.moverspage.getCheckPrices().click();
+		WaitForToBeClickableOfElement(40, Pages.get().moverspage.getCheckPrices());
+		 Pages.get().moverspage.getCheckPrices().click();
+		 info("User clicked on Check Prices");
+		 
 	}
 
 	
-	
-	@Then("{string} pickup error should be displayed")
-	public void pickup_error_should_be_displayed(String expected) {
-		   boolean isDisplayed;
+	@Then("pickup error should be {string}")
+	public void pickup_error_should_be(String expected) {
 
-		    try {
-		        WebElement pickupError = waitForRefreshedVisibility(
-		                By.xpath("//*[contains(text(),'pickup locality')]"), 5);
-		        isDisplayed = pickupError.isDisplayed();
-		    } catch (Exception e) {
-		        isDisplayed = false;
-		    }
+	    boolean isExpected = Boolean.parseBoolean(expected);
 
-		    Assert.assertEquals(isDisplayed, Boolean.parseBoolean(expected),
-		            "Pickup error validation failed");
+	    Assert.assertEquals(
+	        isDisplayedSafe(Pages.get().moverspage.getPickupError()),
+	        isExpected,
+	        "Pickup error validation failed"
+	    );
+	    info("Pickup error validation completed. Expected: " + expected);
+	    
 	}
-	@Then("{string} destination error should be displayed")
-	public void destination_error_should_be_displayed(String expected) {
-		 boolean isDisplayed;
 
-		    try {
-		        WebElement destinationError = waitForRefreshedVisibility(
-		                By.xpath("//*[contains(text(),'destination locality')]"), 5);
-		        isDisplayed = destinationError.isDisplayed();
-		    } catch (Exception e) {
-		        isDisplayed = false;
-		    }
+	@Then("destination error should be {string}")
+	public void destination_error_should_be(String expected) {
 
-		    Assert.assertEquals(isDisplayed, Boolean.parseBoolean(expected),
-		            "Destination error validation failed");
+	    boolean isExpected = Boolean.parseBoolean(expected);
+
+	    Assert.assertEquals(
+	        isDisplayedSafe(Pages.get().moverspage.getDestinationError()),
+	        isExpected,
+	        "Destination error validation failed"
+	    );
+	    info("Destination error validation completed. Expected: " + expected);
+	}
 	}
 
 
  
-	}
+	
 

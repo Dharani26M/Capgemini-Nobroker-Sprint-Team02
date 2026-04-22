@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -32,12 +33,11 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 public class AllUtilities {
 
+	// --- Thread-Safe Drivers and Reporting ---
 	private static final ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
-
-	
-	private static ExtentReports extent;
 	private static final ThreadLocal<ExtentTest> scenarioTest = new ThreadLocal<>();
 	private static final ThreadLocal<ExtentTest> stepNode = new ThreadLocal<>();
+	private static ExtentReports extent;
 
 	public WebDriver driver;
 	public WebDriverWait wait;
@@ -48,7 +48,7 @@ public class AllUtilities {
 	public void initializeDriver(WebDriver driver) {
 		this.driver = driver;
 		tlDriver.set(driver);
-		this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		this.action = new Actions(driver);
 	}
 
@@ -149,12 +149,24 @@ public class AllUtilities {
 		return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(locator)));
 	}
 
+	public WebElement waitForRefreshedVisibility(WebElement element, int timeout) {
+		return wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(element)));
+	}
+
 	public void waitForElementOrTimeout(By locator, int timeout) {
 		try {
 			new WebDriverWait(driver, Duration.ofSeconds(timeout))
 					.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		} catch (Exception e) {
-			System.out.println("Element not found within " + timeout + "s, continuing: " + locator);
+			System.out.println("Element not found within " + timeout + "s: " + locator);
+		}
+	}
+
+	public void waitForElementOrTimeout(WebElement element, int timeout) {
+		try {
+			new WebDriverWait(driver, Duration.ofSeconds(timeout)).until(d -> element.isDisplayed());
+		} catch (Exception e) {
+			System.out.println("Element not visible within " + timeout + "s.");
 		}
 	}
 
@@ -168,6 +180,11 @@ public class AllUtilities {
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(0,arguments[0]);", pixels);
 	}
 
+	public void scrollInsideContainer(WebDriver driver, WebElement container, WebElement element) {
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollTop = arguments[1].offsetTop;", container,
+				element);
+	}
+
 	public void jsClick(WebElement element) {
 		((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
 	}
@@ -175,6 +192,14 @@ public class AllUtilities {
 	public void clearField(WebElement element) {
 		element.sendKeys(Keys.CONTROL + "a");
 		element.sendKeys(Keys.DELETE);
+	}
+
+	public boolean isDisplayedSafe(WebElement element) {
+		try {
+			return element.isDisplayed();
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	// --- Popups & Windows ---
@@ -212,10 +237,11 @@ public class AllUtilities {
 
 	// --- File & Property Readers ---
 	public String getPropertyKeyValue(String key) throws IOException {
-		FileInputStream fs = new FileInputStream("./src/test/resources/Readers/Common.properties");
-		Properties prop = new Properties();
-		prop.load(fs);
-		return prop.getProperty(key);
+		try (FileInputStream fs = new FileInputStream("./src/test/resources/Readers/Common.properties")) {
+			Properties prop = new Properties();
+			prop.load(fs);
+			return prop.getProperty(key);
+		}
 	}
 
 	// --- Action Class Wrappers ---
@@ -264,6 +290,7 @@ public class AllUtilities {
 		return month.substring(0, 1) + month.substring(1).toLowerCase() + " " + date.getYear();
 	}
 
+	// --- Reporting & Screenshots ---
 	public static synchronized ExtentReports getReport() {
 		if (extent == null) {
 			ExtentSparkReporter reporter = new ExtentSparkReporter("Reports/extent.html");
@@ -278,51 +305,35 @@ public class AllUtilities {
 	}
 
 	public static synchronized void createTest(String scenarioName) {
-		ExtentTest test = getReport().createTest(scenarioName);
-		scenarioTest.set(test);
-		stepNode.set(null); // clear any leftover step node
+		scenarioTest.set(getReport().createTest(scenarioName));
+		stepNode.set(null);
 	}
 
 	public static void createStepNode(String keyword, String stepText) {
 		ExtentTest parent = scenarioTest.get();
-		if (parent != null) {
-			ExtentTest node = parent.createNode("<b>" + keyword + "</b> " + stepText);
-			stepNode.set(node);
-		}
+		if (parent != null)
+			stepNode.set(parent.createNode("<b>" + keyword + "</b> " + stepText));
+	}
+
+	private static ExtentTest getCurrentTestNode() {
+		return (stepNode.get() != null) ? stepNode.get() : scenarioTest.get();
 	}
 
 	public static void pass(String msg) {
-		ExtentTest node = stepNode.get();
-		if (node != null) {
-			node.pass(msg);
-			return;
-		}
-		ExtentTest test = scenarioTest.get();
-		if (test != null)
-			test.pass(msg);
+		if (getCurrentTestNode() != null)
+			getCurrentTestNode().pass(msg);
 	}
 
 	public static void fail(String msg) {
-		ExtentTest node = stepNode.get();
-		if (node != null) {
-			node.fail(msg);
-			return;
-		}
-		ExtentTest test = scenarioTest.get();
-		if (test != null)
-			test.fail(msg);
+		if (getCurrentTestNode() != null)
+			getCurrentTestNode().fail(msg);
 	}
 
 	public static void info(String msg) {
-		ExtentTest node = stepNode.get();
-		if (node != null) {
-			node.info(msg);
-			return;
-		}
-		ExtentTest test = scenarioTest.get();
-		if (test != null)
-			test.info(msg);
+		if (getCurrentTestNode() != null)
+			getCurrentTestNode().info(msg);
 	}
+
 	public static void captureFailure(WebDriver driver, String testName) {
 		try {
 			WebDriver d = (driver != null) ? driver : tlDriver.get();
@@ -331,21 +342,16 @@ public class AllUtilities {
 				fail("Test Failed: " + name + " (driver was null)");
 				return;
 			}
-			String relativePath = takeScreenshot(d, name);
-			String absolutePath = new File(relativePath).getAbsolutePath();
+			String path = takeScreenshot(d, name);
+			String absolutePath = new File(path).getAbsolutePath();
 
-			// Mark the current step node
-			ExtentTest node = stepNode.get();
-			if (node != null) {
-				node.fail("Step FAILED: " + name);
-				node.addScreenCaptureFromPath(absolutePath);
+			if (stepNode.get() != null) {
+				stepNode.get().fail("Step FAILED: " + name).addScreenCaptureFromPath(absolutePath);
 			}
-			// Also mark the parent scenario node
-			ExtentTest test = scenarioTest.get();
-			if (test != null) {
-				test.fail("Scenario FAILED at: " + name);
-				if (node == null)
-					test.addScreenCaptureFromPath(absolutePath);
+			if (scenarioTest.get() != null) {
+				scenarioTest.get().fail("Scenario FAILED at: " + name);
+				if (stepNode.get() == null)
+					scenarioTest.get().addScreenCaptureFromPath(absolutePath);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -356,7 +362,9 @@ public class AllUtilities {
 		String path = "Screenshot/" + name + "_" + System.currentTimeMillis() + ".png";
 		try {
 			File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			FileHandler.copy(src, new File(path));
+			File dest = new File(path);
+			dest.getParentFile().mkdirs();
+			FileHandler.copy(src, dest);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
