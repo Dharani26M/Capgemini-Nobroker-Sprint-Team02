@@ -26,17 +26,13 @@ public class PostPropertyTest extends AllUtilities {
 
 	}
 
-	@Given("the user has successfully logged into the application")
-	public void the_user_has_successfully_logged_into_the_application() {
-		WaitForVisibiltyOfElement(20, Pages.get().dashpage.getProfileImg());
-		Assert.assertTrue(Pages.get().dashpage.getProfileImg().isDisplayed());
-	}
-
 	@When("User clicks on Post Your Property button")
 	public void user_clicks_on_post_your_property_button() {
 		WaitForAllElements(20);
 		Pages.get().PostProperty.getMenu().click();
+		AllUtilities.info("Clicking on menu");
 		Pages.get().PostProperty.getPropertylink().click();
+		AllUtilities.info("Clicking on 'Post Your Property' link");
 
 	}
 
@@ -44,10 +40,6 @@ public class PostPropertyTest extends AllUtilities {
 	public void user_click_post_now() {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
-//	    WebElement postNow = wait.until(
-//	        ExpectedConditions.elementToBeClickable(Pages.PostProperty.getPostNowBtn())
-//	    );
 		WaitForToBeClickableOfElement(20, Pages.get().PostProperty.getPostNowBtn());
 
 		scrollToElement(Pages.get().PostProperty.getPostNowBtn());
@@ -59,6 +51,8 @@ public class PostPropertyTest extends AllUtilities {
 			JavascriptExecutor js = (JavascriptExecutor) driver;
 			js.executeScript("arguments[0].click();", Pages.get().PostProperty.getPostNowBtn());
 		}
+
+		AllUtilities.info("Clicking on 'Post Now' button");
 	}
 
 	@When("User click SelectCity")
@@ -70,7 +64,7 @@ public class PostPropertyTest extends AllUtilities {
 
 		WaitForAllElements(30);
 		navigateDownDropdown(Pages.get().PostProperty.getSelectCity(), 1, 10);
-
+		AllUtilities.info("City selected successfully");
 	}
 
 	@When("User click StartPosting")
@@ -92,16 +86,20 @@ public class PostPropertyTest extends AllUtilities {
 			System.out.println("Popup not present, continuing...");
 		}
 
+		AllUtilities.info("Clicking on Start Posting");
+
 	}
 
 	@When("User click the preview")
 	public void user_click_the_preview() {
 		Pages.get().PostProperty.getPreview().click();
+		AllUtilities.info("Clicking on Preview button");
 	}
 
 	@Then("User should be navigated to the preview page")
 	public void user_should_be_navigated_to_the_preview_page() {
 		Assert.assertTrue(base.driver.getCurrentUrl().contains("manage/rent"));
+		AllUtilities.info("User successfully navigated to preview page");
 	}
 
 }

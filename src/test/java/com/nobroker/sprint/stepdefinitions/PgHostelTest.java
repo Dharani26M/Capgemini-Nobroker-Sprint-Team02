@@ -37,6 +37,7 @@ public class PgHostelTest extends AllUtilities {
 		WaitForAllElements(40);
 		Pages.get().PgHostel.getLocation().click();
 		navigateDownDropdown(Pages.get().PgHostel.getLocation(), 3, 10);
+		AllUtilities.info("Selecting location from dropdown");
 
 	}
 
@@ -48,61 +49,66 @@ public class PgHostelTest extends AllUtilities {
 		localityField.sendKeys(locality);
 		Thread.sleep(2000);
 		navigateDownDropdown(localityField, 1, 60);
+		AllUtilities.info("Selecting locality from dropdown");
 	}
 
 	@When("User clicks on PG Hostel tab")
 	public void user_clicks_on_pg_hostel_tab() {
 		WaitForAllElements(20);
 		Pages.get().PgHostel.getPg().click();
+		AllUtilities.info("PG Hostel tab clicked");
 	}
 
 	@When("User clicks the Search button")
 	public void user_clicks_the_search_button() {
 		Pages.get().PgHostel.getSearch().click();
+		AllUtilities.info("Search initiated");
 
 	}
 
 	@When("User clicks the filters")
 	public void user_clicks_the_filters() {
 
-	    WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getSorting());
-	    Pages.get().PgHostel.getSorting().click();
-	    navigateDownDropdown(Pages.get().PgHostel.getSorting(), 2, 10);
+		WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getSorting());
+		Pages.get().PgHostel.getSorting().click();
+		navigateDownDropdown(Pages.get().PgHostel.getSorting(), 2, 10);
+		AllUtilities.info("Sorting option selected");
 
-	    WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getFemale());
-	    Pages.get().PgHostel.getFemale().click();
-	    
-	    WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getRoom());
-	    Pages.get().PgHostel.getRoom().click();
-	  
-	    
-	    WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getPreference());
-	    Pages.get().PgHostel.getPreference().click();
-	    
-	    WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getBreakfast());
-	    Pages.get().PgHostel.getBreakfast().click();
-	    
-	    WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getDinnner());
-	    Pages.get().PgHostel.getDinnner().click();
+		WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getFemale());
+		Pages.get().PgHostel.getFemale().click();
 
-	    scrollToElement(Pages.get().PgHostel.getShortlist());
+		WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getRoom());
+		Pages.get().PgHostel.getRoom().click();
 
-	    WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getShortlist());
-	    Pages.get().PgHostel.getShortlist().click();
+		WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getPreference());
+		Pages.get().PgHostel.getPreference().click();
 
+		WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getBreakfast());
+		Pages.get().PgHostel.getBreakfast().click();
 
-	    
+		WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getDinnner());
+		Pages.get().PgHostel.getDinnner().click();
+
+		AllUtilities.info("Applying filters");
+
+		scrollToElement(Pages.get().PgHostel.getShortlist());
+
+		WaitForToBeClickableOfElement(20, Pages.get().PgHostel.getShortlist());
+		Pages.get().PgHostel.getShortlist().click();
+		AllUtilities.info("Shortlist button clicked");
+
 //	    WaitForToBeClickableOfElement(20, Pages.PgHostel.getclose());
 //	    Pages.PgHostel.getclose().click();
-	    
 
 	}
+
 	@Then("The shortlist page should be displayed")
 	public void the_shortlist_page_should_be_displayed() throws InterruptedException {
 //		System.out.println("pass");
 //		Thread.sleep(3000);
-		   Assert.assertTrue(driver.getCurrentUrl().contains("my_shortlist_header"), 
-			        "Shortlist page is NOT displayed. Current URL: " +driver.getCurrentUrl() );
+		Assert.assertTrue(driver.getCurrentUrl().contains("my_shortlist_header"),
+				"Shortlist page is NOT displayed. Current URL: " + driver.getCurrentUrl());
+		AllUtilities.info("Shortlist page displayed successfully");
 	}
 
 }

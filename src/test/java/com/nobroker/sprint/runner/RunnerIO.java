@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
 		features = {"src/test/java/com/nobroker/sprint/features" },
 		dryRun = false,
-		plugin = {"pretty", "html:Reports/Menu_Profile-Report.html" },
+		plugin = {"pretty", "html:Reports/Nobroker-Report.html","com.nobroker.sprint.stepdefinitions.StepEventListener" },
 		glue = "com.nobroker.sprint.stepdefinitions")
 
 public class RunnerIO extends AbstractTestNGCucumberTests {

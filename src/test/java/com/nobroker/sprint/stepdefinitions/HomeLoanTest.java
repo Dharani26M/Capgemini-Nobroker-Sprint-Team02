@@ -1,15 +1,21 @@
 package com.nobroker.sprint.stepdefinitions;
 
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.time.Duration;
 
+import org.apache.poi.EncryptedDocumentException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.nobroker.sprint.utils.AllUtilities;
 import com.nobroker.sprint.utils.BaseClass;
+import com.nobroker.sprint.utils.ExcelUtilities;
 import com.nobroker.sprint.utils.Pages;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -20,50 +26,43 @@ public class HomeLoanTest extends AllUtilities {
 		this.base = base;
 		this.initializeDriver(base.driver);
 	}
-	
-	@Given("The user should be logged in")
-	public void the_user_should_be_logged_in() {
-		 Assert.assertTrue(FetchApplicationUrl().contains("nobroker.in"));
+
+	@When("User clicks on Loan Eligibility option")
+	public void user_clicks_on_loan_eligibility_option() throws InterruptedException {
+		Pages.get().homeloan.getCheck().click();
+		AllUtilities.info("Clicking on 'Check Loan Eligibility' option");
+		SwitchWindowUsingTitle("desktopBanner");
+		AllUtilities.info("Switching to new window using title: desktopBanner");
+		scrollToElement(Pages.get().homeloan.getEligibility());
+		WaitForVisibiltyOfElement(20, Pages.get().homeloan.getEligibility());
+		jsClick(Pages.get().homeloan.getEligibility());
+		AllUtilities.info("Loan Eligibility option clicked successfully");
 	}
-	@When("user clicks on the Apply Home Loan")
-	public void user_clicks_on_the_apply_home_loan() {
-		Pages.loanPage.clickLoan();
-		Pages.loanPage.clickRadio();
+
+	@When("User enters the details")
+	public void user_enters_the_details() throws EncryptedDocumentException, IOException {
+		ExcelUtilities excel = new ExcelUtilities(driver);
+		fillField(Pages.get().homeloan.getLoanAmount(), excel.getExcelData("Sheet3", 1, 0));
+		fillField(Pages.get().homeloan.getMonthlyIncome(), excel.getExcelData("Sheet3", 1, 1));
+		fillField(Pages.get().homeloan.getEMI(), excel.getExcelData("Sheet3", 1, 2));
+		fillField(Pages.get().homeloan.getRateofInterest(), excel.getExcelData("Sheet3", 1, 3));
+		AllUtilities.info("All loan details entered successfully");
 	}
-	@When("user request for loan amount")
-	public void user_request_for_loan_amount(io.cucumber.datatable.DataTable dataTable) {
-	    List<Map<String, String>>data=dataTable.asMaps();
-	    String loanamt = data.get(0).get("loanamt");
-	    Pages.loanPage.setLoanamt(loanamt);
+
+	@Then("Loan eligibility should be calculated successfully")
+	public void loan_eligibility_should_be_calculated_successfully() {
+		System.out.println();
+		String text = Pages.get().homeloan.getVerify().getText();
+		Assert.assertTrue(text.contains("₹"));
+		AllUtilities.info("Loan eligibility calculated successfully");
 	}
-	@When("user set the rate of interest")
-	public void user_set_the_rate_of_interest(io.cucumber.datatable.DataTable dataTable) {
-		List<Map<String, String>>data=dataTable.asMaps();
-	    String interest = data.get(0).get("interest");
-	    Pages.loanPage.setInterest(interest);
+
+	private void fillField(WebElement element, String data) {
+		WaitForVisibiltyOfElement(15, element);
+		element.click();
+		element.sendKeys(Keys.CONTROL + "a");
+		element.sendKeys(Keys.DELETE);
+		element.sendKeys(data);
 	}
-	@When("user set the tenure")
-	public void user_set_the_tenure(io.cucumber.datatable.DataTable dataTable) {
-		List<Map<String, String>>data=dataTable.asMaps();
-	    String tenure = data.get(0).get("tenure");
-	    Pages.loanPage.setTenure(tenure);
-	}
-	@When("check the eligibility criteria")
-	public void check_the_eligibility_criteria() {
-	    Pages.loanPage.setCheckbtn();
-	}
-	@When("user should give pan number")
-	public void user_should_give_pan_number(io.cucumber.datatable.DataTable dataTable) {
-		List<Map<String, String>>data=dataTable.asMaps();
-	    String pan = data.get(0).get("pan");
-	    Pages.loanPage.setPan(pan);
-	}
-	@When("user will proceed future and clicks continue")
-	public void user_will_proceed_future_and_clicks_continue() {
-	    Pages.loanPage.setContinueBtn();
-	}
-	@Then("loan page should get displayed")
-	public void loan_page_should_get_displayed() {
-	    Pages.loanPage.setLoanPage();
-	}
+
 }

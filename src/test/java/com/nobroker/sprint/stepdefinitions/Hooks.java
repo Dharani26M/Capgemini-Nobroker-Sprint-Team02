@@ -18,98 +18,73 @@ import io.cucumber.java.Scenario;
 
 public class Hooks extends AllUtilities {
 
-	// call the driver base using dependency injection -DI
-	private BaseClass bhook;
+    private BaseClass bhook;
 
-	public Hooks(BaseClass b) {
-		this.bhook = b;
-	}
+    public Hooks(BaseClass b) {
+        this.bhook = b;
+    }
 
-	// DI part
-	// setup precondition
-	@Before
-	public void setup(Scenario scenario) throws IOException {
-		//Report generation
-		AllUtilities.createTest(scenario.getName());
-		
-		// getting value for common property file
-		String Url = ru.getPropertyKeyValue("Url");
-		String phone =ru. getPropertyKeyValue("PhoneNo");
-		String Browser =ru. getPropertyKeyValue("browser");
+    @Before
+    public void setup(Scenario scenario) throws IOException {
+        // Create the parent Extent Report node for this scenario
+        AllUtilities.createTest(scenario.getName());
 
-		// launch the browser
-		WebDriver driver;
-		if (Browser.equalsIgnoreCase("Edge"))
-			driver = new EdgeDriver();
-		else if (Browser.equalsIgnoreCase("chrome"))
-			driver = new ChromeDriver();
-		else
-			driver = new FirefoxDriver();
-		
-		bhook.setDriver(driver);
-		// initialize the driver
-		initializeDriver(driver);
-		ConfigMaximizeBrowser();
-		WaitForAllElements(60);
-		EnterUrl(Url);
-		
-		// initialize the pages
-		// login
-		// Cookie handling implementation
-		Pages.LoadAllPages(bhook.driver);
-	    HandleCookies cookiesUtil = new HandleCookies();
-	    String cookieFile = "nobroker.data";
-	    // 1. Attempt to inject existing cookies
-	    cookiesUtil.loadCookies(bhook.driver, cookieFile);
-	    
-	    // 2. Refresh is usually handled inside loadCookies, but ensure UI settles
-	    System.out.println("🔍 Checking session status...");
+        // Read config
+        String Url     = ru.getPropertyKeyValue("Url");
+        String phone   = ru.getPropertyKeyValue("PhoneNo");
+        String Browser = ru.getPropertyKeyValue("browser");
 
-	    // 3. Verify with Profile Image
-	    if (!Pages.get().dashpage.isUserLoggedIn()) {
-	        System.out.println("👉 Session not found. Redirecting to Login...");
-	        
-	        Pages.get().dashpage.LoginIn(bhook.driver, phone);
-	        
-	        System.out.println("⏳ Please enter OTP manually. Waiting 30s...");
-	        try {
-	            Thread.sleep(30000); 
-	        } catch (InterruptedException e) {
-	            e.printStackTrace();
-	        }
+        // Launch browser
+        WebDriver driver;
+        if (Browser.equalsIgnoreCase("Edge"))
+            driver = new EdgeDriver();
+        else if (Browser.equalsIgnoreCase("chrome"))
+            driver = new ChromeDriver();
+        else
+            driver = new FirefoxDriver();
 
-	        // 4. VERIFY LOGIN SUCCESS before saving
-	        if (Pages.get().dashpage.isUserLoggedIn()) {
-	            cookiesUtil.saveCookies(bhook.driver, cookieFile);
-	            System.out.println("✅ Login verified! Cookies captured for future use.");
-	        } else {
-	            System.out.println("❌ Login verification failed after 30s. Cookies not saved.");
-	        }
-	    } else {
-	        System.out.println("✅ Session restored via cookies. Profile image detected.");
-	    }
-	
-	}
+        bhook.setDriver(driver);
+        initializeDriver(driver);
+        ConfigMaximizeBrowser();
+        WaitForAllElements(60);
+        EnterUrl(Url);
 
-	// post condition
-	@After
-	public void teardown(Scenario scenario) {
-		String name = scenario.getName().replaceAll("[^a-zA-Z0-9]", "_");
-        if (scenario.isFailed()) {
-            //  Failure → screenshot + report
-            AllUtilities.captureFailure(bhook.driver, name);
+        // Initialize pages & handle cookies/login
+        Pages.LoadAllPages(bhook.driver);
+        HandleCookies cookiesUtil = new HandleCookies();
+        String cookieFile = "nobrokercookies.data";
+
+        cookiesUtil.loadCookies(bhook.driver, cookieFile);
+        System.out.println("🔍 Checking session status...");
+
+        if (!Pages.get().dashpage.isUserLoggedIn()) {
+            System.out.println("👉 Session not found. Redirecting to Login...");
+            Pages.get().dashpage.LoginIn(bhook.driver, phone);
+            System.out.println("⏳ Please enter OTP manually. Waiting 30s...");
+            try { Thread.sleep(30000); } catch (InterruptedException e) { e.printStackTrace(); }
+
+            if (Pages.get().dashpage.isUserLoggedIn()) {
+                cookiesUtil.saveCookies(bhook.driver, cookieFile);
+                System.out.println("✅ Login verified! Cookies captured for future use.");
+            } else {
+                System.out.println("❌ Login verification failed after 30s. Cookies not saved.");
+            }
         } else {
-            //  Pass log
-            AllUtilities.pass("Test Passed: " + name);
+            System.out.println("✅ Session restored via cookies. Profile image detected.");
         }
-        //  Close browser
+    }
+
+    @After
+    public void teardown(Scenario scenario) {
+        String name = scenario.getName().replaceAll("[^a-zA-Z0-9]", "_");
+        if (scenario.isFailed()) {
+            AllUtilities.captureFailure(bhook.driver, name);
+        }
         if (bhook.driver != null) {
             bhook.driver.quit();
         }
         BaseClass.removeDriver();
         Pages.remove();
-        //  Save report
         AllUtilities.getReport().flush();
-		
-	}
+    }
 }
