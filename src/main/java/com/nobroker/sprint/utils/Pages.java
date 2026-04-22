@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.nobroker.sprint.pages.CareersPage;
 import com.nobroker.sprint.pages.DashboardPage;
 import com.nobroker.sprint.pages.HomeCleaningPage;
+import com.nobroker.sprint.pages.HomeLoanPage;
 import com.nobroker.sprint.pages.PG_HostelPage;
 import com.nobroker.sprint.pages.PostyourPropertyPage;
 
@@ -16,6 +17,7 @@ public class Pages {
 	public CareersPage Careers;
 	public PG_HostelPage PgHostel;
 	public PostyourPropertyPage PostProperty;
+	public HomeLoanPage homeloan;
 
 	public static void LoadAllPages(WebDriver driver) {
 		Pages p = new Pages();
@@ -25,6 +27,8 @@ public class Pages {
 		p.Careers = PageFactory.initElements(driver, CareersPage.class);
 		p.PgHostel = PageFactory.initElements(driver, PG_HostelPage.class);
 		p.PostProperty = PageFactory.initElements(driver, PostyourPropertyPage.class);
+		p.homeloan = PageFactory.initElements(driver,HomeLoanPage.class);
+
 		threadPages.set(p);
 	}
 
@@ -54,6 +58,10 @@ public class Pages {
 
 	public static PostyourPropertyPage getPostproperty() {
 		return get().PostProperty;
+	}
+	
+	public static HomeLoanPage getHomeLoanPage() {
+		return get().homeloan;
 	}
 
 }

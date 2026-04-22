@@ -30,25 +30,30 @@ public class CareersTest extends AllUtilities {
 	}
 
 	@When("User clicks on menu button")
-	public void user_clicks_on_menu_button()  {
+	public void user_clicks_on_menu_button() {
 		Pages.get().Careers.getMenu().click();
+		AllUtilities.info("Menu button clicked successfully");
+
 	}
 
 	@When("User clicks on Careers option from menu")
 	public void user_clicks_on_careers_option_from_menu() {
 		WaitForToBeClickableOfElement(20, Pages.get().Careers.getCareersLink());
 		Pages.get().Careers.getCareersLink().click();
+		AllUtilities.info("Careers option clicked successfully");
 	}
 
 	@Then("Careers page should be displayed")
 	public void careers_page_should_be_displayed() {
 
 		Assert.assertTrue(driver.getCurrentUrl().contains("careers"));
+		AllUtilities.info("Careers page validation successful");
 	}
 
 	@When("User clicks on See all opportunities button")
 	public void user_clicks_on_see_all_opportunities_button() {
 		Pages.get().Careers.getSeeAllOpportunities().click();
+		AllUtilities.info("'See all opportunities' button clicked");
 
 	}
 
@@ -57,5 +62,6 @@ public class CareersTest extends AllUtilities {
 		SwitchWindowUsingUrl("linkedin");
 		String currentUrl = driver.getCurrentUrl();
 		Assert.assertTrue(currentUrl.contains("linkedin"));
+		AllUtilities.info("Successfully redirected to LinkedIn page");
 	}
 }
