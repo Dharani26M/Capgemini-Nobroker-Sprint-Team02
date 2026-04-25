@@ -47,7 +47,7 @@ public class PostProperty extends AllUtilities {
     }
 
     @Then("the user should see property listing options")
-    public void the_user_should_see_the_property_listing_options() {
+    public void the_user_should_see_property_listing_options() {
         WaitForVisibiltyOfElement(70, Pages.get().postpage.getNoPropertyContentField());
         Assert.assertTrue(Pages.get().postpage.getPremium().isDisplayed(),
                 "Active Property is Present");

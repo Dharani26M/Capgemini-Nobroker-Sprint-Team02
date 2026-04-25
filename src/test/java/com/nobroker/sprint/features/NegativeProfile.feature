@@ -1,7 +1,7 @@
 Feature: Negative Profile and Feature Validation
 
   Background:
-    Given the user has logged into the application
+    Given the user has log into the application
 # Scenario 2: Negative Profile Update
 
   @Profile @Negative

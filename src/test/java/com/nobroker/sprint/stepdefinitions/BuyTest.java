@@ -43,8 +43,8 @@ public class BuyTest extends AllUtilities{
 	    Pages.get().dashpage.clickSearch();
 	    AllUtilities.info("User clicks on Search button");
 	}
-	@When("user skips the popup")
-	public void user_skips_the_popup() {
+	@When("user skip the popup")
+	public void user_skip_the_popup() {
 	    Pages.get().buy.clickSkip(driver);
 	    AllUtilities.info("User skips the popup");
 	}
@@ -58,8 +58,8 @@ public class BuyTest extends AllUtilities{
 	    Pages.get().buy.clickViewAll(driver);
 	    AllUtilities.info("User clicks on View All Projects");
 	}
-	@When("user selects the property from list")
-	public void user_selects_the_property_from_list() {
+	@When("user select the property from list")
+	public void user_select_the_property_from_list() {
 	    Pages.get().buy.setProperty(driver);
 	    AllUtilities.info("User selects a property from the list");
 	}

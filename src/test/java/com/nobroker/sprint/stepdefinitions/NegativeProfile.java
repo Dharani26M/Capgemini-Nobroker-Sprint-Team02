@@ -23,8 +23,8 @@ public class NegativeProfile extends AllUtilities {
         this.initializeDriver(base.driver);
     }
 
-    @Given("the user has logged into the application")
-    public void the_user_has_logged_into_the_application() {
+    @Given("the user has log into the application")
+    public void the_user_has_log_into_the_application() {
         WaitForVisibiltyOfElement(20, Pages.get().dashpage.getProfileImg());
         Assert.assertTrue(Pages.get().dashpage.getProfileImg().isDisplayed());
         AllUtilities.info("User is logged in – profile image visible");
