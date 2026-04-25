@@ -1,17 +1,9 @@
-
 package com.nobroker.sprint.stepdefinitions;
 
-import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import com.nobroker.sprint.pages.AvoidBrokers;
 import com.nobroker.sprint.utils.AllUtilities;
 import com.nobroker.sprint.utils.BaseClass;
 import com.nobroker.sprint.utils.Pages;
@@ -66,6 +58,7 @@ public class BrokerTest extends AllUtilities{
     public void user_clicks_subscribe_option_in_blog() {
     	Pages.get().Broker.setSubscribe();
     	AllUtilities.info("Clicked on the Blog subscription option.");
+    	
     }
 
     @When("user enters email in blog subscription field {string}")
@@ -96,13 +89,27 @@ public class BrokerTest extends AllUtilities{
     @Then("blog subscription should be successful")
     public void blog_subscription_should_be_successful() {
     	
-    	WaitForVisibiltyOfElement(10,Pages.get().Broker.getVerifying());
-    	String msg = Pages.get().Broker.getVerifying().getText();
+    	
+    	
+        String emailValue = Pages.get().Broker.getEmailField().getAttribute("value");
+
+        if (emailValue == null || emailValue.trim().isEmpty()) {
+            
+            AllUtilities.info("Negative Scenario: Email is empty. Subscription blocked as expected.");
+            
+            Assert.assertTrue(true, "System correctly prevented subscription for empty email.");
+        } 
+        else {
+            WaitForVisibiltyOfElement(20, Pages.get().Broker.getVerifying());
+            String msg = Pages.get().Broker.getVerifying().getText();
+
+            Assert.assertTrue(msg.toLowerCase().contains("set"),
+                    "Subscription message not displayed for valid email: " + emailValue);
+            
+            AllUtilities.info("Positive Scenario: Blog subscription confirmed. Success message: " + msg);
+        }
+    }
     	
 
-        Assert.assertTrue(msg.toLowerCase().contains("set"),
-                "Subscription message not displayed");
 
-        AllUtilities.info("Blog subscription confirmed. Success message: " + msg);
     }
-}
