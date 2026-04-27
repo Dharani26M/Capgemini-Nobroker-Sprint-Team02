@@ -47,10 +47,7 @@ public class PositiveProfile extends AllUtilities {
 
     @Then("the profile name should be displayed as {string}")
     public void the_profile_name_should_be_displayed_as(String expectedname) {
-        Assert.assertEquals(
-            Pages.get().profilepage.getUserName().getAttribute("value"),
-            expectedname, "profile mismatch"
-        );
+        Assert.assertEquals(Pages.get().profilepage.getUserName().getAttribute("value"),expectedname, "profile mismatch");
         AllUtilities.info("Profile name verified: " + expectedname);
     }
 }
