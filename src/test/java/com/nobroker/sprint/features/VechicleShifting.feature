@@ -7,7 +7,7 @@ Feature: Vehicle Shifting Flow - Packers and Movers
 
     And User enters source city  as "Chennai"
     And User enters destination city  as "Bangalore"
-    And User selects shifting date "25/05/2026"
+    And User selects shifting date "29/05/2026"
     And User clicks on Checks Price
     Then User should be navigated to Vechicle Inventorys page
 

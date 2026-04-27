@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\sansa\AppData\Local\Temp\testng-eclipse-1871571243\testng-customsuite.xml</span>
+                    <span>C:\Users\sansa\AppData\Local\Temp\testng-eclipse--1780497609\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -130,32 +130,17 @@
                   </a> <!-- runScenario("Verify within city shifting with multiple inventory items", "Within City Shifting Flow - Packers an...) -->
                   <span class="method-name">runScenario</span>
                   <span class="parameters">("Verify within city shifting with multiple inventory items","Within City Shifting Flow - Packers and Movers")</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchSessionException: invalid session id
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: By.xpath: //div[contains(normalize-space(),&apos;Pickup Date&apos;)]/..//div[normalize-space()=&apos;25 Apr&apos; and not(contains(@class,&apos;disabled&apos;))] (tried for 40 second(s) with 500 milliseconds interval)
 Build info: version: &apos;4.38.0&apos;, revision: &apos;6b412e825c*&apos;
 System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.5&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [6d92cdcbe2e2f34d97bc6c5a8e02f518, findElement {using=css selector, value=[class=&apos;hidden md:contents&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.102, chrome: {chromedriverVersion: 147.0.7727.117 (474cc805edd..., userDataDir: C:\Users\sansa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58410}, goog:processID: 32584, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58410/devtoo..., se:cdpVersion: 147.0.7727.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 6d92cdcbe2e2f34d97bc6c5a8e02f518
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:215)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:557)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:380)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:374)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy26.getText(Unknown Source)
-	at com.nobroker.sprint.stepdefinitions.PackageAndMover.user_should_be_navigated_to_inventory_page(PackageAndMover.java:102)
-	at ✽.User should be navigated to Inventory page(file:///C:/Users/sansa/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/PackageAndMover.feature:12)
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 147.0.7727.102, chrome: {chromedriverVersion: 147.0.7727.117 (474cc805edd..., userDataDir: C:\Users\sansa\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49879}, goog:processID: 30824, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49879/devtoo..., se:cdpVersion: 147.0.7727.102, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ddd452724f38ac63652f1251f952202b
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
+	at com.nobroker.sprint.pages.AddInventoryPage.ConfirmDate(AddInventoryPage.java:401)
+	at com.nobroker.sprint.stepdefinitions.PackageAndMover.system_should_guide_user_based_on_availability_for_date(PackageAndMover.java:162)
+	at ✽.System should guide the user to the next step based on availability for date &quot;25 Apr&quot;(file:///C:/Users/sansa/git/Capgemini-Nobroker-Sprint-Team02/src/test/java/com/nobroker/sprint/features/PackageAndMover.feature:15)
 
 </div> <!-- stack-trace -->
                   <em>
@@ -167,7 +152,7 @@ Session ID: 6d92cdcbe2e2f34d97bc6c5a8e02f518
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\sansa\AppData\Local\Temp\testng-eclipse-1871571243\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\sansa\AppData\Local\Temp\testng-eclipse--1780497609\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -228,12 +213,12 @@ data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'runScenario')
 data.setCell(0, 2, 'com.nobroker.sprint.runner.RunnerIO')
-data.setCell(0, 3, 132981);
+data.setCell(0, 3, 393638);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <span class="suite-total-time">Total running time: 6 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -261,18 +246,18 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.nobroker.sprint.runner.RunnerIO</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
-                <span class="method-name">setUpClass(org.testng.TestRunner@25f9407e)</span>
+                <span class="method-name">setUpClass(org.testng.TestRunner@1eba372c)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">runScenario("Verify within city shifting with multiple inventory items", "Within City Shifting Flow - Packers an...)</span>
-                <span class="method-start">511 ms</span>
+                <span class="method-start">524 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDownClass</span>
-                <span class="method-start">133500 ms</span>
+                <span class="method-start">394176 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

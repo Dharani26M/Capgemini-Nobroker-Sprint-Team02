@@ -12,4 +12,4 @@ Feature: Within City Shifting Flow - Packers and Movers
     Then User should be navigated to Inventory page
     When User adds inventory items
     And User clicks on Continue
-    Then System should guide the user to the next step based on availability for date "25 Apr"
+    Then System should guide the user to the next step based on availability for date "29 Apr"
