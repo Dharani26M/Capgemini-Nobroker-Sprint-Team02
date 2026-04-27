@@ -96,8 +96,9 @@ public class PackageAndMover extends AllUtilities {
 	@Then("User should be navigated to Inventory page")
 	public void user_should_be_navigated_to_inventory_page() {
 		SwitchWindowUsingUrl("inventory");
-		Assert.assertTrue(Pages.get().moverspage.getPageTitle().getText().contains(""));
 		Pages.get().moverspage.handlePackagePopup(Pages.get().moverspage.getNoPopupButton());
+		Assert.assertTrue(Pages.get().moverspage.getPageTitle().getText().contains(""));
+		
 		info("User navigated to Inventory page");
 	}
 

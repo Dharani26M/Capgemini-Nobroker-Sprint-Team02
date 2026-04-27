@@ -27,7 +27,6 @@ public void user_should_navigate_to_packers_and_movers_page() {
     info("User successfully navigated to Packers and Movers page");
 }
 
-
 	    @When("User clicks on the first post")
 	    public void user_clicks_on_the_first_post() {
 	    	

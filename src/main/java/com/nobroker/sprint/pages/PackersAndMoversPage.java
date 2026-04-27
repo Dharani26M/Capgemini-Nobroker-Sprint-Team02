@@ -300,6 +300,8 @@ public class PackersAndMoversPage {
 
 
 	public void SelectDate(String Date) {
+		
+		//DD/MM/YYYY
 
 		getDateInput().click();
 
@@ -462,8 +464,8 @@ public class PackersAndMoversPage {
 			}
 
 			if (stable[0] >= 3) {
-				getEditPackage().click();
-				return true;
+			    element.click(); 
+			    return true;
 			}
 			return null;
 		});

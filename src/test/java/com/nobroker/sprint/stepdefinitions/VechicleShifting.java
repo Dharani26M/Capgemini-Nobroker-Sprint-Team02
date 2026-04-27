@@ -62,6 +62,9 @@ public class VechicleShifting extends AllUtilities {
 	public void user_should_be_navigated_to_vechicle_inventorys_page() {
 		SwitchWindowUsingUrl("vehicle-shifting");
 		Assert.assertTrue(Pages.get().vechicleinventory.getTitle().getText().contains("Inventory"));
+		
+		Pages.get().moverspage.handlePackagePopup(Pages.get().moverspage.getNoPopupButton());
+		
 		 info("User navigated to Vehicle Inventory page");
 	}
 	@When("User selects vehicle types:")

@@ -13,5 +13,3 @@ Feature: Within City Shifting Flow - Packers and Movers
     When User adds inventory items
     And User clicks on Continue
     Then System should guide the user to the next step based on availability for date "25 Apr"
-
-    

@@ -385,8 +385,6 @@ public class AddInventoryPage {
 
 	public WebElement AddIcon(String itemName) {
 		return driver.findElement(By.xpath("//div[text()='" + itemName + "']/..//following-sibling::div[@style='justify-content: center;']"));
-		
-		
 	}
 
 //Decrement The Added item Count
